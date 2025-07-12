@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramayana Sacred Sites</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian epic/ram_photos/unnamed.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(210, 180, 140, 0.7);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content h2 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .state-selector {
+            margin: 20px 0;
+        }
+
+        .state-selector select {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 18px;
+            color: #3c2f2f;
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            border: 2px solid #FF4500;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-selector select:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .state-selector select:focus {
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        .location-list {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 245, 224, 0.95);
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .location-item {
+            margin-bottom: 15px;
+        }
+
+        .location-item h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-item p {
+            font-size: 16px;
+            color: #3c2f2f;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #map {
+            height: 500px;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: rgba(210, 180, 140, 0.95);
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            font-family: 'Merriweather', serif;
+            color: #3c2f2f;
+        }
+
+        .leaflet-popup-content b {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            color: #2F4F4F;
+        }
+
+        .leaflet-popup-content img {
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 245, 224, 0.95);
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content img {
+            width: 400px;
+            height: 267px;
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            color: #3c2f2f;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #FF4500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-content .close-button:hover {
+            color: #FFD700;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .content h2 {
+                font-size: 28px;
+            }
+
+            .state-selector select {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .location-item h3 {
+                font-size: 18px;
+            }
+
+            .location-item p {
+                font-size: 14px;
+            }
+
+            #map {
+                height: 400px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            .modal-content img {
+                width: 300px;
+                height: 200px;
+            }
+
+            .modal-content p {
+                font-size: 14px;
+            }
+
+            .modal-content .close-button {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h2>Ramayana Sacred Sites</h2>
+        <p>Explore the sacred locations from the epic Ramayana, spanning India, Nepal, and Sri Lanka, each marking significant events in Lord Rama’s journey.</p>
+        <div id="map"></div>
+        <h2>Explore Locations by Region</h2>
+        <div class="state-selector">
+            <select id="stateSelect">
+                <option value="">Select a Region</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Nepal">Nepal</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+            </select>
+        </div>
+        <div id="locationList" class="location-list"></div>
+    </section>
+
+     <footer>
+        <p>© 2025 Dharmayatra. <br> यतो धर्मस्ततो जयः। </p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([7.5, 80.0], 5); // Centered on South Asia
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Location data with images
+        const locations = [
+    {
+        name: "Ayodhya",
+        state: "Uttar Pradesh",
+        description: "Rama’s birthplace and the capital of the Kosala kingdom, situated on the banks of the Sarayu River. It was the starting point of Rama’s journey.",
+        lat: 26.7922,
+        lng: 82.1942,
+        image: "ram_photos/ayodhya.png"
+    },
+    {
+        name: "Sarayu River",
+        state: "Uttar Pradesh",
+        description: "The sacred river flowing beside Ayodhya, significant in Rama’s life and the Ramayana narrative.",
+        lat: 26.7900,
+        lng: 82.1900,
+        image: "ram_photos/sarayu river.png"
+    },
+    {
+        name: "Nandigrama (Bharatkund)",
+        state: "Uttar Pradesh",
+        description: "Where Bharata ruled Ayodhya during Rama’s 14-year exile, living ascetically to honor his brother.",
+        lat: 26.8100,
+        lng: 82.1200,
+        image: "ram_photos/bharatkund.png"
+    },
+    {
+        name: "Shravasti",
+        state: "Uttar Pradesh",
+        description: "Northern Kosala region, later ruled by Lava’s descendants, known for its historical and spiritual significance.",
+        lat: 27.5040,
+        lng: 82.0540,
+        image: "ram_photos/shravasti.png"
+    },
+    {
+        name: "Kaushambi",
+        state: "Uttar Pradesh",
+        description: "Seat of the Vatsa kingdom, where Rama passed through during his exile.",
+        lat: 25.3400,
+        lng: 81.3900,
+        image: "ram_photos/kaushambi.png"
+    },
+    {
+        name: "Prayagraj (Prayag)",
+        state: "Uttar Pradesh",
+        description: "The confluence of rivers where Rama stopped at sage Bharadwaja’s ashram during his exile.",
+        lat: 25.4358,
+        lng: 81.8463,
+        image: "ram_photos/prayagraj.png"
+    },
+    {
+        name: "Kashi (Varanasi)",
+        state: "Uttar Pradesh",
+        description: "The homeland of Sumitrā, mother of Lakshmana and Shatrughna, significant in the Ramayana context.",
+        lat: 25.3176,
+        lng: 82.9739,
+        image: "ram_photos/kashi.png"
+    },
+    {
+        name: "Kastaharni Ghat",
+        state: "Bihar",
+        description: "In Munger, where Rama and Lakshmana bathed during their journey, a significant ritual site.",
+        lat: 25.3750,
+        lng: 86.4730,
+        image: "ram_photos/kastaharni ghat.png"
+    },
+    {
+        name: "Baag Taraag Pushpavatika (Phulhar)",
+        state: "Bihar",
+        description: "The garden where Rama and Sita first met, marking the beginning of their sacred union.",
+        lat: 25.6800,
+        lng: 85.2100,
+        image: "ram_photos/pushpavatika.png"
+    },
+    {
+        name: "Chitrakoot",
+        state: "Madhya Pradesh",
+        description: "A major hub during Rama’s exile, where he met Bharata and spent significant time with Sita and Lakshmana.",
+        lat: 24.8498,
+        lng: 80.8650,
+        image: "ram_photos/chitrakoot.png"
+    },
+    {
+        name: "Shivrinarayan",
+        state: "Chhattisgarh",
+        description: "The site of Shabari’s hermitage, where she offered berries to Rama with devotion.",
+        lat: 21.7200,
+        lng: 82.5900,
+        image: "ram_photos/shivrinarayan.jpg"
+    },
+    {
+        name: "Panchavati",
+        state: "Maharashtra",
+        description: "Near Nashik, where Sita was abducted by Ravana, a pivotal event in the Ramayana.",
+        lat: 20.0070,
+        lng: 73.7898,
+        image: "ram_photos/panchvati.jpeg"
+    },
+    {
+        name: "Godavari River",
+        state: "Maharashtra",
+        description: "Flowing by Panchavati, it provided solace to Rama during his exile.",
+        lat: 20.0100,
+        lng: 73.7900,
+        image: "ram_photos/godavari.png"
+    },
+    {
+        name: "Lepakshi",
+        state: "Andhra Pradesh",
+        description: "Where Jatayu made his last stand trying to save Sita from Ravana.",
+        lat: 13.8030,
+        lng: 77.6100,
+        image: "ram_photos/lepakshi.webp"
+    },
+    {
+        name: "Bhadrachalam",
+        state: "Telangana",
+        description: "A site associated with Rama’s legend, home to a prominent temple dedicated to him.",
+        lat: 17.6680,
+        lng: 80.8930,
+        image: "ram_photos/bhadrachalam.png"
+    },
+    {
+        name: "Kishkindha (Anegundi)",
+        state: "Karnataka",
+        description: "The monkey kingdom of Sugriva, where Rama formed an alliance with the Vanaras.",
+        lat: 15.3500,
+        lng: 76.4800,
+        image: "ram_photos/kishkindha.jpg"
+    },
+    {
+        name: "Rishyamukha Parvat",
+        state: "Karnataka",
+        description: "The hill where Rama first met Hanuman and Sugriva, forging a key alliance.",
+        lat: 15.3400,
+        lng: 76.4700,
+        image: "ram_photos/rishyamukha parvat.png"
+    },
+    {
+        name: "Anjanadri Hill",
+        state: "Karnataka",
+        description: "The legendary birthplace of Hanuman, a devoted follower of Rama.",
+        lat: 15.3600,
+        lng: 76.4900,
+        image: "ram_photos/Anjanadri Hill.jpg"
+    },
+    {
+        name: "Pampa Sarovar",
+        state: "Karnataka",
+        description: "A sacred lake near Hampi, associated with Rama’s time in Kishkindha.",
+        lat: 15.3350,
+        lng: 76.4600,
+        image: "ram_photos/pampa sarovar.png"
+    },
+    {
+        name: "Ramadevara Betta",
+        state: "Karnataka",
+        description: "Near Ramanagara, linked to legends of Hanuman and Kakasura.",
+        lat: 12.7200,
+        lng: 77.2800,
+        image: "ram_photos/Ramadevara Betta.png"
+    },
+    {
+        name: "Namada Chilume",
+        state: "Karnataka",
+        description: "Near Devarayanadurga, where Rama caused water to spring for his needs.",
+        lat: 13.3700,
+        lng: 77.2100,
+        image: "ram_photos/narmada chilume.jpg"
+    },
+    {
+        name: "Rameswaram",
+        state: "Tamil Nadu",
+        description: "The origin point of Rama Setu, where Rama installed a Shiva lingam before crossing to Lanka.",
+        lat: 9.2876,
+        lng: 79.3129,
+        image: "ram_photos/rameshwaram.jpg"
+    },
+    {
+        name: "Rama Setu (Adam’s Bridge)",
+        state: "Tamil Nadu",
+        description: "The limestone shoals linking India to Sri Lanka, built by Rama’s Vanara army.",
+        lat: 9.1200,
+        lng: 79.5200,
+        image: "ram_photos/rama setu.png"
+    },
+    {
+        name: "Dhanushkodi",
+        state: "Tamil Nadu",
+        description: "The ghost town at the base of Rama Setu, marking the bridge’s starting point.",
+        lat: 9.1780,
+        lng: 79.4150,
+        image: "ram_photos/dhanushkodi.jpg"
+    },
+    {
+        name: "Chadayamangalam",
+        state: "Kerala",
+        description: "A competing claim for Jatayu’s death site, where he fell after battling Ravana.",
+        lat: 8.8200,
+        lng: 76.8600,
+        image: "ram_photos/chadayamangalam.png"
+    },
+    {
+        name: "Janakpur",
+        state: "Nepal",
+        description: "The kingdom of Janaka, Sita’s birthplace, and the site of her swayamvara with Rama.",
+        lat: 26.7280,
+        lng: 85.9240,
+        image: "ram_photos/janakpur.png"
+    },
+    {
+        name: "Manimandapa",
+        state: "Nepal",
+        description: "The alleged marriage pavilion in Janakpur where Rama and Sita were wed.",
+        lat: 26.7300,
+        lng: 85.9250,
+        image: "ram_photos/manimandapa.png"
+    },
+    {
+        name: "Talaimannar",
+        state: "Sri Lanka",
+        description: "The Vanara army’s landing point in Lanka, near Mannar Island.",
+        lat: 9.0900,
+        lng: 79.7200,
+        image: "ram_photos/talaimannar.jpg"
+    },
+    {
+        name: "Ketheeswaram Temple",
+        state: "Sri Lanka",
+        description: "A Shiva temple in Mannar installed by Rama to absolve the sin of killing Ravana.",
+        lat: 9.0800,
+        lng: 79.8700,
+        image: "ram_photos/Ketheeswaram Temple.png"
+    },
+    {
+        name: "Munneswaram Temple",
+        state: "Sri Lanka",
+        description: "One of four Shiva lingams installed by Rama to rid the Brahmin-slayer dosha.",
+        lat: 7.5700,
+        lng: 79.9500,
+        image: "ram_photos/munneshwaram.png"
+    },
+    {
+        name: "Ashoka Vatika (Seetha Eliya)",
+        state: "Sri Lanka",
+        description: "Where Sita was confined by Ravana, near the Sita Amman Temple and spring.",
+        lat: 6.9350,
+        lng: 80.8080,
+        image: "ram_photos/ashoka vatika.jpg"
+    },
+    {
+        name: "Sita Kotuwa",
+        state: "Sri Lanka",
+        description: "Remnants of Lankapura’s palace in Gurulupotha, where Sita was initially held.",
+        lat: 7.2900,
+        lng: 80.6300,
+        image: "ram_photos/Sita Kotuwa.png"
+    },
+    {
+        name: "Divurumpola",
+        state: "Sri Lanka",
+        description: "The site of Sita’s agni-pariksha, where she proved her purity after captivity.",
+        lat: 6.7500,
+        lng: 80.6800,
+        image: "ram_photos/Divurumpola.jpg"
+    },
+    {
+        name: "Ravana Ella Falls",
+        state: "Sri Lanka",
+        description: "A waterfall and cave tied to Ravana’s story, used to conceal Sita.",
+        lat: 6.8700,
+        lng: 80.6500,
+        image: "ram_photos/ravana ella falls.png"
+    },
+    {
+        name: "Ramboda Falls",
+        state: "Sri Lanka",
+        description: "Hanuman’s resting spot during the war, now home to a temple.",
+        lat: 7.0500,
+        lng: 80.7000,
+        image: "ram_photos/ramboda falls.jpg"
+    },
+    {
+        name: "Sri Bhakta Hanuman Temple",
+        state: "Sri Lanka",
+        description: "A temple in Ramboda dedicated to Hanuman, honoring his devotion to Rama.",
+        lat: 7.0600,
+        lng: 80.7100,
+        image: "ram_photos/sri bhakt hanuman temple.jpg"
+    },
+    {
+        name: "Kelaniya",
+        state: "Sri Lanka",
+        description: "Vibhishana’s kingdom after Ravana’s defeat, honored by Buddhists.",
+        lat: 6.9510,
+        lng: 79.9200,
+        image: "ram_photos/Kelaniya.png"
+    }
+];
+
+        // Initialize markers
+        let markers = [];
+        function updateMap(state) {
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+
+            // Add markers for selected state or all if none selected
+            const filteredLocations = state ? locations.filter(loc => loc.state === state) : locations;
+            filteredLocations.forEach(loc => {
+                const marker = L.marker([loc.lat, loc.lng]).addTo(map)
+                    .bindPopup(`
+                        <b>${loc.name} (${loc.state})</b><br>
+                        ${loc.description}<br>
+                        <img src="${loc.image}" alt="${loc.name}" style="width: 200px; height: 133px; border-radius: 8px; margin-top: 10px;" onerror="this.src='https://via.placeholder.com/200x133?text=Image+Not+Found'" onclick="openModal('${loc.image.replace(/\\/g, '\\\\')}', '${loc.name}', '${loc.description.replace(/'/g, "\\'")}')">
+                    `);
+                markers.push(marker);
+            });
+
+            // Adjust map view to fit markers
+            if (filteredLocations.length > 0) {
+                const group = L.featureGroup(markers);
+                map.fitBounds(group.getBounds(), { padding: [50, 50] });
+            } else {
+                map.setView([7.5, 80.0], 5); // Reset to default view
+            }
+        }
+
+        // Update location list
+        function updateLocationList(state) {
+            const locationList = document.getElementById('locationList');
+            locationList.innerHTML = '';
+            if (!state) return;
+
+            const filteredLocations = locations.filter(loc => loc.state === state);
+            filteredLocations.forEach(loc => {
+                const div = document.createElement('div');
+                div.className = 'location-item';
+                div.innerHTML = `
+                    <h3>${loc.name}</h3>
+                    <p>${loc.description}</p>
+                `;
+                locationList.appendChild(div);
+            });
+        }
+
+        // Modal popup function
+        function openModal(imageSrc, name, description) {
+            console.log('Attempting to load image:', imageSrc); // Debug log
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-button">×</span>
+                    <img src="${imageSrc}" alt="${name}" style="width: 400px; height: 267px; max-width: 90vw; max-height: 80vh; border-radius: 8px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/400x267?text=Image+Not+Found'">
+                    <p>${description}</p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+
+            // Close modal on click of close button or outside modal
+            modal.querySelector('.close-button').addEventListener('click', () => {
+                modal.remove();
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // Handle state selection
+        document.getElementById('stateSelect').addEventListener('change', (e) => {
+            const selectedState = e.target.value;
+            updateLocationList(selectedState);
+            updateMap(selectedState);
+        });
+
+        // Initialize with all markers
+        updateMap('');
+    </script>
+</body>
+</html>

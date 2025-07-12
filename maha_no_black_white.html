@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata: No Black and White in Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('photos/mahabharat main page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #E6B800;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #E6B800;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background: rgba(255, 245, 224, 0.95);
+            min-width: 250px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+        }
+
+        .dropdown-content a {
+            color: #3c2f2f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .dropdown-content {
+                right: 10px;
+                left: auto;
+                top: 60px;
+                min-width: 200px;
+            }
+        }
+
+        h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin: 40px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 245, 224, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            text-align: center;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #3c2f2f;
+            margin-bottom: 20px;
+        }
+
+        .accordion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            position: relative;
+        }
+
+        .accordion-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            background: rgba(255, 245, 224, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #E6B800, #FFA500);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 16px;
+            color: #3c2f2f;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background: rgba(255, 245, 224, 0.95);
+        }
+
+        .accordion-content.active {
+            padding: 15px;
+        }
+
+        .accordion-content p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #FF4500;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .accordion-content .image-caption {
+            font-size: 14px;
+            color: #3c2f2f;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #E6B800;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #E6B800;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container,
+            .hero-section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .accordion-header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .accordion-content p {
+                font-size: 14px;
+            }
+
+            .accordion-content img {
+                height: 150px;
+            }
+
+            .accordion-content .image-caption {
+                font-size: 12px;
+            }
+
+            .nav-button, .dropdown-button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .dropdown-content a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Debugging Tip: Ensure this HTML file is saved in 'C:\Users\iasis\Desktop\indian epic\' and images are in 'C:\Users\iasis\Desktop\indian epic\photos\story\'. 
+        Verify file names and extensions (e.g., .jpg) match exactly as listed. 
+        Run a local server (e.g., 'python -m http.server' in the 'indian epic' folder) and access via 'http://localhost:8000/maha_no_black_white.html' to avoid file:// protocol issues.
+        If the accordion or images are not displaying correctly, check the browser console (F12, Console tab) for JavaScript or file path errors.
+    -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <div class="nav-buttons">
+                <div class="dropdown">
+                    <div class="dropdown-button">Stories ▼</div>
+                    <div class="dropdown-content">
+                        <a href="maha_karna.html">Karna in the Mahabharata</a>
+                        <a href="maha_duryodhana_mistake.html">Duryodhana's Big Mistake</a>
+                        <a href="maha_no_black_white.html">No Black and White in Life</a>
+                        <a href="maha_treachery.html">Treachery at Kurukshetra</a>
+                        <a href="maha_five_arrows.html">Five Golden Arrows of Bhishma</a>
+                        <a href="maha_krishna_service.html">Krishna Serves His Devotees</a>
+                        <a href="maha_arjuna_chariot.html">Krishna's Divine Protection</a>
+                        <a href="maha_golden_mountains.html">Arjuna, Karna and the Mountains</a>
+                        <a href="maha_aurva.html">The Story of Aurva</a>
+                        <a href="maha_shvetaki.html">Shvetaki and Agni</a>
+                        <a href="maha_tapati.html">Tapatyopakhyana</a>
+                        <a href="maha_good_deeds.html">Fruits of Good Deeds</a>
+                        <a href="maha_bhangaswana.html">Story of Bhangaswana</a>
+                        <a href="maha_vishwamitra.html">Vishwamitra: Kshatriya to Bhramana</a>
+                    </div>
+                </div>
+                <a href="ramayana.html" class="nav-button">Ramayana</a>
+                <a href="mahabharata.html" class="nav-button">Mahabharata</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Mahabharata: No Black and White in Life</h1>
+        <p>As the Kurukshetra War loomed, the Mahabharata reveals a profound lesson through Krishna’s nuanced approach to dharma. In "No Black and White in Life," the narrative explores the absence of absolute good or evil, showcasing Krishna’s efforts to maintain balance and guide both sides toward righteousness. This story, centered on the pivotal choice between Krishna’s wisdom and his army, underscores the complexity of human nature and the power of conscious decisions. Delve into the accordion below to uncover this tale of moral ambiguity and its impact on the epic’s unfolding drama.</p>
+    </div>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">No Black and White in Life</div>
+            <div class="accordion-content">
+                <p>As the Kurukshetra war drew near, there was no space left for neutrality. Every kingdom had to pick a side — either the Kauravas or the Pandavas. Even Krishna, though not a king, had to choose. Personally, Krishna did not want the war. He wished to remain neutral. But being the leader of the Yadava clan, and bound by Kshatriya duty, he couldn’t refuse when called upon. Krishna had no hatred toward Hastinapur or the Kauravas. In fact, many great warriors whom he respected deeply — Bhishma, Dronacharya, Kripacharya — stood on that side. And both the Kauravas and Pandavas were distantly related to him by blood. According to the dharma of the warrior class, when a relative comes to ask for help, refusing them was not seen as honorable. Krishna understood something very essential about human nature: that people are not purely good or purely evil. No one is. Human beings are a mixture. That’s why he always said that each person must strive to establish dharma within themselves. Without inner balance, anyone can fall into adharma at any moment. There is no guarantee. You must stay conscious and aware to stay on the right path.</p>
+                <p>At the same time, Krishna also tried to bring a balance between two major forces in society — Kshatra Tej (the warrior's power) and Brahma Tej (the spiritual wisdom). These two were meant to work together. The rules of society were built around this. A Brahmin, for example, was expected to devote himself to studying the Vedas. A Kshatriya was meant to be a protector and administrator. If these duties got mixed up or ignored, society would suffer. Over time, some Kshatriyas began thinking only about their own power and dharma, without considering the responsibilities and duties of others. This threw the balance off. Krishna, along with Vyasamuni, tried to restore this harmony between spiritual guidance and administrative power. So, when both Duryodhana and Arjuna came to Krishna to seek his support, Krishna knew he couldn’t say no. He had to offer something to both. Instead of choosing a side directly, Krishna gave them a choice: one could have his powerful army, and the other could have him—but with one condition: he would not fight in the war.</p>
+                <a href="#" class="image-link" data-img="photos/story/maha_no_black_and_white.jpg">
+                    <img src="photos/story/maha_no_black_and_white.jpg" alt="Krishna’s Choice">
+                </a>
+                <p class="image-caption">Krishna offering his army or himself to Arjuna and Duryodhana, a moment of destiny.</p>
+                <p>Though Duryodhana arrived first, Krishna gave Arjuna the first choice, saying, “I saw Arjuna first.” Duryodhana was upset by this, but remained silent. Arjuna humbly said, “Bhagwan, we want you. Whether we live or die, we want to do it with you. Without you, we have no purpose.” Duryodhana, on the other hand, was secretly overjoyed. What fools! he thought. They gave up an army of thousands for one man who won’t even fight. He gladly accepted Krishna’s massive army, thinking he got the better deal. Now, someone might ask: If Krishna stood for dharma, how could he give his army to the side doing adharma? That’s because Krishna did not view life in terms of black and white, good versus evil. He didn’t see the Pandavas as completely pure, nor the Kauravas as entirely evil. In fact, he maintained good relations with the Kauravas throughout. Duryodhana’s own wife, Banumathi, was a devoted follower of Krishna. Krishna did not act out of hatred. He simply saw that the Kauravas, at that time, were causing a lot of harm. And that had to stop. But he never judged them as evil or condemned them entirely. He also continued to encourage Duryodhana to walk the path of dharma. Even by offering his army, Krishna gave Duryodhana a chance — a subtle way of helping him feel that Krishna was on his side, hoping it might lead to peace. But Duryodhana didn’t see the deeper meaning. He only saw numbers, not wisdom. That single choice — Arjuna choosing Krishna, and Duryodhana choosing the army — shaped the outcome of the entire war. Because in life, numbers don’t win wars. Awareness, purpose, and dharma do.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (!isActive) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

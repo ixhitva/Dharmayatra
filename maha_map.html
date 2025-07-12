@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracing Mythical Footsteps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian%20epic/photos/mahabharat%20main%20page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(210, 180, 140, 0.7);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content h2 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        .content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .state-selector {
+            margin: 20px 0;
+        }
+
+        .state-selector select {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 18px;
+            color: #3c2f2f;
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            border: 2px solid #FF4500;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-selector select:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .state-selector select:focus {
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        .location-list {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 245, 224, 0.95);
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease;
+        }
+
+        .location-item {
+            margin-bottom: 15px;
+        }
+
+        .location-item h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-item p {
+            font-size: 16px;
+            color: #3c2f2f;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #map {
+            height: 500px;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background: rgba(210, 180, 140, 0.95);
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            font-family: 'Merriweather', serif;
+            color: #3c2f2f;
+        }
+
+        .leaflet-popup-content b {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            color: #2F4F4F;
+        }
+
+        .leaflet-popup-content img {
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 245, 224, 0.95);
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content img {
+            width: 400px;
+            height: 267px;
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content p {
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            color: #3c2f2f;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #FF4500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-content .close-button:hover {
+            color: #FFD700;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .content h2 {
+                font-size: 28px;
+            }
+
+            .state-selector select {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .location-item h3 {
+                font-size: 18px;
+            }
+
+            .location-item p {
+                font-size: 14px;
+            }
+
+            #map {
+                height: 400px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            .modal-content img {
+                width: 300px;
+                height: 200px;
+            }
+
+            .modal-content p {
+                font-size: 14px;
+            }
+
+            .modal-content .close-button {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="mahabharata.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h2>Tracing Mythical Footsteps</h2>
+        <p>Explore key locations from the epic Mahabharata, including kingdoms, pilgrimage sites, and places of exile, each steeped in the rich tapestry of India's mythological heritage.</p>
+        <div id="map"></div>
+        <h2>Explore Locations by Region</h2>
+        <div class="state-selector">
+            <select id="stateSelect">
+                <option value="">Select a State</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Assam">Assam</option>
+                <option value="Northeast India">Northeast India</option>
+                <option value="Punjab/Sindh (Pakistan)">Punjab/Sindh (Pakistan)</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Goa">Goa</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+            </select>
+        </div>
+        <div id="locationList" class="location-list"></div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dharmayatra. कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([23.5, 78.0], 5); // Centered on India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Location data with images
+        const locations = [
+            {
+                name: "Bhishma Kund, Kurukshetra",
+                state: "Haryana",
+                description: "Located near Kurukshetra, where Bhishma lay on a bed of arrows. Arjuna shot an arrow into the ground, creating a spring (Banganga) to quench Bhishma’s thirst. A temple stands beside the water tank.",
+                lat: 29.9650,
+                lng: 76.8500,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_banganga.jpg"
+            },
+            {
+                name: "Kurukshetra",
+                state: "Haryana",
+                description: "The sacred battlefield of the 18-day Mahabharata War, named after King Kuru. Lord Krishna delivered the Bhagavad Gita here. Home to the Kurukshetra Panorama and Science Centre and Jyotisar, where the Gita was narrated.",
+                lat: 29.9695,
+                lng: 76.8783,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_kurukshetra.png"
+            },
+            {
+                name: "Hastinapur",
+                state: "Uttar Pradesh",
+                description: "The majestic capital of the Kauravas and Pandavas, where Yudhishthira lost in the gambling game, Bhishma took his celibacy oath, and Krishna negotiated peace. Post-war, it became the Pandavas’ capital.",
+                lat: 29.9457,
+                lng: 78.1642,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_hastinapur.png"
+            },
+            {
+                name: "Lakshagraha Varnavat",
+                state: "Uttar Pradesh",
+                description: "Near Meerut, Duryodhana built a lacquer palace to burn the Pandavas, who escaped via a tunnel. Archaeological finds include Painted Grey Ware artefacts. One of the five villages demanded by the Pandavas.",
+                lat: 29.9500,
+                lng: 78.1700,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_varnavat.png"
+            },
+            {
+                name: "Panchal Pradesh",
+                state: "Uttar Pradesh",
+                description: "Located between the Himalayas and river Chamba, named after King Drupada’s five sons. Draupadi, known as Panchali, was its princess.",
+                lat: 27.4290,
+                lng: 80.7790,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_panchal.png"
+            },
+            {
+                name: "Indraprastha",
+                state: "Uttar Pradesh",
+                description: "The Pandavas’ capital, transformed by Vishwakarma from Khandavaprastha into a utopian city. Purana Qila marks its site, with ASI excavations revealing ancient artefacts.",
+                lat: 28.6139,
+                lng: 77.2090,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_indraprastha.jpg"
+            },
+            {
+                name: "Vrindavan",
+                state: "Uttar Pradesh",
+                description: "Krishna’s childhood home, 10 km from Mathura, known for temples like Prem Mandir and vibrant Braj ki Holi celebrations.",
+                lat: 27.4240,
+                lng: 77.6651,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_vrindavan.png"
+            },
+            {
+                name: "Gokul",
+                state: "Uttar Pradesh",
+                description: "On the Yamuna’s banks, where Krishna and Balram were raised. Krishna became Arjuna’s charioteer, and Balram taught mace fighting to Bhima and Duryodhana.",
+                lat: 27.4400,
+                lng: 77.7200,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_gokul.png"
+            },
+            {
+                name: "Barsana",
+                state: "Uttar Pradesh",
+                description: "21 km from Govardhan, with four hilltops representing Brahma’s faces. Krishna danced as a peacock at Mor Kutir to win Radha’s love.",
+                lat: 27.4360,
+                lng: 77.3850,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_barsana.png"
+            },
+            {
+                name: "Mathura",
+                state: "Uttar Pradesh",
+                description: "Krishna’s birthplace, where he killed Kans and restored Ugrasen’s throne. Yudhishthir crowned Brijnath king after the Yadava conflict.",
+                lat: 27.4950,
+                lng: 77.6737,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_mathura.png"
+            },
+            {
+                name: "Kashi",
+                state: "Uttar Pradesh",
+                description: "An education center where Bhishma won Amba, Ambika, and Ambalika. Amba, reborn as Shikhandi, aided Arjuna in defeating Bhishma.",
+                lat: 25.3176,
+                lng: 82.9739,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_kashi.png"
+            },
+            {
+                name: "Chambal River",
+                state: "Uttar Pradesh",
+                description: "A cursed river due to Draupadi’s disrobing in the dice game, it remains one of India’s cleanest rivers with rich biodiversity.",
+                lat: 26.5000,
+                lng: 76.9000,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_chambal.jpg"
+            },
+            {
+                name: "Ujjanak",
+                state: "Uttarakhand",
+                description: "Near Kashipur, where Guru Dronacharya taught archery to the Pandavas and Kauravas. Home to a temple considered one of the 12 Jyotirlingas, known as Bhimshankar.",
+                lat: 29.3919,
+                lng: 79.4534,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_ujjanak.png"
+            },
+            {
+                name: "Badrinath",
+                state: "Uttarakhand",
+                description: "The dwelling place of sage Vyasa, who composed the Mahabharata with Lord Ganesha’s help. The Pandavas spent time here during exile.",
+                lat: 30.7353,
+                lng: 79.0669,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_badrinath.png"
+            },
+            {
+                name: "Mana",
+                state: "Uttarakhand",
+                description: "The starting point of the Pandavas’ final journey, where Bhima created Bhim Pul across the Saraswati River.",
+                lat: 30.7737,
+                lng: 79.4960,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_mana.png"
+            },
+            {
+                name: "Ekachakranagari",
+                state: "West Bengal",
+                description: "Where Bhima killed Bakasura’s son Bhishak and the Pandavas learned of Draupadi’s swayamvara. Lord Krishna used a chakram here to aid Arjuna.",
+                lat: 23.7337,
+                lng: 87.3447,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_ekachakranagari.png"
+            },
+            {
+                name: "Magadh",
+                state: "Bihar",
+                description: "Ruled by Jarasandh, whose daughters Asti and Prapti married Kans. Bhima killed Jarasandh during the Rajsurya Yagya.",
+                lat: 24.6967,
+                lng: 85.0697,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_magadh.png"
+            },
+            {
+                name: "Pundru Desh",
+                state: "Bihar",
+                description: "Ruled by Pondrak, who challenged Krishna and was killed. Pondrak was present at Draupadi’s swayamvara.",
+                lat: 24.8500,
+                lng: 86.6000,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_pundrudesh.png"
+            },
+            {
+                name: "Pragjyotishpur",
+                state: "Assam",
+                description: "Near Guwahati, ruled by Narkasur, who held 16,000 girls captive until Krishna defeated him. Home to Kamakhya Devi temple built by Narkasur.",
+                lat: 26.1445,
+                lng: 91.7362,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_pragjyotishpur.png"
+            },
+            {
+                name: "Kamakhya",
+                state: "Assam",
+                description: "A Shaktipeeth where Sati’s yoni fell, built by Narkasur. A powerful center of female worship.",
+                lat: 26.1545,
+                lng: 91.7462,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_kamakhya.jpg"
+            },
+            {
+                name: "Manipur",
+                state: "Northeast India",
+                description: "King Chitravahan’s daughter Chitraganda married Arjuna, and their son Babhruvahan participated in the Rajsurya Yagya.",
+                lat: 24.6951,
+                lng: 93.9390,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_manipur.png"
+            },
+            {
+                name: "Gandhar",
+                state: "Punjab/Sindh (Pakistan)",
+                description: "West of the river Sindhu, home to Gandhari, wife of Dhritarashtra, and her brother Shakuni, who masterminded the Mahabharata war.",
+                lat: 33.5651,
+                lng: 71.9730,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_gandhar.png"
+            },
+            {
+                name: "Takshashila",
+                state: "Punjab/Sindh (Pakistan)",
+                description: "Capital of Gandhar Desh, where Parikshit was crowned king after the Pandavas’ departure to the Himalayas.",
+                lat: 33.7463,
+                lng: 72.8397,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_takshashila.png"
+            },
+            {
+                name: "Shivi Desh",
+                state: "Punjab/Sindh (Pakistan)",
+                description: "King Ushinar’s grandson Shaivya married his daughter Devika to Yudhishthir. Shaivya fought as an archer for the Pandavas.",
+                lat: 31.0000,
+                lng: 73.5000,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_shividesh.png"
+            },
+            {
+                name: "Sindhu Desh",
+                state: "Punjab/Sindh (Pakistan)",
+                description: "Famous for art and literature, ruled by King Jaydrath, married to Dushaala. Arjuna killed Jaydrath to avenge Abhimanyu’s death.",
+                lat: 24.8918,
+                lng: 67.0739,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_sindhudesh.png"
+            },
+            {
+                name: "Matsya Desh",
+                state: "Rajasthan",
+                description: "Capital Viraatnagari, where the Pandavas lived incognito during exile. Abhimanyu married King Virata’s daughter Uttara.",
+                lat: 27.4360,
+                lng: 75.9850,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_matsyadesh.png"
+            },
+            {
+                name: "Muchhkand Tirtha",
+                state: "Rajasthan",
+                description: "A dangerous mountain range in Dhoulpur where Krishna hid from Kaalyavan, who was reduced to ashes by Muchhkand’s gaze.",
+                lat: 26.9000,
+                lng: 77.5000,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_muchhkandtirtha.png"
+            },
+            {
+                name: "Chambal River",
+                state: "Rajasthan",
+                description: "A cursed river due to Draupadi’s disrobing in the dice game, it remains one of India’s cleanest rivers with rich biodiversity.",
+                lat: 26.5000,
+                lng: 76.9000,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_chambal.jpg"
+            },
+            {
+                name: "Patan",
+                state: "Gujarat",
+                description: "A commercial city near Hidimbvan, where Bhima killed demon Hidimba and married Hidimbi during exile.",
+                lat: 23.8500,
+                lng: 72.1296,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_patan.png"
+            },
+            {
+                name: "Vardayini Dham",
+                state: "Gujarat",
+                description: "Near Kalol, known as Rupavati, where the Pandavas worshipped Bhagwati Arya, naming the Devi Vardayini.",
+                lat: 23.9000,
+                lng: 72.1500,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_vardayinidham.png"
+            },
+            {
+                name: "Dwarka",
+                state: "Gujarat",
+                description: "Krishna’s capital, moved from Mathura to protect the Yadavas. Marine archaeologists found its sunken remains.",
+                lat: 22.3072,
+                lng: 70.8022,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_dwarka.png"
+            },
+            {
+                name: "Prabhas",
+                state: "Gujarat",
+                description: "A pilgrimage site near Dwarka where Krishna was injured by a hunter’s arrow and left for Golok.",
+                lat: 21.6298,
+                lng: 69.6492,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_prabhas.jpg"
+            },
+            {
+                name: "Revatak",
+                state: "Gujarat",
+                description: "Near Junagadh, where Arjuna abducted and married Subhadra with Krishna’s approval.",
+                lat: 21.5222,
+                lng: 70.4579,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_revatak.png"
+            },
+            {
+                name: "Avantika",
+                state: "Madhya Pradesh",
+                description: "Modern-day Ujjain, home to Rishi Sandipani’s ashram where Krishna and Balram studied. One of India’s seven holy cities.",
+                lat: 23.8388,
+                lng: 75.5577,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_avantika.png"
+            },
+            {
+                name: "Chedi",
+                state: "Madhya Pradesh",
+                description: "Between the Ganga and Narmada, where Shishupal’s anger over Krishna’s elopement with Rukmini led Chedi to support the Kauravas.",
+                lat: 23.1355,
+                lng: 79.9260,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_chedi.png"
+            },
+            {
+                name: "Vidarbha",
+                state: "Maharashtra",
+                description: "Ruled by King Bhismak, who was defeated by Sahadev during the Rajsurya Yagya.",
+                lat: 21.1458,
+                lng: 79.0882,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_vidarbha.png"
+            },
+            {
+                name: "Yayaatipur",
+                state: "Odisha",
+                description: "Modern-day Jajpur, where the Pandavas offered pind-dan to their ancestors near the Vaitarni river.",
+                lat: 20.8375,
+                lng: 86.3095,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_yayaatipur.png"
+            },
+            {
+                name: "Mahabalipuram",
+                state: "Tamil Nadu",
+                description: "Home to Pandava-named temples and Arjuna’s Penance sculpture, depicting his austerities or Bhagiratha’s quest for the Ganges.",
+                lat: 12.6209,
+                lng: 80.1944,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_mahabhalipuram.png"
+            },
+            {
+                name: "Arvalem",
+                state: "Goa",
+                description: "Pandava Caves, where the brothers and Draupadi sheltered during exile, featuring Shivalingas and a pond created by Bhima.",
+                lat: 15.5400,
+                lng: 74.0100,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_arvalem.png"
+            },
+            {
+                name: "Chandratal Lake",
+                state: "Himachal Pradesh",
+                description: "Where Indra picked up Yudhishthira for his journey to heaven, recognizing his loyalty to Dharma.",
+                lat: 32.4753,
+                lng: 77.6166,
+                image: "C:/Users/iasis/Desktop/indian epic/photos/maha_chandratal.png"
+            }
+        ];
+
+        // Initialize markers
+        let markers = [];
+        function updateMap(state) {
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+
+            // Add markers for selected state or all if none selected
+            const filteredLocations = state ? locations.filter(loc => loc.state === state) : locations;
+            filteredLocations.forEach(loc => {
+                const marker = L.marker([loc.lat, loc.lng]).addTo(map)
+                    .bindPopup(`
+                        <b>${loc.name} (${loc.state})</b><br>
+                        ${loc.description}<br>
+                        <img src="${loc.image}" alt="${loc.name}" style="width: 200px; height: 133px; border-radius: 8px; margin-top: 10px;" onerror="this.src='https://via.placeholder.com/200x133?text=Image+Not+Found'" onclick="openModal('${loc.image.replace(/\\/g, '\\\\')}', '${loc.name}', '${loc.description.replace(/'/g, "\\'")}')">
+                    `);
+                markers.push(marker);
+            });
+
+            // Adjust map view to fit markers
+            if (filteredLocations.length > 0) {
+                const group = L.featureGroup(markers);
+                map.fitBounds(group.getBounds(), { padding: [50, 50] });
+            } else {
+                map.setView([23.5, 78.0], 5); // Reset to default view
+            }
+        }
+
+        // Update location list
+        function updateLocationList(state) {
+            const locationList = document.getElementById('locationList');
+            locationList.innerHTML = '';
+            if (!state) return;
+
+            const filteredLocations = locations.filter(loc => loc.state === state);
+            filteredLocations.forEach(loc => {
+                const div = document.createElement('div');
+                div.className = 'location-item';
+                div.innerHTML = `
+                    <h3>${loc.name}</h3>
+                    <p>${loc.description}</p>
+                `;
+                locationList.appendChild(div);
+            });
+        }
+
+        // Modal popup function
+        function openModal(imageSrc, name, description) {
+            console.log('Attempting to load image:', imageSrc); // Debug log
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-button">×</span>
+                    <img src="${imageSrc}" alt="${name}" style="width: 400px; height: 267px; max-width: 90vw; max-height: 80vh; border-radius: 8px; margin-bottom: 15px;" onerror="this.src='https://via.placeholder.com/400x267?text=Image+Not+Found'">
+                    <p>${description}</p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.style.display = 'flex';
+
+            // Close modal on click of close button or outside modal
+            modal.querySelector('.close-button').addEventListener('click', () => {
+                modal.remove();
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // Handle state selection
+        document.getElementById('stateSelect').addEventListener('change', (e) => {
+            const selectedState = e.target.value;
+            updateLocationList(selectedState);
+            updateMap(selectedState);
+        });
+
+        // Initialize with all markers
+        updateMap('');
+    </script>
+</body>
+</html>

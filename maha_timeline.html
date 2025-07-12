@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahabharata Timeline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    // Preload images for smoother transitions
+    const images = [
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Shantanu Marries Ganga.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/maha_shantanu_satyavati.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Niyoga by Vyasa 3.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Marriage 4.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_pandu_birth.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Birth of the Pandavas and Kauravas 5.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Death 6.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Training Under Kripacharya 7.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Karna challenging Arjuna 9.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_drona_training.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Ekalavya’s Sacrifice.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/maha_lakshagraha.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_draupadi_swayamvara.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/maha_indraprastha.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Construction of Mayasabha.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Game of Dice 11.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandavas’ Exile 19.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Virata Parva 18.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Failed Peace Negotiation 17.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/war begins 16.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Bhisma falls 15.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Abhimanyu’s Death 10.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Jayadratha falls 13.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Drona death 12.jpeg.jpg',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/karna death 20.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Duryodhana death 21.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Coronation 22.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Rule 23.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Krishna’s Departure 24.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Final Journey  25.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Parikshit’s Coronation 26.png',
+      'C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Janamejaya’s Snake Sacrifice 27.png'
+    ];
+    Promise.all(
+      images.map(src => new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = () => {
+          console.error(`Failed to preload image: ${src}`);
+          resolve(); // Resolve even on error to avoid blocking
+        };
+      }))
+    ).then(() => console.log('All images preloaded')).catch(err => console.error('Preload error:', err));
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Merriweather', serif;
+      background: url('file:///C:/Users/iasis/Desktop/indian epic/photos/mahabharat main page.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #3c2f2f;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: 'ॐ';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 300px;
+      color: rgba(255, 153, 51, 0.3);
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+      opacity: 0.05;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #FF9933;
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: fall 6s ease-in-out infinite;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    .petals div:nth-child(1) { left: 30%; animation-delay: 0s; }
+    .petals div:nth-child(2) { left: 70%; animation-delay: 3s; }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+    }
+
+    .navbar {
+      background: linear-gradient(to bottom, #8B4513, #A0522D);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      border-bottom: 3px solid #FFD700;
+    }
+
+    .navbar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .navbar .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      color: #FFD700;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: rgba(210, 180, 140, 0.7);
+      transition: all 0.4s ease-in-out;
+      font-family: 'Merriweather', serif;
+      border: 1px solid #FF4500;
+    }
+
+    .nav-links a:hover {
+      background: #FFD700;
+      color: #3c2f2f;
+      transform: translateY(-3px);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+      background-blend-mode: soft-light;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      border: 2px solid #FFD700;
+      position: relative;
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 5px solid transparent;
+      border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+      z-index: -1;
+    }
+
+    h1, h2 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 36px;
+      color: #2F4F4F;
+      margin-bottom: 15px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid #FF4500;
+      padding-bottom: 8px;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 40px;
+    }
+
+    h1::after, h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .timeline-container {
+      position: relative;
+      padding: 40px 0;
+      margin: 40px auto;
+      max-width: 1200px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #FFD700 #FF4500;
+      z-index: 10;
+    }
+
+    .timeline-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .timeline-container::-webkit-scrollbar-track {
+      background: #FF4500;
+    }
+
+    .timeline-container::-webkit-scrollbar-thumb {
+      background: #FFD700;
+      border-radius: 4px;
+    }
+
+    .timeline {
+      display: flex;
+      align-items: center;
+      position: relative;
+      min-width: max-content;
+      padding: 0 20px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #8B4513;
+      z-index: 1;
+    }
+
+    .timeline-event {
+      position: relative;
+      width: 250px;
+      margin: 0 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      background: #FFD700;
+      border: 2px solid #8B4513;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .event-card {
+      background: rgba(255, 245, 224, 0.95);
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      cursor: pointer;
+      position: relative;
+      top: 40px;
+      z-index: 3;
+      will-change: transform, box-shadow;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-card:hover .event-details {
+      opacity: 1;
+      max-height: 200px;
+    }
+
+    .event-date {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 1.1rem;
+      color: #2F4F4F;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-title {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 1rem;
+      color: #2F4F4F;
+      margin: 5px 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      margin: 10px 0;
+      object-fit: cover;
+      cursor: pointer;
+      loading: lazy;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .event-image.loaded {
+      opacity: 1;
+    }
+
+    .event-details {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      font-family: 'Merriweather', serif;
+      font-size: 0.9rem;
+      color: #3c2f2f;
+      margin-top: 10px;
+      text-align: left;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out;
+      will-change: opacity, max-height;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .modal.show {
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: rgba(255, 245, 224, 0.95);
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      transform: scale(0.95);
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      will-change: transform, opacity;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-content img {
+      width: 400px;
+      height: 267px;
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .modal-content img.loaded {
+      opacity: 1;
+    }
+
+    .modal-content p {
+      font-family: 'Merriweather', serif;
+      font-size: 16px;
+      color: #3c2f2f;
+      text-align: left;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #FF4500;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .modal-content .close-button:hover {
+      color: #FFD700;
+    }
+
+    footer {
+      background: linear-gradient(to top, #8B4513, #A0522D);
+      color: #FFD700;
+      text-align: center;
+      padding: 15px;
+      width: 100%;
+      font-size: 16px;
+      border-top: 3px solid #FFD700;
+      position: relative;
+    }
+
+    footer p {
+      background: rgba(210, 180, 140, 0.9);
+      border-radius: 8px;
+      padding: 5px 10px;
+      display: inline-block;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        margin: 20px auto;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .timeline-event {
+        width: 220px;
+        margin: 0 10px;
+      }
+
+      .event-card {
+        padding: 10px;
+      }
+
+      .event-date {
+        font-size: 1rem;
+      }
+
+      .event-title {
+        font-size: 0.9rem;
+      }
+
+      .event-details {
+        font-size: 0.8rem;
+      }
+
+      .event-image {
+        height: 133px;
+      }
+
+      .navbar-brand {
+        font-size: 24px;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        padding: 8px 15px;
+      }
+
+      footer {
+        font-size: 14px;
+      }
+
+      .modal-content img {
+        width: 300px;
+        height: 200px;
+      }
+
+      .modal-content p {
+        font-size: 14px;
+      }
+
+      .modal-content .close-button {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals">
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="mahabharata.html" class="navbar-brand">Dharmayatra</a>
+      <ul class="nav-links">
+        <li><a href="ramayana.html">Ramayana</a></li>
+        <li><a href="mahabharata.html">Mahabharata</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="content">
+    <h1>Mahabharata Timeline</h1>
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3360 BCE</div>
+            <div class="event-title">Shantanu Marries Ganga</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Shantanu Marries Ganga.png" alt="Shantanu Marries Ganga" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Shantanu Marries Ganga.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Shantanu Marries Ganga.png', 'Shantanu Marries Ganga', 'King Shantanu of the Kuru dynasty marries the river goddess Ganga, who agrees to live as a mortal. Their union produces Devavrata, later known as Bhishma, who takes a formidable vow of celibacy and renunciation of the throne, earning his title and shaping the future of the Kuru lineage.')">
+            <div class="event-details">
+              King Shantanu of the Kuru dynasty marries the river goddess Ganga, who agrees to live as a mortal. Their union produces Devavrata, later known as Bhishma, who takes a formidable vow of celibacy and renunciation of the throne, earning his title and shaping the future of the Kuru lineage.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3355 BCE</div>
+            <div class="event-title">Shantanu Marries Satyavati</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/maha_shantanu_satyavati.png" alt="Shantanu Marries Satyavati" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/maha_shantanu_satyavati.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/maha_shantanu_satyavati.jpg', 'Shantanu Marries Satyavati', 'After Ganga’s departure, Shantanu falls in love with Satyavati, a fisherwoman. Bhishma vows to never claim the throne or marry, ensuring Satyavati’s children inherit the kingdom. Their marriage results in the birth of Chitrangada and Vichitravirya, who both die young, leaving the Kuru lineage in crisis.')">
+            <div class="event-details">
+              After Ganga’s departure, Shantanu falls in love with Satyavati, a fisherwoman. Bhishma vows to never claim the throne or marry, ensuring Satyavati’s children inherit the kingdom. Their marriage results in the birth of Chitrangada and Vichitravirya, who both die young, leaving the Kuru lineage in crisis.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3350 BCE</div>
+            <div class="event-title">Niyoga by Vyasa</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Niyoga by Vyasa 3.png" alt="Niyoga by Vyasa" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Niyoga by Vyasa 3.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Niyoga by Vyasa 3.png', 'Niyoga by Vyasa', 'To preserve the Kuru lineage after Vichitravirya’s death, Satyavati calls upon her son Vyasa, a sage, to father children through Niyoga with Vichitravirya’s widows, Ambika and Ambalika. This results in the birth of Dhritarashtra (blind), Pandu (pale), and Vidura (born to a maid), setting the stage for the future conflict between their descendants.')">
+            <div class="event-details">
+              To preserve the Kuru lineage after Vichitravirya’s death, Satyavati calls upon her son Vyasa, a sage, to father children through Niyoga with Vichitravirya’s widows, Ambika and Ambalika. This results in the birth of Dhritarashtra (blind), Pandu (pale), and Vidura (born to a maid), setting the stage for the future conflict between their descendants.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3345 BCE</div>
+            <div class="event-title">Pandu’s Marriage</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Marriage 4.png" alt="Pandu’s Marriage" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Marriage 4.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Marriage 4.png', 'Pandu’s Marriage', 'Pandu, chosen as king over his blind brother Dhritarashtra, marries Kunti and Madri. Kunti possesses a boon to invoke gods for children, while Madri brings her own grace to the union. Their marriages lay the foundation for the birth of the Pandavas, who will become central figures in the epic.')">
+            <div class="event-details">
+              Pandu, chosen as king over his blind brother Dhritarashtra, marries Kunti and Madri. Kunti possesses a boon to invoke gods for children, while Madri brings her own grace to the union. Their marriages lay the foundation for the birth of the Pandavas, who will become central figures in the epic.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5600 BCE</div>
+            <div class="event-title">Birth of Pandu and Dhritarashtra</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_pandu_birth.jpg" alt="Birth of Pandu and Dhritarashtra" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_pandu_birth.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_pandu_birth.jpg', 'Birth of Pandu and Dhritarashtra', 'King Vichitravirya dies without heirs. Satyavati calls upon Vyasa to father children with Vichitravirya’s widows, Ambika and Ambalika. Dhritarashtra, born blind, and Pandu, born pale, are raised as princes of Hastinapura, setting the stage for the Kuru dynasty’s succession disputes.')">
+            <div class="event-details">
+              King Vichitravirya dies without heirs. Satyavati calls upon Vyasa to father children with Vichitravirya’s widows, Ambika and Ambalika. Dhritarashtra, born blind, and Pandu, born pale, are raised as princes of Hastinapura, setting the stage for the Kuru dynasty’s succession disputes.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5580 BCE</div>
+            <div class="event-title">Birth of the Pandavas and Kauravas</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Birth of the Pandavas and Kauravas 5.png" alt="Birth of the Pandavas and Kauravas" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Birth of the Pandavas and Kauravas 5.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Birth of the Pandavas and Kauravas 5.png', 'Birth of the Pandavas and Kauravas', 'Pandu, cursed to die if he engages in intimacy, retires to the forest. Kunti uses a boon to invoke gods, giving birth to Yudhishthira, Bhima, and Arjuna. Madri bears Nakula and Sahadeva. Meanwhile, Dhritarashtra’s wife Gandhari gives birth to 100 sons, the Kauravas, led by Duryodhana.')">
+            <div class="event-details">
+              Pandu, cursed to die if he engages in intimacy, retires to the forest. Kunti uses a boon to invoke gods, giving birth to Yudhishthira, Bhima, and Arjuna. Madri bears Nakula and Sahadeva. Meanwhile, Dhritarashtra’s wife Gandhari gives birth to 100 sons, the Kauravas, led by Duryodhana.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5570 BCE</div>
+            <div class="event-title">Pandu’s Death</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Death 6.png" alt="Pandu’s Death" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Death 6.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandu’s Death 6.png', 'Pandu’s Death', 'Pandu, overcome by desire, dies after embracing Madri, who immolates herself. Kunti returns to Hastinapura with the five Pandavas. The Pandavas and Kauravas grow up together under Bhishma’s care, but tensions arise due to Duryodhana’s jealousy and ambition.')">
+            <div class="event-details">
+              Pandu, overcome by desire, dies after embracing Madri, who immolates herself. Kunti returns to Hastinapura with the five Pandavas. The Pandavas and Kauravas grow up together under Bhishma’s care, but tensions arise due to Duryodhana’s jealousy and ambition.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3335–3320 BCE</div>
+            <div class="event-title">Training Under Kripacharya</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Training Under Kripacharya 7.png" alt="Training Under Kripacharya" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Training Under Kripacharya 7.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Training Under Kripacharya 7.png', 'Training Under Kripacharya', 'The Pandavas and Kauravas grow up under the tutelage of Kripacharya, the royal preceptor of the Kuru dynasty. He imparts foundational skills in warfare, Vedic knowledge, and statecraft, preparing the young princes for their roles. This early education fosters initial camaraderie but also sows seeds of rivalry, as the cousins’ ambitions and talents begin to diverge.')">
+            <div class="event-details">
+              The Pandavas and Kauravas grow up under the tutelage of Kripacharya, the royal preceptor of the Kuru dynasty. He imparts foundational skills in warfare, Vedic knowledge, and statecraft, preparing the young princes for their roles. This early education fosters initial camaraderie but also sows seeds of rivalry, as the cousins’ ambitions and talents begin to diverge.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3325 BCE</div>
+            <div class="event-title">Karna Challenges Arjuna</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Karna challenging Arjuna 9.jpeg.jpg" alt="Karna Challenges Arjuna" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Karna challenging Arjuna 9.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Karna challenging Arjuna 9.jpeg.jpg', 'Karna Challenges Arjuna', 'Karna, a skilled warrior of mysterious origin, appears at a public display of arms and challenges Arjuna in archery. Mocked for his supposed low birth, Karna is befriended by Duryodhana, who crowns him king of Anga. This event marks the beginning of Karna’s lifelong rivalry with Arjuna and his alliance with the Kauravas.')">
+            <div class="event-details">
+              Karna, a skilled warrior of mysterious origin, appears at a public display of arms and challenges Arjuna in archery. Mocked for his supposed low birth, Karna is befriended by Duryodhana, who crowns him king of Anga. This event marks the beginning of Karna’s lifelong rivalry with Arjuna and his alliance with the Kauravas.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5565 BCE</div>
+            <div class="event-title">Training Under Drona</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_drona_training.png" alt="Training Under Drona" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_drona_training.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_drona_training.png', 'Training Under Drona', 'The Pandavas and Kauravas are trained by Guru Drona in warfare and archery. Arjuna excels, earning Drona’s favor and the divine bow Gandiva. Drona demands Ekalavya’s thumb as guru-dakshina to ensure Arjuna’s supremacy, highlighting the intense rivalry among the cousins.')">
+            <div class="event-details">
+              The Pandavas and Kauravas are trained by Guru Drona in warfare and archery. Arjuna excels, earning Drona’s favor and the divine bow Gandiva. Drona demands Ekalavya’s thumb as guru-dakshina to ensure Arjuna’s supremacy, highlighting the intense rivalry among the cousins.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3315 BCE</div>
+            <div class="event-title">Ekalavya’s Sacrifice</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Ekalavya’s Sacrifice.jpeg.jpg" alt="Ekalavya’s Sacrifice" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Ekalavya’s Sacrifice.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Ekalavya’s Sacrifice.jpeg.jpg', 'Ekalavya’s Sacrifice', 'Ekalavya, a tribal prince and self-taught archer, surpasses even Arjuna in skill. When Drona discovers Ekalavya learned indirectly from him, he demands Ekalavya’s thumb as guru-dakshina to protect Arjuna’s status. Ekalavya complies, sacrificing his archery prowess, highlighting Drona’s bias and the tragic cost of loyalty.')">
+            <div class="event-details">
+              Ekalavya, a tribal prince and self-taught archer, surpasses even Arjuna in skill. When Drona discovers Ekalavya learned indirectly from him, he demands Ekalavya’s thumb as guru-dakshina to protect Arjuna’s status. Ekalavya complies, sacrificing his archery prowess, highlighting Drona’s bias and the tragic cost of loyalty.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3310 BCE</div>
+            <div class="event-title">Lakshagraha Conspiracy</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/maha_lakshagraha.jpg" alt="Lakshagraha Conspiracy" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/maha_lakshagraha.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/maha_lakshagraha.jpg', 'Lakshagraha Conspiracy', 'Duryodhana, fueled by jealousy, conspires with Shakuni to kill the Pandavas by inviting them to a festival in Varnavat and housing them in a palace made of lac, a flammable substance. Warned by Vidura, the Pandavas escape through a secret tunnel, while the world believes they perished in the fire, forcing them into hiding in the forest.')">
+            <div class="event-details">
+              Duryodhana, fueled by jealousy, conspires with Shakuni to kill the Pandavas by inviting them to a festival in Varnavat and housing them in a palace made of lac, a flammable substance. Warned by Vidura, the Pandavas escape through a secret tunnel, while the world believes they perished in the fire, forcing them into hiding in the forest.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5563 BCE</div>
+            <div class="event-title">Draupadi’s Swayamvara</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_draupadi_swayamvara.jpg" alt="Draupadi’s Swayamvara" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_draupadi_swayamvara.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/maha_draupadi_swayamvara.jpg', 'Draupadi’s Swayamvara', 'Arjuna wins Draupadi’s hand at her swayamvara by hitting a fish’s eye with an arrow. The Pandavas share Draupadi as their wife due to Kunti’s command. This event angers the Kauravas, particularly Duryodhana, escalating tensions between the two families.')">
+            <div class="event-details">
+              Arjuna wins Draupadi’s hand at her swayamvara by hitting a fish’s eye with an arrow. The Pandavas share Draupadi as their wife due to Kunti’s command. This event angers the Kauravas, particularly Duryodhana, escalating tensions between the two families.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3300 BCE</div>
+            <div class="event-title">Founding of Indraprastha</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/maha_indraprastha.jpg" alt="Founding of Indraprastha" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/maha_indraprastha.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/maha_indraprastha.jpg', 'Founding of Indraprastha', 'The Pandavas return to Hastinapura, revealing they are alive. To avoid conflict, Dhritarashtra grants them the barren land of Khandavaprastha. With Krishna’s guidance and the help of the demon architect Maya, the Pandavas transform it into the magnificent city of Indraprastha, establishing their own kingdom.')">
+            <div class="event-details">
+              The Pandavas return to Hastinapura, revealing they are alive. To avoid conflict, Dhritarashtra grants them the barren land of Khandavaprastha. With Krishna’s guidance and the help of the demon architect Maya, the Pandavas transform it into the magnificent city of Indraprastha, establishing their own kingdom.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3300 BCE</div>
+            <div class="event-title">Construction of Mayasabha</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Construction of Mayasabha.png" alt="Construction of Mayasabha" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Construction of Mayasabha.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Construction of Mayasabha.png', 'Construction of Mayasabha', 'Maya, the demon architect, builds the magical palace Mayasabha for the Pandavas in Indraprastha. Its illusory floors and walls dazzle visitors, but Duryodhana’s humiliation during a visit—slipping on the deceptive floors—fuels his envy and desire for revenge against the Pandavas.')">
+            <div class="event-details">
+              Maya, the demon architect, builds the magical palace Mayasabha for the Pandavas in Indraprastha. Its illusory floors and walls dazzle visitors, but Duryodhana’s humiliation during a visit—slipping on the deceptive floors—fuels his envy and desire for revenge against the Pandavas.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5562 BCE</div>
+            <div class="event-title">Game of Dice</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Game of Dice 11.jpeg.jpg" alt="Game of Dice" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Game of Dice 11.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Game of Dice 11.jpeg.jpg', 'Game of Dice', 'Duryodhana, with Shakuni’s help, invites Yudhishthira to a rigged dice game. Yudhishthira loses his kingdom, brothers, and Draupadi. Draupadi’s humiliation in the Kaurava court, saved by Krishna’s intervention, fuels the Pandavas’ resolve for revenge.')">
+            <div class="event-details">
+              Duryodhana, with Shakuni’s help, invites Yudhishthira to a rigged dice game. Yudhishthira loses his kingdom, brothers, and Draupadi. Draupadi’s humiliation in the Kaurava court, saved by Krishna’s intervention, fuels the Pandavas’ resolve for revenge.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5562–5549 BCE</div>
+            <div class="event-title">Pandavas’ Exile</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandavas’ Exile 19.png" alt="Pandavas’ Exile" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandavas’ Exile 19.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Pandavas’ Exile 19.png', 'Pandavas’ Exile', 'The Pandavas, with Draupadi, are exiled for 13 years (12 years in the forest and 1 year incognito). They face hardships, gain divine weapons, and form alliances with kings like Drupada and Virata, preparing for the inevitable war against the Kauravas.')">
+            <div class="event-details">
+              The Pandavas, with Draupadi, are exiled for 13 years (12 years in the forest and 1 year incognito). They face hardships, gain divine weapons, and form alliances with kings like Drupada and Virata, preparing for the inevitable war against the Kauravas.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3283 BCE</div>
+            <div class="event-title">Virata Parva</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Virata Parva 18.jpeg.jpg" alt="Virata Parva" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Virata Parva 18.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Virata Parva 18.jpeg.jpg', 'Virata Parva', 'In their final year of exile, the Pandavas live incognito in the Matsya kingdom under King Virata. Arjuna disguises himself as Brihannala, a dance teacher. When the Kauravas attack Matsya, Arjuna reveals himself, defeating them with his divine weapons, signaling the end of their exile and the approach of war.')">
+            <div class="event-details">
+              In their final year of exile, the Pandavas live incognito in the Matsya kingdom under King Virata. Arjuna disguises himself as Brihannala, a dance teacher. When the Kauravas attack Matsya, Arjuna reveals himself, defeating them with his divine weapons, signaling the end of their exile and the approach of war.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 3282 BCE</div>
+            <div class="event-title">Failed Peace Negotiation</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Failed Peace Negotiation 17.jpeg.jpg" alt="Failed Peace Negotiation" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Failed Peace Negotiation 17.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Failed Peace Negotiation 17.jpeg.jpg', 'Failed Peace Negotiation', 'After completing their exile, the Pandavas demand Indraprastha back. Krishna, acting as their envoy, proposes peace, asking for just five villages. Duryodhana’s refusal to cede even a needlepoint of land makes war inevitable. Both sides form alliances, with Krishna choosing to guide Arjuna as his charioteer.')">
+            <div class="event-details">
+              After completing their exile, the Pandavas demand Indraprastha back. Krishna, acting as their envoy, proposes peace, asking for just five villages. Duryodhana’s refusal to cede even a needlepoint of land makes war inevitable. Both sides form alliances, with Krishna choosing to guide Arjuna as his charioteer.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">16 Oct 5561 BCE</div>
+            <div class="event-title">War Begins; Bhagavad Gita</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/war begins 16.jpeg.jpg" alt="War Begins; Bhagavad Gita" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/war begins 16.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/war begins 16.jpeg.jpg', 'War Begins; Bhagavad Gita', 'The Kurukshetra War commences. Bhishma leads the Kauravas, causing heavy Pandava losses. Arjuna hesitates to fight, leading to Krishna’s recitation of the Bhagavad Gita, imparting spiritual wisdom and urging Arjuna to fulfill his Kshatriya duty.')">
+            <div class="event-details">
+              The Kurukshetra War commences. Bhishma leads the Kauravas, causing heavy Pandava losses. Arjuna hesitates to fight, leading to Krishna’s recitation of the Bhagavad Gita, imparting spiritual wisdom and urging Arjuna to fulfill his Kshatriya duty.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">25 Oct 5561 BCE</div>
+            <div class="event-title">Bhishma Falls</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Bhisma falls 15.jpeg.jpg" alt="Bhishma Falls" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Bhisma falls 15.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Bhisma falls 15.jpeg.jpg', 'Bhishma Falls', 'Shikhandi, a reincarnation of Amba, faces Bhishma, who lowers his weapons due to his vow. Arjuna shoots countless arrows, felling Bhishma, who lies on a bed of arrows. The Kauravas are demoralized, and Drona takes command.')">
+            <div class="event-details">
+              Shikhandi, a reincarnation of Amba, faces Bhishma, who lowers his weapons due to his vow. Arjuna shoots countless arrows, felling Bhishma, who lies on a bed of arrows. The Kauravas are demoralized, and Drona takes command.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">28 Oct 5561 BCE</div>
+            <div class="event-title">Abhimanyu’s Death</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Abhimanyu’s Death 10.jpeg.jpg" alt="Abhimanyu’s Death" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Abhimanyu’s Death 10.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Abhimanyu’s Death 10.jpeg.jpg', 'Abhimanyu’s Death', 'Drona forms the Chakravyuha. Abhimanyu enters but is trapped and killed by multiple Kaurava warriors, including Drona, Karna, and Dushasana’s son, after Jayadratha blocks the Pandavas from aiding him. Arjuna vows revenge.')">
+            <div class="event-details">
+              Drona forms the Chakravyuha. Abhimanyu enters but is trapped and killed by multiple Kaurava warriors, including Drona, Karna, and Dushasana’s son, after Jayadratha blocks the Pandavas from aiding him. Arjuna vows revenge.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">29 Oct 5561 BCE</div>
+            <div class="event-title">Jayadratha Falls</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Jayadratha falls 13.jpeg.jpg" alt="Jayadratha Falls" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Jayadratha falls 13.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Jayadratha falls 13.jpeg.jpg', 'Jayadratha Falls', 'Arjuna, enraged by Abhimanyu’s death, vows to kill Jayadratha before sunset. Krishna creates an illusion of sunset, allowing Arjuna to behead Jayadratha. The battle continues into the night, with Ghatotkacha killed by Karna’s Shakti weapon.')">
+            <div class="event-details">
+              Arjuna, enraged by Abhimanyu’s death, vows to kill Jayadratha before sunset. Krishna creates an illusion of sunset, allowing Arjuna to behead Jayadratha. The battle continues into the night, with Ghatotkacha killed by Karna’s Shakti weapon.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">30 Oct 5561 BCE</div>
+            <div class="event-title">Drona’s Death</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Drona death 12.jpeg.jpg" alt="Drona’s Death" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Drona death 12.jpeg.jpg')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Drona death 12.jpeg.jpg', 'Drona’s Death', 'Yudhishthira announces the death of an elephant named Ashwatthama, leading Drona to believe his son is dead. Drona drops his weapons, and Dhrishtadyumna beheads him, fulfilling his destiny as Drona’s slayer.')">
+            <div class="event-details">
+              Yudhishthira announces the death of an elephant named Ashwatthama, leading Drona to believe his son is dead. Drona drops his weapons, and Dhrishtadyumna beheads him, fulfilling his destiny as Drona’s slayer.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">1 Nov 5561 BCE</div>
+            <div class="event-title">Karna’s Death</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/karna death 20.png" alt="Karna’s Death" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/karna death 20.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/karna death 20.png', 'Karna’s Death', 'Arjuna and Karna engage in a climactic duel. Karna’s chariot wheel gets stuck due to a curse. Urged by Krishna, Arjuna shoots Karna, killing him. The Kauravas are further demoralized, and Shalya becomes the new commander.')">
+            <div class="event-details">
+              Arjuna and Karna engage in a climactic duel. Karna’s chariot wheel gets stuck due to a curse. Urged by Krishna, Arjuna shoots Karna, killing him. The Kauravas are further demoralized, and Shalya becomes the new commander.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">2 Nov 5561 BCE</div>
+            <div class="event-title">Duryodhana’s Defeat; War Ends</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Duryodhana death 21.png" alt="Duryodhana’s Defeat; War Ends" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Duryodhana death 21.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Duryodhana death 21.png', 'Duryodhana’s Defeat; War Ends', 'Duryodhana hides in a lake but is found by the Pandavas. Bhima defeats him in a mace fight, breaking his thigh. Ashwatthama attacks the Pandava camp at night, killing Draupadi’s sons. The war ends with the Pandavas’ victory.')">
+            <div class="event-details">
+              Duryodhana hides in a lake but is found by the Pandavas. Bhima defeats him in a mace fight, breaking his thigh. Ashwatthama attacks the Pandava camp at night, killing Draupadi’s sons. The war ends with the Pandavas’ victory.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5561 BCE</div>
+            <div class="event-title">Yudhishthira’s Coronation</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Coronation 22.png" alt="Yudhishthira’s Coronation" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Coronation 22.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Coronation 22.png', 'Yudhishthira’s Coronation', 'Yudhishthira is crowned king of Hastinapura. The Pandavas restore dharma, but the war’s immense loss leaves them reflective. Krishna advises them on governance, and the Mahabharata’s teachings continue through the ages.')">
+            <div class="event-details">
+              Yudhishthira is crowned king of Hastinapura. The Pandavas restore dharma, but the war’s immense loss leaves them reflective. Krishna advises them on governance, and the Mahabharata’s teachings continue through the ages.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2>Post-Mahabharata Events</h2>
+    <div class="timeline-container">
+      <div class="timeline">
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5561–5525 BCE</div>
+            <div class="event-title">Yudhishthira’s Rule</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Rule 23.png" alt="Yudhishthira’s Rule" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Rule 23.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Yudhishthira’s Rule 23.png', 'Yudhishthira’s Rule', 'Yudhishthira rules Hastinapura for 36 years, guided by Krishna’s counsel. He establishes dharma, overseeing a period of recovery and governance after the devastating Kurukshetra War.')">
+            <div class="event-details">
+              Yudhishthira rules Hastinapura for 36 years, guided by Krishna’s counsel. He establishes dharma, overseeing a period of recovery and governance after the devastating Kurukshetra War.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5525 BCE</div>
+            <div class="event-title">Krishna’s Departure</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Krishna’s Departure 24.png" alt="Krishna’s Departure" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Krishna’s Departure 24.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Krishna’s Departure 24.png', 'Krishna’s Departure', 'Krishna is accidentally shot by a hunter at Prabhas, marking his departure from the mortal world. The Yadava dynasty collapses due to internal conflicts, fulfilling a curse.')">
+            <div class="event-details">
+              Krishna is accidentally shot by a hunter at Prabhas, marking his departure from the mortal world. The Yadava dynasty collapses due to internal conflicts, fulfilling a curse.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5525 BCE</div>
+            <div class="event-title">Pandavas’ Final Journey</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Final Journey  25.png" alt="Pandavas’ Final Journey" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Final Journey  25.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Final Journey  25.png', 'Pandavas’ Final Journey', 'The Pandavas and Draupadi undertake their Mahaprasthana, a great journey to the Himalayas. They ascend to heaven, leaving behind their earthly responsibilities.')">
+            <div class="event-details">
+              The Pandavas and Draupadi undertake their Mahaprasthana, a great journey to the Himalayas. They ascend to heaven, leaving behind their earthly responsibilities.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5525 BCE</div>
+            <div class="event-title">Parikshit’s Coronation</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Parikshit’s Coronation 26.png" alt="Parikshit’s Coronation" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Parikshit’s Coronation 26.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Parikshit’s Coronation 26.png', 'Parikshit’s Coronation', 'Abhimanyu’s son Parikshit is crowned king of Hastinapura, continuing the Kuru lineage after the Pandavas’ departure.')">
+            <div class="event-details">
+              Abhimanyu’s son Parikshit is crowned king of Hastinapura, continuing the Kuru lineage after the Pandavas’ departure.
+            </div>
+          </div>
+        </div>
+        <div class="timeline-event">
+          <div class="event-dot"></div>
+          <div class="event-card">
+            <div class="event-date">Circa 5500 BCE</div>
+            <div class="event-title">Janamejaya’s Snake Sacrifice</div>
+            <img src="C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Janamejaya’s Snake Sacrifice 27.png" alt="Janamejaya’s Snake Sacrifice" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Janamejaya’s Snake Sacrifice 27.png')" onload="this.classList.add('loaded')" onclick="openModal('C:/Users/iasis/Desktop/indian epic/photos/timeline photos/Janamejaya’s Snake Sacrifice 27.png', 'Janamejaya’s Snake Sacrifice', 'Janamejaya, Parikshit’s son, performs the Sarpa Satra to avenge his father’s death by snakebite. Vaishampayana narrates the Mahabharata during this sacrifice, preserving its legacy.')">
+            <div class="event-details">
+              Janamejaya, Parikshit’s son, performs the Sarpa Satra to avenge his father’s death by snakebite. Vaishampayana narrates the Mahabharata during this sacrifice, preserving its legacy.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>

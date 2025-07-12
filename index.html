@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharmayatra - Timeless Epics of Bharat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('./photos/main page.jpg') no-repeat top center fixed;
+            background-size: contain;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.1); /* Subtle saffron Om */
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933; /* Marigold saffron */
+            opacity: 0.4;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.4; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.1; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D); /* Sandy brown to reddish-brown */
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(139, 69, 19, 0.5), rgba(165, 42, 42, 0.5));
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?lotus,indian') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero-split {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFD700;
+            background-size: cover;
+            background-position: center;
+            transition: flex 0.5s ease;
+        }
+
+        .hero-split.left {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://source.unsplash.com/1600x900/?ayodhya,temple,indian');
+        }
+
+        .hero-split.right {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://source.unsplash.com/1600x900/?kurukshetra,indian');
+        }
+
+        .hero-split:hover {
+            flex: 1.2;
+        }
+
+        .hero-content {
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 90%; /* Prevent overflow on smaller screens */
+            position: absolute;
+            top: 10%; /* Adjusted to ensure visibility */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 54px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            color: #FFD700;
+            padding: 15px 30px;
+            border: 4px double #FF4500;
+            border-radius: 15px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            background-blend-mode: overlay;
+            background-color: rgba(210, 180, 140, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-content h1:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            font-family: 'Merriweather', serif;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            color: #FFD700; /* Explicitly set to ensure no color change */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #FF4500;
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            border: 3px solid #FFD700;
+            font-family: 'Merriweather', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-split.left .hero-content.sub,
+        .hero-split.right .hero-content.sub {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            margin-top: 100px;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(245, 222, 179, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            background-blend-mode: soft-light;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content .title-box {
+            background: rgba(255, 153, 51, 0.7); /* Bright saffron semi-opaque */
+            border-radius: 10px;
+            padding: 20px;
+            display: inline-block;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content .title-box h2 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 40px;
+            color: #8B4513;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 10px;
+        }
+
+        .content .title-box p {
+            font-size: 20px;
+            text-align: center;
+            color: #3c2f2f;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            font-size: 18px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        footer .mantra {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 16px;
+            color: #FFD700;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-split {
+                flex: none;
+                height: 50vh;
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+                padding: 10px 20px;
+                border-width: 3px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .hero-content {
+                top: 10%;
+            }
+
+            .hero-split.left .hero-content.sub,
+            .hero-split.right .hero-content.sub {
+                margin-top: 60px;
+            }
+
+            .nav-links {
+                flex 북한: column;
+                gap: 10px;
+            }
+
+            .navbar .container {
+                flex-direction: column;
+            }
+
+            .navbar-brand {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Dharmayatra</h1>
+        </div>
+        <div class="hero-split left">
+            <div class="hero-content sub">
+                <p>Experience the Divine Journey of Ramayana</p>
+                <a href="ramayana.html" class="btn">Enter Ramayana</a>
+            </div>
+        </div>
+        <div class="hero-split right">
+            <div class="hero-content sub">
+                <p>Experience the Divine Wisdom of Mahabharata</p>
+                <a href="mahabharata.html" class="btn">Enter Mahabharata</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="title-box">
+            <h2>Timeless Epics of Bharat</h2>
+            <p>Embark on a journey through the divine stories of Ramayana and Mahabharata, timeless epics that illuminate the path of dharma and wisdom.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dharmayatra. Crafted with reverence for ancient wisdom.</p>
+        <p class="mantra">।।ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्।।</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Scroll-triggered animation for content section
+        window.addEventListener('scroll', () => {
+            const content = document.querySelector('.content');
+            const contentPosition = content.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            if (contentPosition < screenPosition) {
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+                content.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }
+        });
+    </script>
+</body>
+</html>

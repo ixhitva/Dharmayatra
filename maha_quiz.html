@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahabharata Quiz - Dharmayatra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('photos/mahabharat main page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(210, 180, 140, 0.7);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 40px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.8);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 48px;
+            color: #2F4F4F;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .quiz-progress {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-card {
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.8);
+            background-blend-mode: soft-light;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?mandala,indian') 20 round;
+            z-index: -1;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(255, 215, 0, 0.2);
+        }
+
+        .quiz-card h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-card label {
+            display: block;
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-family: 'Merriweather', serif;
+        }
+
+        .quiz-card input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .quiz-card .feedback {
+            font-size: 16px;
+            margin-top: 15px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .start-btn, .submit-btn, .next-btn {
+            padding: 15px 30px;
+            background: #2F4F4F;
+            color: #FFD700;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .start-btn::before, .submit-btn::before, .next-btn::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?lotus,indian') 20 round;
+            z-index: -1;
+        }
+
+        .start-btn:hover, .submit-btn:hover, .next-btn:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        #results {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.8);
+            background-blend-mode: soft-light;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            display: none;
+            position: relative;
+        }
+
+        #results::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        #results h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        #results p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            font-family: 'Merriweather', serif;
+        }
+
+        #results .correct {
+            color: #2e7d32;
+        }
+
+        #results .incorrect {
+            color: #d32f2f;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            font-size: 18px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.8);
+            border-radius: 10px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 32px;
+            }
+
+            .quiz-container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .quiz-card {
+                padding: 15px;
+            }
+
+            .quiz-card h3 {
+                font-size: 20px;
+            }
+
+            .quiz-card label {
+                font-size: 14px;
+            }
+
+            .start-btn, .submit-btn, .next-btn {
+                font-size: 16px;
+                padding: 12px 24px;
+            }
+
+            #results {
+                margin: 0 20px 20px;
+                padding: 15px;
+            }
+
+            #results h3 {
+                font-size: 20px;
+            }
+
+            #results p {
+                font-size: 14px;
+            }
+
+            .quiz-progress {
+                font-size: 16px;
+            }
+
+            .quiz-card .feedback {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h1>Mahabharata Quiz</h1>
+        <div class="quiz-container" id="quiz-container">
+            <button class="start-btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+        <div id="results">
+            <h3>Your Results</h3>
+            <div id="score"></div>
+            <div id="feedback"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br> मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        const questions = {
+            easy: [
+                {
+                    question: "Who was the eldest Pandava?",
+                    options: ["Arjuna", "Bhima", "Yudhishthira", "Nakula"],
+                    answer: "c",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, the eldest Pandava was Yudhishthira." }
+                },
+                {
+                    question: "What was the name of the war fought between the Pandavas and Kauravas?",
+                    options: ["Battle of Panipat", "Kurukshetra War", "Battle of Plassey", "Kalinga War"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, the war was the Kurukshetra War." }
+                },
+                {
+                    question: "Who delivered the Bhagavad Gita to Arjuna?",
+                    options: ["Bhishma", "Drona", "Krishna", "Vyasa"],
+                    answer: "c",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Krishna delivered the Bhagavad Gita." }
+                },
+                {
+                    question: "Draupadi was the wife of all five Pandavas. (True/False)",
+                    options: ["True", "False"],
+                    answer: "true",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Draupadi was indeed the wife of all five Pandavas." }
+                },
+                {
+                    question: "Karna was the youngest Pandava. (True/False)",
+                    options: ["True", "False"],
+                    answer: "false",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Karna was not a Pandava; he was their rival." }
+                },
+                {
+                    question: "Who was the father of the Kauravas?",
+                    options: ["Pandu", "Dhritarashtra", "Vyasa", "Drupada"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Dhritarashtra was the father of the Kauravas." }
+                },
+                {
+                    question: "Who was the mother of the Pandavas?",
+                    options: ["Gandhari", "Kunti", "Madri", "Draupadi"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Kunti was the mother of the Pandavas (along with Madri for Nakula and Sahadeva)." }
+                },
+                {
+                    question: "Krishna was Arjuna’s charioteer during the Kurukshetra War. (True/False)",
+                    options: ["True", "False"],
+                    answer: "true",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Krishna was indeed Arjuna’s charioteer." }
+                },
+                {
+                    question: "Who was the leader of the Kauravas?",
+                    options: ["Duryodhana", "Yudhishthira", "Arjuna", "Bhima"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Duryodhana was the leader of the Kauravas." }
+                },
+                {
+                    question: "The Mahabharata is an epic written by Vyasa. (True/False)",
+                    options: ["True", "False"],
+                    answer: "true",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, the Mahabharata was traditionally composed by Vyasa." }
+                },
+                {
+                    question: "Who was Draupadi’s father?",
+                    options: ["Drupada", "Dhritarashtra", "Shakuni", "Pandu"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Draupadi’s father was Drupada, the king of Panchala." }
+                },
+                {
+                    question: "Bhima was known for his skill with which weapon?",
+                    options: ["Bow and Arrow", "Mace", "Sword", "Spear"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Bhima was renowned for his skill with the mace." }
+                },
+                {
+                    question: "Arjuna won Draupadi in a swayamvara. (True/False)",
+                    options: ["True", "False"],
+                    answer: "true",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Arjuna won Draupadi by hitting the target in her swayamvara." }
+                },
+                {
+                    question: "Who was the blind king of Hastinapura?",
+                    options: ["Pandu", "Dhritarashtra", "Duryodhana", "Vidura"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Dhritarashtra was the blind king of Hastinapura." }
+                },
+                {
+                    question: "The Pandavas were exiled for how many years after the dice game?",
+                    options: ["5 years", "12 years", "14 years", "20 years"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, the Pandavas were exiled for 12 years, plus 1 year in hiding." }
+                }
+            ],
+            medium: [
+                {
+                    question: "Who killed Duryodhana in the Kurukshetra War?",
+                    options: ["Arjuna", "Bhima", "Yudhishthira", "Krishna"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Bhima killed Duryodhana in a mace fight on the last day of the war." }
+                },
+                {
+                    question: "What was the name of Bhima’s son who fought in the Kurukshetra War?",
+                    options: ["Abhimanyu", "Ghatotkacha", "Prativindhya", "Sutasoma"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Ghatotkacha, Bhima’s son with Hidimbi, fought in the war." }
+                },
+                {
+                    question: "Shakuni was the brother of which character?",
+                    options: ["Kunti", "Gandhari", "Madri", "Draupadi"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Shakuni was Gandhari’s brother." }
+                },
+                {
+                    question: "Who was the guru of both the Pandavas and Kauravas?",
+                    options: ["Bhishma", "Drona", "Kripa", "Vyasa"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Drona was the guru who trained both the Pandavas and Kauravas." }
+                },
+                {
+                    question: "Karna was the son of which god?",
+                    options: ["Indra", "Surya", "Vayu", "Yama"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Karna was the son of Surya, the sun god." }
+                },
+                {
+                    question: "Abhimanyu was killed in which battle formation?",
+                    options: ["Chakravyuha", "Garuda Vyuh", "Mandala Vyuh", "Shakata Vyuh"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Abhimanyu was killed in the Chakravyuha formation." }
+                },
+                {
+                    question: "Who was the mother of Nakula and Sahadeva?",
+                    options: ["Kunti", "Gandhari", "Madri", "Draupadi"],
+                    answer: "c",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Madri was the mother of Nakula and Sahadeva." }
+                },
+                {
+                    question: "Bhishma was the son of which river goddess?",
+                    options: ["Yamuna", "Ganga", "Sarasvati", "Kaveri"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Bhishma was the son of Ganga and Shantanu." }
+                },
+                {
+                    question: "Drona was killed by which Pandava ally?",
+                    options: ["Dhrishtadyumna", "Shikhandi", "Satyaki", "Virata"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Drona was killed by Dhrishtadyumna, Draupadi’s brother." }
+                },
+                {
+                    question: "The dice game was rigged by which character?",
+                    options: ["Duryodhana", "Shakuni", "Karna", "Dushasana"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Shakuni rigged the dice game to ensure the Pandavas’ loss." }
+                },
+                {
+                    question: "Who was the father of Abhimanyu?",
+                    options: ["Bhima", "Arjuna", "Yudhishthira", "Nakula"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Abhimanyu was the son of Arjuna and Subhadra." }
+                },
+                {
+                    question: "Eklavya gave his thumb to which guru?",
+                    options: ["Drona", "Kripa", "Bhishma", "Parashurama"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Eklavya gave his thumb to Drona as guru-dakshina." }
+                },
+                {
+                    question: "Ashwatthama was the son of which character?",
+                    options: ["Bhishma", "Drona", "Karna", "Shakuni"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Ashwatthama was the son of Drona." }
+                },
+                {
+                    question: "Krishna belonged to which clan?",
+                    options: ["Kuru", "Yadava", "Panchala", "Magadha"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Krishna was a member of the Yadava clan." }
+                },
+                {
+                    question: "The Kurukshetra War lasted for how many days?",
+                    options: ["10 days", "18 days", "30 days", "100 days"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, the Kurukshetra War lasted for 18 days." }
+                }
+            ],
+            hard: [
+                {
+                    question: "On which day of the Kurukshetra War did Bhishma fall?",
+                    options: ["Day 5", "Day 10", "Day 15", "Day 18"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Bhishma fell on the 10th day of the Kurukshetra War." }
+                },
+                {
+                    question: "Who killed Ghatotkacha during the Kurukshetra War?",
+                    options: ["Karna", "Drona", "Ashwatthama", "Duryodhana"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Karna killed Ghatotkacha using the Shakti weapon." }
+                },
+                {
+                    question: "Shikhandi was the reincarnation of which character?",
+                    options: ["Amba", "Ambika", "Ambalika", "Subhadra"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Shikhandi was the reincarnation of Amba, who sought revenge on Bhishma." }
+                },
+                {
+                    question: "What was the name of Karna’s divine weapon given by Indra?",
+                    options: ["Brahmastra", "Shakti", "Pashupatastra", "Narayanastra"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Karna received the Shakti weapon from Indra, which he used to kill Ghatotkacha." }
+                },
+                {
+                    question: "Who killed Shakuni during the Kurukshetra War?",
+                    options: ["Arjuna", "Bhima", "Sahadeva", "Yudhishthira"],
+                    answer: "c",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Sahadeva killed Shakuni on the last day of the war." }
+                },
+                {
+                    question: "What was the name of the forest where the Pandavas spent most of their exile?",
+                    options: ["Dandaka", "Kamyaka", "Naimisha", "Chitrakuta"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, the Pandavas spent most of their exile in the Kamyaka forest." }
+                },
+                {
+                    question: "Vidura was the incarnation of which deity?",
+                    options: ["Indra", "Yama", "Varuna", "Agni"],
+                    answer: "b",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Vidura was considered an incarnation of Yama, the god of dharma." }
+                },
+                {
+                    question: "On which day was Karna killed in the Kurukshetra War?",
+                    options: ["Day 12", "Day 14", "Day 16", "Day 17"],
+                    answer: "d",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Karna was killed by Arjuna on the 17th day of the war." }
+                },
+                {
+                    question: "What was the name of Draupadi’s brother who killed Drona?",
+                    options: ["Dhrishtadyumna", "Shikhandi", "Satyaki", "Virata"],
+                    answer: "a",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, Dhrishtadyumna, Draupadi’s brother, killed Drona." }
+                },
+                {
+                    question: "What celestial event is said to have marked the start of the Kurukshetra War?",
+                    options: ["Solar Eclipse", "Lunar Eclipse", "Meteor Shower", "Planetary Alignment"],
+                    answer: "d",
+                    feedback: { correct: "Correct!", incorrect: "Incorrect, a planetary alignment is traditionally said to have marked the start of the Kurukshetra War." }
+                }
+            ]
+        };
+
+        let selectedQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let quizStarted = false;
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function selectQuestions() {
+            const easyQuestions = shuffleArray([...questions.easy]).slice(0, 2);
+            const mediumQuestions = shuffleArray([...questions.medium]).slice(0, 2);
+            const hardQuestions = shuffleArray([...questions.hard]).slice(0, 1);
+
+            selectedQuestions = [...easyQuestions, ...mediumQuestions, ...hardQuestions];
+            selectedQuestions = shuffleArray(selectedQuestions).map((q, index) => ({
+                ...q,
+                id: `q${index + 1}`
+            }));
+        }
+
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = '';
+
+            if (!quizStarted) {
+                quizContainer.innerHTML = '<button class="start-btn" onclick="startQuiz()">Start Quiz</button>';
+                return;
+            }
+
+            const progress = document.createElement('div');
+            progress.className = 'quiz-progress';
+            progress.id = 'quiz-progress';
+            progress.textContent = `Question ${currentQuestionIndex + 1} of 5`;
+            quizContainer.appendChild(progress);
+
+            if (currentQuestionIndex < selectedQuestions.length) {
+                const q = selectedQuestions[currentQuestionIndex];
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.innerHTML = `
+                    <h3>${currentQuestionIndex + 1}. ${q.question}</h3>
+                    ${q.options.map((option, i) => {
+                        const value = q.options.length === 2 ? option.toLowerCase() : String.fromCharCode(97 + i);
+                        return `
+                            <label>
+                                <input type="radio" name="${q.id}" value="${value}">
+                                ${option}
+                            </label>
+                        `;
+                    }).join('')}
+                    <div class="feedback" id="feedback-${q.id}"></div>
+                `;
+                quizContainer.appendChild(card);
+
+                const submitButton = document.createElement('button');
+                submitButton.className = 'submit-btn';
+                submitButton.textContent = 'Submit';
+                submitButton.onclick = submitAnswer;
+                quizContainer.appendChild(submitButton);
+            }
+        }
+
+        function startQuiz() {
+            quizStarted = true;
+            selectQuestions();
+            renderQuiz();
+        }
+
+        function submitAnswer() {
+            const currentQuestion = selectedQuestions[currentQuestionIndex];
+            const selected = document.querySelector(`input[name="${currentQuestion.id}"]:checked`);
+
+            if (!selected) {
+                alert('Please select an answer before proceeding.');
+                return;
+            }
+
+            const feedbackDiv = document.getElementById(`feedback-${currentQuestion.id}`);
+            const isCorrect = selected.value === currentQuestion.answer;
+            const correctOptionIndex = currentQuestion.answer.length === 1 ? 
+                currentQuestion.answer.charCodeAt(0) - 97 : 
+                currentQuestion.options.findIndex(opt => opt.toLowerCase() === currentQuestion.answer);
+            const correctAnswerText = currentQuestion.options[correctOptionIndex];
+
+            userAnswers.push({
+                question: currentQuestion,
+                answer: selected.value,
+                isCorrect: isCorrect
+            });
+
+            feedbackDiv.innerHTML = isCorrect ? 
+                `<p class="correct">${currentQuestion.feedback.correct}</p>` :
+                `<p class="incorrect">${currentQuestion.feedback.incorrect} The correct answer is: ${correctAnswerText}</p>`;
+
+            const submitButton = document.querySelector('.submit-btn');
+            submitButton.textContent = 'Next';
+            submitButton.className = 'next-btn';
+            submitButton.onclick = nextQuestion;
+
+            // Disable radio buttons to prevent further changes
+            document.querySelectorAll(`input[name="${currentQuestion.id}"]`).forEach(input => {
+                input.disabled = true;
+            });
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < selectedQuestions.length) {
+                renderQuiz();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            let score = 0;
+            let feedbackHtml = '';
+
+            userAnswers.forEach((userAnswer, index) => {
+                const q = userAnswer.question;
+                const userAnswerIndex = q.options.length === 2 ? 
+                    q.options.findIndex(opt => opt.toLowerCase() === userAnswer.answer) :
+                    userAnswer.answer.charCodeAt(0) - 97;
+                const correctAnswerIndex = q.options.length === 2 ? 
+                    q.options.findIndex(opt => opt.toLowerCase() === q.answer) :
+                    q.answer.charCodeAt(0) - 97;
+                const userAnswerText = q.options[userAnswerIndex] || userAnswer.answer;
+                const correctAnswerText = q.options[correctAnswerIndex];
+
+                if (userAnswer.isCorrect) {
+                    score++;
+                    feedbackHtml += `
+                        <p><strong>Question ${index + 1}: ${q.question}</strong></p>
+                        <p class="correct">Your Answer: ${userAnswerText} - ${q.feedback.correct}</p>
+                        <p>Correct Answer: ${correctAnswerText}</p>
+                        <br>
+                    `;
+                } else {
+                    feedbackHtml += `
+                        <p><strong>Question ${index + 1}: ${q.question}</strong></p>
+                        <p class="incorrect">Your Answer: ${userAnswerText} - ${q.feedback.incorrect}</p>
+                        <p>Correct Answer: ${correctAnswerText}</p>
+                        <br>
+                    `;
+                }
+            });
+
+            document.getElementById('score').innerHTML = `<p>Your Score: ${score}/5</p>`;
+            document.getElementById('feedback').innerHTML = feedbackHtml;
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Render the start button on page load
+        window.onload = renderQuiz;
+    </script>
+</body>
+</html>

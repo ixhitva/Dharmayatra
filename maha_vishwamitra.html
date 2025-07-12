@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata: Vishwamitra - From Kshatriya to Brahmana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('photos/mahabharat main page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #E6B800;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #E6B800;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background: rgba(255, 245, 224, 0.95);
+            min-width: 250px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+        }
+
+        .dropdown-content a {
+            color: #3c2f2f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin: 40px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 245, 224, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            text-align: center;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #3c2f2f;
+            margin-bottom: 20px;
+        }
+
+        .accordion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            position: relative;
+        }
+
+        .accordion-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            background: rgba(255, 245, 224, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #E6B800, #FFA500);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 16px;
+            color: #3c2f2f;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background: rgba(255, 245, 224, 0.95);
+        }
+
+        .accordion-content.active {
+            padding: 15px;
+        }
+
+        .accordion-content p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #FF4500;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .accordion-content .image-caption {
+            font-size: 14px;
+            color: #3c2f2f;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color‍
+            color: #E6B800;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #E6B800;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container,
+            .hero-section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .accordion-header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .accordion-content p {
+                font-size: 14px;
+            }
+
+            .accordion-content img {
+                height: 150px;
+            }
+
+            .accordion-content .image-caption {
+                font-size: 12px;
+            }
+
+            .nav-button, .dropdown-button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .dropdown-content {
+                right: 10px;
+                left: auto;
+                top: 60px;
+                min-width: 200px;
+            }
+
+            .dropdown-content a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Debugging Tip: Ensure this HTML file is saved in 'C:\Users\iasis\Desktop\indian epic\' and images are in 'C:\Users\iasis\Desktop\indian epic\photos\story\'. 
+        Verify file names and extensions (e.g., .png) match exactly as listed. 
+        Run a local server (e.g., 'python -m http.server' in the 'indian epic' folder) and access via 'http://localhost:8000/maha_vishwamitra.html' to avoid file:// protocol issues.
+        If the accordion or images are not displaying correctly, check the browser console (F12, Console tab) for JavaScript or file path errors.
+    -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <div class="nav-buttons">
+                <div class="dropdown">
+                    <div class="dropdown-button">Stories ▼</div>
+                    <div class="dropdown-content">
+                        <a href="maha_karna.html">Karna in the Mahabharata</a>
+                        <a href="maha_duryodhana_mistake.html">Duryodhana's Big Mistake</a>
+                        <a href="maha_no_black_white.html">No Black and White in Life</a>
+                        <a href="maha_treachery.html">Treachery at Kurukshetra</a>
+                        <a href="maha_five_arrows.html">Five Golden Arrows of Bhishma</a>
+                        <a href="maha_krishna_service.html">Krishna Serves His Devotees</a>
+                        <a href="maha_arjuna_chariot.html">Krishna's Divine Protection</a>
+                        <a href="maha_golden_mountains.html">Arjuna, Karna and the Mountains</a>
+                        <a href="maha_aurva.html">The Story of Aurva</a>
+                        <a href="maha_shvetaki.html">Shvetaki and Agni</a>
+                        <a href="maha_tapati.html">Tapatyopakhyana</a>
+                        <a href="maha_good_deeds.html">Fruits of Good Deeds</a>
+                        <a href="maha_bhangaswana.html">Story of Bhangaswana</a>
+                        <a href="maha_vishwamitra.html">Vishwamitra: Kshatriya to Bhramana</a>
+                    </div>
+                </div>
+                <a href="ramayana.html" class="nav-button">Ramayana</a>
+                <a href="mahabharata.html" class="nav-button">Mahabharata</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Mahabharata: Vishwamitra - From Kshatriya to Brahmana</h1>
+        <p>Vishwamitra’s extraordinary journey from Kshatriya to Brahmana is a testament to the power of tapasya and divine will. Born through a divine twist of fate, his relentless penance transcended his birth, earning him a place among the greatest sages. Explore the accordion below to uncover this tale of transformation and spiritual triumph.</p>
+    </div>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">Vishwamitra: How a Kshatriya Attained Brahmin Hood</div>
+            <div class="accordion-content">
+                <p>Yudhishthira once asked Bhishma how Vishwamitra, though born a Kshatriya, became a Brahmana—especially when even the Chandala Matanga couldn't achieve it despite his penance. In response, Bhishma narrated the remarkable story of Vishwamitra’s origin and transformation.</p>
+                <p>In the line of King Ajamida of the Bharata race was born King Gadhi, who had a beautiful daughter named Satyavati. The sage Richika of the Bhrigu lineage sought her hand in marriage. Gadhi, skeptical of Richika’s wealth, demanded a thousand moon-hued horses, each with one black ear, as dowry. Richika prayed to Varuna and obtained the miraculous horses, securing Satyavati’s hand.</p>
+                <p>Pleased, Richika offered Satyavati a boon and prepared two sacrificial offerings—one for Satyavati to have a Brahmana son, and another for her mother to have a Kshatriya grandson. However, Satyavati’s mother, desiring a powerful son, convinced her daughter to exchange the offerings. As a result, Satyavati gave birth to a fiery Kshatriya—Jamadagni—while her mother bore a Brahmana son—Vishwamitra.</p>
+                <a href="#" class="image-link" data-img="photos/story/maha_vishwamitra.png">
+                    <img src="photos/story/maha_vishwamitra.jpg" alt="Vishwamitra’s Penance">
+                </a>
+                <p class="image-caption">Vishwamitra’s intense tapasya, which transformed him from a Kshatriya to a revered Brahmana sage.</p>
+                <p>Realizing what had happened, Richika told Satyavati that the switch had reversed their destinies. Distraught, she pleaded that at least her son, Jamadagni, be spared the violent nature. Richika agreed, transferring the intensity to her grandson instead. Thus, Jamadagni became a peaceful sage, while his son Parashurama turned into a warrior-saint.</p>
+                <p>Meanwhile, Vishwamitra, born a Kshatriya, became a great sage through extreme penance and asceticism. His dedication was so profound that he was accepted as a Brahmana. His sons gave rise to powerful Brahmana clans. Among his descendants were many illustrious Rishis like Madhuchhanda, Yajnavalkya, and Valmiki.</p>
+                <p>Thus, Vishwamitra’s transformation showed that deep tapasya and divine will can transcend birth—making him the rare Kshatriya who attained Brahmin Hood.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (!isActive) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

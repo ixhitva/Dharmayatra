@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramayana: Aranya Kanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian epic/ram_photos/unnamed.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #E6B800;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #E6B800;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(255, 245, 224, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            top: 100%;
+            right: 0;
+        }
+
+        .dropdown-content a {
+            color: #3c2f2f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin: 40px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 245, 224, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            text-align: center;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #3c2f2f;
+            margin-bottom: 20px;
+        }
+
+        .accordion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            position: relative;
+        }
+
+        .accordion-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            background: rgba(255, 245, 224, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #E6B800, #FFA500);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 16px;
+            color: #3c2f2f;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background: rgba(255, 245, 224, 0.95);
+        }
+
+        .accordion-content.active {
+            padding: 15px;
+        }
+
+        .accordion-content p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #FF4500;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .accordion-content .image-caption {
+            font-size: 14px;
+            color: #3c2f2f;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .accordion-content h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            margin: 20px 0 10px;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #E6B800;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #E6B800;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            border: 2px solid #E6B800;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            color: #E6B800;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(255, 69, 0, 0.7);
+            border-radius: 50%;
+            padding: 5px 10px;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container,
+            .hero-section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .accordion-header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .accordion-content p {
+                font-size: 14px;
+            }
+
+            .accordion-content img {
+                height: 150px;
+            }
+
+            .accordion-content .image-caption {
+                font-size: 12px;
+            }
+
+            .nav-button, .dropdown-button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .dropdown-content {
+                min-width: 160px;
+            }
+
+            .dropdown-content a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            .modal-close {
+                top: -30px;
+                right: -30px;
+                font-size: 24px;
+                padding: 3px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Debugging Tip: Ensure this HTML file is saved in 'C:\Users\iasis\Desktop\indian epic\' and images are in 'C:\Users\iasis\Desktop\indian epic\ram_photos\stories img\'. 
+        Verify file names and extensions (e.g., .jpg or .png) match exactly as listed. 
+        Run a local server (e.g., 'python -m http.server' in 'indian epic' folder) and access via 'http://localhost:8000/rama_aranya.html' to avoid file:// protocol issues.
+        If the accordion, image modal, dropdown, or images are not displaying correctly, check the browser console (F12, Console tab) for JavaScript or file path errors.
+    -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <div class="nav-buttons">
+                <div class="dropdown">
+                    <div class="dropdown-button">Kandas ▼</div>
+                    <div class="dropdown-content">
+                        <a href="rama_bala.html">Bala Kanda</a>
+                        <a href="rama_ayodhya.html">Ayodhya Kanda</a>
+                        <a href="rama_aranya.html">Aranya Kanda</a>
+                        <a href="rama_kishkindha.html">Kishkindha Kanda</a>
+                        <a href="rama_sundara.html">Sundara Kanda</a>
+                        <a href="rama_yuddha.html">Yuddha Kanda</a>
+                        <a href="rama_uttara.html">Uttara Kanda</a>
+                    </div>
+                </div>
+                <a href="ramayana.html" class="nav-button">Ramayana</a>
+                <a href="mahabharata.html" class="nav-button">Mahabharata</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Ramayana: Aranya Kanda</h1>
+        <p>The Aranya Kanda, the third book of Valmiki’s Ramayana, transports us to the wild forests where Rama, Sita, and Lakshmana face trials that test their resolve and righteousness. Exiled from Ayodhya, they wander through the Dandaka forest, encountering sages, demons, and pivotal events that shape their destiny. This Kanda culminates in the catastrophic abduction of Sita by Ravana, setting the stage for the epic’s central conflict. Through tales of courage, deception, and devotion, the Aranya Kanda explores the interplay of dharma and adharma in the untamed wilderness. Open the accordion below to immerse yourself in these gripping stories, filled with vivid imagery and moral depth.</p>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img id="modalImage" src="" alt="Full-size image">
+        </div>
+    </div>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">Life in the Dandaka Forest</div>
+            <div class="accordion-content">
+                <p>The Dandaka forest, vast and untamed, became the new home for Rama, Sita, and Lakshmana as they embraced their exile with grace. Towering trees with gnarled roots stretched toward the sky, their canopies alive with the songs of birds and the rustle of leaves. The trio settled in a modest hut near the Godavari River, its waters shimmering under the sun. Their days were filled with simplicity—Rama and Lakshmana hunted for food, while Sita adorned their dwelling with wildflowers, her presence a beacon of warmth. They visited the ashrams of sages like Agastya, who gifted Rama celestial weapons, including the Vaishnava bow, imbued with divine power. The forest, though perilous, was a sanctuary of spiritual growth, where Rama meditated under ancient banyan trees, his heart aligned with dharma.</p>
+                <p>The sages of Dandaka, plagued by demonic raids, sought Rama’s protection. Rakshasas, led by figures like Viradha, disrupted their rituals, spreading fear. Rama, with Lakshmana by his side, confronted Viradha, a monstrous demon whose invulnerability was a curse from the gods. In a fierce battle, Rama’s arrows pierced the demon’s heart, lifting the curse and restoring peace to the ashram. The sages, in gratitude, blessed Rama, recognizing him as Vishnu’s incarnation. Life in the forest was a delicate balance of serenity and vigilance, as the trio navigated its beauty and dangers, their bond deepening with each shared hardship.</p>
+                <p>Sita, born of the earth, found solace in the forest’s embrace, her love for Rama unwavering. Lakshmana, ever watchful, guarded their hut, his loyalty a silent vow. The Dandaka forest, with its mystical aura, tested their resilience, preparing them for the trials that lay ahead. The Aranya Kanda, in its depiction of their austere yet purposeful life, highlights the strength derived from unity and devotion to dharma.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/hut in dandaka.png">
+                    <img src="ram_photos/stories img/hut in dandaka.png" alt="Hut in Dandaka">
+                </a>
+                <p class="image-caption">Rama, Sita, and Lakshmana’s humble hut by the Godavari in the Dandaka forest.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/rama with agastya.png">
+                    <img src="ram_photos/stories img/rama with agastya.png" alt="Rama with Agastya">
+                </a>
+                <p class="image-caption">Sage Agastya gifting Rama the Vaishnava bow, a divine weapon.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/battle with viradha.png">
+                    <img src="ram_photos/stories img/battle with viradha.png" alt="Battle with Viradha">
+                </a>
+                <p class="image-caption">Rama and Lakshmana defeating the demon Viradha, protecting the sages.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Sita’s Abduction by Ravana</div>
+            <div class="accordion-content">
+                <p>In the tranquil glades of Panchavati, a serene clearing in the Dandaka forest, Rama, Sita, and Lakshmana established a new home. The air was fragrant with jasmine, and the Godavari’s gentle flow provided solace. Yet, this peace was shattered by the arrival of Surpanakha, Ravana’s sister, a rakshasi of fierce beauty and cunning. Drawn to Rama’s divine aura, she proposed marriage, her words laced with desire. Rama, devoted to Sita, gently declined, citing his vow of monogamy. Enraged and humiliated, Surpanakha turned her advances to Lakshmana, who rebuffed her with sharp words. In a fit of rage, she attacked Sita, only to be disfigured by Lakshmana, who severed her nose and ears, sending her fleeing in pain and fury.</p>
+                <p>Surpanakha, burning with vengeance, sought her brothers Khara and Dushana, who commanded a rakshasa army in the forest. They launched a ferocious assault on Panchavati, their roars shaking the earth. Rama, with his divine prowess, stood alone against the horde, his arrows blazing like meteors. Lakshmana guarded Sita, while Rama decimated the army, felling Khara and Dushana with celestial weapons. The forest, stained with the blood of demons, bore witness to Rama’s might, but the victory drew the attention of Ravana, the ten-headed king of Lanka, whose ambition and pride knew no bounds.</p>
+                <p>Ravana, informed by Surpanakha of Sita’s unparalleled beauty, resolved to abduct her, driven by lust and a desire to challenge Rama’s divinity. He enlisted Maricha, the demon Rama had once spared, to aid in his scheme. Maricha, transformed into a golden deer with shimmering spots, appeared before Sita, its beauty captivating her heart. Entranced, Sita pleaded with Rama to capture it for her. Despite Lakshmana’s warnings of deception, Rama, unable to deny Sita, pursued the deer into the forest. As Rama’s arrow struck Maricha, the demon mimicked Rama’s voice, crying out for help. Sita, overcome with fear, urged Lakshmana to aid his brother, and reluctantly, he left her alone, drawing a protective circle (Lakshmana Rekha) around the hut.</p>
+                <p>Ravana, disguised as a sage, approached Sita, his false humility masking his intent. Sita, bound by hospitality, stepped beyond the protective circle to offer alms. In an instant, Ravana revealed his true form, his ten heads towering over her. Before she could resist, he seized her, lifting her into his aerial chariot, Pushpaka. Sita’s cries echoed through the forest as she called for Rama, her voice a desperate plea. Jatayu, the noble vulture and friend of Dasharatha, attempted to intervene, his wings beating fiercely against Ravana. But the aged bird was no match for the demon king, who severed Jatayu’s wings, leaving him wounded on the forest floor. Sita, now a captive, was carried across the skies to Lanka, her heart heavy with sorrow yet resolute in her faith in Rama.</p>
+                <p>This abduction, a pivotal moment in the Ramayana, marked the escalation of the cosmic battle between dharma and adharma. The Aranya Kanda, with its tale of deception and loss, sets the stage for Rama’s relentless quest to rescue his beloved, a journey that would unite gods, mortals, and creatures in a fight for righteousness.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/surpanakha's encounter.png">
+                    <img src="ram_photos/stories img/surpanakha's encounter.png" alt="Surpanakha’s Encounter">
+                </a>
+                <p class="image-caption">Surpanakha’s confrontation with Rama and Lakshmana in Panchavati.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/golden deer.png">
+                    <img src="ram_photos/stories img/golden deer.png" alt="Golden Deer">
+                </a>
+                <p class="image-caption">The enchanting golden deer, Maricha in disguise, luring Sita.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/sita abduction.jpg">
+                    <img src="ram_photos/stories img/sita abduction.jpg" alt="Sita’s Abduction">
+                </a>
+                <p class="image-caption">Ravana abducting Sita in his Pushpaka chariot, defying the Lakshmana Rekha.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/jatayu.png">
+                    <img src="ram_photos/stories img/jatayu.png" alt="Jatayu’s Battle">
+                </a>
+                <p class="image-caption">Jatayu’s valiant attempt to save Sita, wounded by Ravana’s might.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (!isActive) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.image-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+                modalImg.src = link.getAttribute('data-img');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

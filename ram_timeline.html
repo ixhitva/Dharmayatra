@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramayana Timeline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    // Preload images for smoother transitions
+    const images = [
+      'ram_photos/timeline/Birth of Dasharatha.png',
+      'ram_photos/timeline/dashtratha\'s putra kameti yajna.jpg',
+      'ram_photos/timeline/rama janma.png',
+      'ram_photos/timeline/vishwamitra arrives in ayodhya.jpg',
+      'ram_photos/timeline/Rama and Lakshmana Kill Tataka.png',
+      'ram_photos/timeline/Arrival at Siddhashrama.jpg',
+      'ram_photos/timeline/Protecting Vishwamitra’s Yajna.png',
+      'ram_photos/timeline/Journey to Mithila.jpg',
+      'ram_photos/timeline/Arrival at Vishala.jpg',
+      'ram_photos/timeline/ram meets ahalya.png',
+      'ram_photos/timeline/Arrival in Mithila.jpg',
+      'ram_photos/timeline/Rama Lifts Shiva-Dhanushya.png',
+      'ram_photos/timeline/dashratha arrives in mithila.png',
+      'ram_photos/timeline/Janaka Completes Yajna.jpg',
+      'ram_photos/timeline/Rama-Sita Wedding Decided.png',
+      'ram_photos/timeline/Rama-Sita Wedding.jpg',
+      'ram_photos/timeline/Rama’s Coronation Scheduled.png',
+      'ram_photos/timeline/Rama’s Vanavas.jpg',
+      'ram_photos/timeline/death of dashratha.png',
+      'ram_photos/timeline/messenger travells.jpg',
+      'ram_photos/timeline/Bharata’s Journey to Ayodhya.jpg',
+      'ram_photos/timeline/Bharata Performs Dasharatha’s Rituals.png',
+      'ram_photos/timeline/Vasistha Requests Bharata to Accept Throne.jpg',
+      'ram_photos/timeline/Bharata Leaves Ayodhya to Meet Rama.png',
+      'ram_photos/timeline/Bharata Meets Rama at Chitrakuta.jpg',
+      'ram_photos/timeline/Bharata Asks for Rama’s Sandals.png',
+      'ram_photos/timeline/Rama and Khara Fight.jpg',
+      'ram_photos/timeline/sita abduction.jpeg',
+      'ram_photos/timeline/Ravana Sets Deadline for Sita.jpg',
+      'ram_photos/timeline/vali sugriva 1st round.jpeg',
+      'ram_photos/timeline/vali sugriva 2nd round.jpg',
+      'ram_photos/timeline/Rama-Lakshmana in Kishkindha.jpg',
+      'ram_photos/timeline/Vanara Search Parties Depart.png',
+      'ram_photos/timeline/Angada’s Frustration.webp',
+      'ram_photos/timeline/hanuman in lanka.jpg',
+      'ram_photos/timeline/hanuman returns from lanka.png',
+      'ram_photos/timeline/rama and vanara army.jpg',
+      'ram_photos/timeline/constructiion of setu.png',
+      'ram_photos/timeline/Rama and Army on Suvela.png',
+      'ram_photos/timeline/lanka war.jpg',
+      'ram_photos/timeline/rama at bharadwaja\'s ashram.png',
+      'ram_photos/timeline/Rama Meets Bharata.png',
+      'ram_photos/timeline/rama\'s coronation.png',
+      'ram_photos/timeline/later events.png'
+    ];
+    Promise.all(
+      images.map(src => new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = () => {
+          console.error(`Failed to preload image: ${src}`);
+          resolve(); // Resolve even on error to avoid blocking
+        };
+      }))
+    ).then(() => console.log('All images preloaded')).catch(err => console.error('Preload error:', err));
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian epic/ram_photos/unnamed.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    body::before {
+      content: 'ॐ';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 300px;
+      color: rgba(255, 153, 51, 0.3);
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+      opacity: 0.05;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #FF9933;
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: fall 6s ease-in-out infinite;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    .petals div:nth-child(1) { left: 30%; animation-delay: 0s; }
+    .petals div:nth-child(2) { left: 70%; animation-delay: 3s; }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+    }
+
+    .navbar {
+      background: linear-gradient(to bottom, #8B4513, #A0522D);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      border-bottom: 3px solid #FFD700;
+    }
+
+    .navbar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .navbar .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      color: #FFD700;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: rgba(210, 180, 140, 0.7);
+      transition: all 0.4s ease-in-out;
+      font-family: 'Merriweather', serif;
+      border: 1px solid #FF4500;
+    }
+
+    .nav-links a:hover {
+      background: #FFD700;
+      color: #3c2f2f;
+      transform: translateY(-3px);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+      background-blend-mode: soft-light;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      border: 2px solid #FFD700;
+      position: relative;
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 5px solid transparent;
+      border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+      z-index: -1;
+    }
+
+    h1, h2 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 36px;
+      color: #2F4F4F;
+      margin-bottom: 15px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid #FF4500;
+      padding-bottom: 8px;
+      position: relative;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 40px;
+    }
+
+    h1::after, h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .timeline-container {
+      position: relative;
+      padding: 40px 0;
+      margin: 40px auto;
+      max-width: 1200px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #FFD700 #FF4500;
+      z-index: 10;
+    }
+
+    .timeline-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .timeline-container::-webkit-scrollbar-track {
+      background: #FF4500;
+    }
+
+    .timeline-container::-webkit-scrollbar-thumb {
+      background: #FFD700;
+      border-radius: 4px;
+    }
+
+    .timeline {
+      display: flex;
+      align-items: center;
+      position: relative;
+      min-width: max-content;
+      padding: 0 20px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #8B4513;
+      z-index: 1;
+    }
+
+    .timeline-event {
+      position: relative;
+      width: 250px;
+      margin: 0 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      background: #FFD700;
+      border: 2px solid #8B4513;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .event-card {
+      background: rgba(255, 245, 224, 0.95);
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+      cursor: pointer;
+      position: relative;
+      top: 40px;
+      z-index: 3;
+      will-change: transform, box-shadow;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .event-card:hover .event-details {
+      opacity: 1;
+      max-height: 200px;
+    }
+
+    .event-date {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 1.1rem;
+      color: #2F4F4F;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-title {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 1rem;
+      color: #2F4F4F;
+      margin: 5px 0;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      margin: 10px 0;
+      object-fit: cover;
+      cursor: pointer;
+      loading: lazy;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .event-image.loaded {
+      opacity: 1;
+    }
+
+    .event-details {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      font-family: 'Merriweather', serif;
+      font-size: 0.9rem;
+      color: #3c2f2f;
+      margin-top: 10px;
+      text-align: left;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      transition: opacity 0.4s ease-in-out, max-height 0.4s ease-in-out;
+      will-change: opacity, max-height;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .modal.show {
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: rgba(255, 245, 224, 0.95);
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      transform: scale(0.95);
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+      will-change: transform, opacity;
+    }
+
+    .modal.show .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-content img {
+      width: 400px;
+      height: 267px;
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .modal-content img.loaded {
+      opacity: 1;
+    }
+
+    .modal-content p {
+      font-family: 'Merriweather', serif;
+      font-size: 16px;
+      color: #3c2f2f;
+      text-align: left;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #FF4500;
+      cursor: pointer;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .modal-content .close-button:hover {
+      color: #FFD700;
+    }
+
+    footer {
+      background: linear-gradient(to top, #8B4513, #A0522D);
+      color: #FFD700;
+      text-align: center;
+      padding: 15px;
+      width: 100%;
+      font-size: 16px;
+      border-top: 3px solid #FFD700;
+      position: relative;
+      flex-shrink: 0;
+      z-index: 100;
+    }
+
+    footer p {
+      background: rgba(210, 180, 140, 0.9);
+      border-radius: 8px;
+      padding: 5px 10px;
+      display: inline-block;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        margin: 20px auto;
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .timeline-event {
+        width: 220px;
+        margin: 0 10px;
+      }
+
+      .event-card {
+        padding: 10px;
+      }
+
+      .event-date {
+        font-size: 1rem;
+      }
+
+      .event-title {
+        font-size: 0.9rem;
+      }
+
+      .event-details {
+        font-size: 0.8rem;
+      }
+
+      .event-image {
+        height: 133px;
+      }
+
+      .navbar-brand {
+        font-size: 24px;
+      }
+
+      .nav-links a {
+        font-size: 16px;
+        padding: 8px 15px;
+      }
+
+      footer {
+        font-size: 14px;
+      }
+
+      .modal-content img {
+        width: 300px;
+        height: 200px;
+      }
+
+      .modal-content p {
+        font-size: 14px;
+      }
+
+      .modal-content .close-button {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals">
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Dharmayatra</a>
+      <ul class="nav-links">
+        <li><a href="ramayana.html">Ramayana</a></li>
+        <li><a href="mahabharata.html">Mahabharata</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="content">
+      <h1>Ramayana Timeline</h1>
+      <div class="timeline-container">
+        <div class="timeline">
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">Circa 12300 BCE</div>
+              <div class="event-title">Birth of Dasharatha</div>
+              <img src="ram_photos/timeline/Birth of Dasharatha.png" alt="Birth of Dasharatha" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Birth of Dasharatha.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Birth of Dasharatha.png', 'Birth of Dasharatha', 'King Dasharatha, future ruler of Ayodhya, is born into the Ikshvaku dynasty. His reign will be marked by his commitment to dharma and the challenges of fulfilling his royal duties, setting the stage for the Ramayana’s central events.')">
+              <div class="event-details">
+                King Dasharatha, future ruler of Ayodhya, is born into the Ikshvaku dynasty. His reign will be marked by his commitment to dharma and the challenges of fulfilling his royal duties, setting the stage for the Ramayana’s central events.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">Dec 12241 – Jan 12241 BCE</div>
+              <div class="event-title">Dasharatha’s Putra-Kameshthi Yajna</div>
+              <img src="ram_photos/timeline/dashtratha's putra kameti yajna.jpg" alt="Dasharatha’s Putra-Kameshthi Yajna" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/dashtratha\'s putra kameti yajna.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/dashtratha\'s putra kameti yajna.jpg', 'Dasharatha’s Putra-Kameshthi Yajna', 'Desiring heirs, King Dasharatha performs the Putra-Kameshthi Yajna under the guidance of Sage Rishyashringa. The ritual yields divine nectar, which Dasharatha distributes among his queens, leading to the births of Rama, Lakshmana, Bharata, and Shatrughna.')">
+              <div class="event-details">
+                Desiring heirs, King Dasharatha performs the Putra-Kameshthi Yajna under the guidance of Sage Rishyashringa. The ritual yields divine nectar, which Dasharatha distributes among his queens, leading to the births of Rama, Lakshmana, Bharata, and Shatrughna.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">29 Nov 12240 BCE</div>
+              <div class="event-title">Rama Janma (Birth of Rama)</div>
+              <img src="ram_photos/timeline/rama janma.png" alt="Rama Janma" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/rama janma.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/rama janma.png', 'Rama Janma', 'Rama, the seventh avatar of Vishnu, is born to King Dasharatha and Queen Kausalya in Ayodhya. His birth fulfills divine prophecies, marking the arrival of the hero destined to uphold dharma and defeat Ravana.')">
+              <div class="event-details">
+                Rama, the seventh avatar of Vishnu, is born to King Dasharatha and Queen Kausalya in Ayodhya. His birth fulfills divine prophecies, marking the arrival of the hero destined to uphold dharma and defeat Ravana.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">4 Dec 12224 BCE</div>
+              <div class="event-title">Vishwamitra Arrives in Ayodhya</div>
+              <img src="ram_photos/timeline/vishwamitra arrives in ayodhya.jpg" alt="Vishwamitra Arrives in Ayodhya" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/vishwamitra arrives in ayodhya.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/vishwamitra arrives in ayodhya.jpg', 'Vishwamitra Arrives in Ayodhya', 'Sage Vishwamitra visits Ayodhya to request Rama’s assistance in protecting his yajna from demons. Dasharatha reluctantly agrees, and Rama, accompanied by Lakshmana, embarks on his first heroic journey.')">
+              <div class="event-details">
+                Sage Vishwamitra visits Ayodhya to request Rama’s assistance in protecting his yajna from demons. Dasharatha reluctantly agrees, and Rama, accompanied by Lakshmana, embarks on his first heroic journey.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">7 Dec 12224 BCE</div>
+              <div class="event-title">Rama and Lakshmana Kill Tataka</div>
+              <img src="ram_photos/timeline/Rama and Lakshmana Kill Tataka.png" alt="Rama and Lakshmana Kill Tataka" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama and Lakshmana Kill Tataka.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama and Lakshmana Kill Tataka.png', 'Rama and Lakshmana Kill Tataka', 'Rama, guided by Vishwamitra, slays the demoness Tataka, who was terrorizing the forest hermits. This act marks Rama’s first triumph over evil and establishes his prowess as a warrior.')">
+              <div class="event-details">
+                Rama, guided by Vishwamitra, slays the demoness Tataka, who was terrorizing the forest hermits. This act marks Rama’s first triumph over evil and establishes his prowess as a warrior.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">8 Dec 12224 BCE</div>
+              <div class="event-title">Arrival at Siddhashrama</div>
+              <img src="ram_photos/timeline/Arrival at Siddhashrama.jpg" alt="Arrival at Siddhashrama" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Arrival at Siddhashrama.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Arrival at Siddhashrama.jpg', 'Arrival at Siddhashrama', 'Rama and Lakshmana arrive at Vishwamitra’s Siddhashrama, a sacred hermitage, to prepare for protecting the sage’s yajna from demonic disruptions.')">
+              <div class="event-details">
+                Rama and Lakshmana arrive at Vishwamitra’s Siddhashrama, a sacred hermitage, to prepare for protecting the sage’s yajna from demonic disruptions.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">9–14 Dec 12224 BCE</div>
+              <div class="event-title">Protecting Vishwamitra’s Yajna</div>
+              <img src="ram_photos/timeline/Protecting Vishwamitra’s Yajna.png" alt="Protecting Vishwamitra’s Yajna" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Protecting Vishwamitra’s Yajna.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Protecting Vishwamitra’s Yajna.png', 'Protecting Vishwamitra’s Yajna', 'Rama and Lakshmana vigilantly guard Vishwamitra’s yajna, defeating demons Maricha and Subahu who attempt to disrupt the sacred ritual, showcasing their martial skills.')">
+              <div class="event-details">
+                Rama and Lakshmana vigilantly guard Vishwamitra’s yajna, defeating demons Maricha and Subahu who attempt to disrupt the sacred ritual, showcasing their martial skills.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">15 Dec 12224 BCE</div>
+              <div class="event-title">Journey to Mithila</div>
+              <img src="ram_photos/timeline/Journey to Mithila.jpg" alt="Journey to Mithila" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Journey to Mithila.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Journey to Mithila.jpg', 'Journey to Mithila', 'Rama and Lakshmana, accompanied by Vishwamitra, set out for Mithila, engaging in late-night conversations with the sage, who imparts wisdom and narrates ancient tales.')">
+              <div class="event-details">
+                Rama and Lakshmana, accompanied by Vishwamitra, set out for Mithila, engaging in late-night conversations with the sage, who imparts wisdom and narrates ancient tales.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">17 Dec 12224 BCE</div>
+              <div class="event-title">Arrival at Vishala</div>
+              <img src="ram_photos/timeline/Arrival at Vishala.jpg" alt="Arrival at Vishala" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Arrival at Vishala.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Arrival at Vishala.jpg', 'Arrival at Vishala', 'Rama, Lakshmana, and Vishwamitra reach the city of Vishala en route to Mithila, resting and preparing for the significant events awaiting them in Janaka’s kingdom.')">
+              <div class="event-details">
+                Rama, Lakshmana, and Vishwamitra reach the city of Vishala en route to Mithila, resting and preparing for the significant events awaiting them in Janaka’s kingdom.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">18 Dec 12224 BCE</div>
+              <div class="event-title">Rama Meets Ahalya</div>
+              <img src="ram_photos/timeline/ram meets ahalya.png" alt="Rama Meets Ahalya" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/ram meets ahalya.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/ram meets ahalya.png', 'Rama Meets Ahalya', 'At Ahalya’s ashram, Rama liberates her from a curse by touching her stone form with his foot, restoring her to life and reuniting her with Sage Gautama.')">
+              <div class="event-details">
+                At Ahalya’s ashram, Rama liberates her from a curse by touching her stone form with his foot, restoring her to life and reuniting her with Sage Gautama.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">18 Dec 12224 BCE</div>
+              <div class="event-title">Arrival in Mithila</div>
+              <img src="ram_photos/timeline/Arrival in Mithila.jpg" alt="Arrival in Mithila" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Arrival in Mithila.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Arrival in Mithila.jpg', 'Arrival in Mithila', 'Rama, Lakshmana, and Vishwamitra arrive in Mithila, the capital of King Janaka’s kingdom, where Rama is destined to participate in Sita’s swayamvara.')">
+              <div class="event-details">
+                Rama, Lakshmana, and Vishwamitra arrive in Mithila, the capital of King Janaka’s kingdom, where Rama is destined to participate in Sita’s swayamvara.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">19 Dec 12224 BCE</div>
+              <div class="event-title">Rama Lifts Shiva-Dhanushya</div>
+              <img src="ram_photos/timeline/Rama Lifts Shiva-Dhanushya.png" alt="Rama Lifts Shiva-Dhanushya" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama Lifts Shiva-Dhanushya.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama Lifts Shiva-Dhanushya.png', 'Rama Lifts Shiva-Dhanushya', 'At Sita’s swayamvara, Rama lifts and breaks the divine Shiva-Dhanushya, a feat no other suitor could achieve, winning Sita’s hand in marriage.')">
+              <div class="event-details">
+                At Sita’s swayamvara, Rama lifts and breaks the divine Shiva-Dhanushya, a feat no other suitor could achieve, winning Sita’s hand in marriage.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">29 Dec 12224 BCE</div>
+              <div class="event-title">Dasharatha Arrives in Mithila</div>
+              <img src="ram_photos/timeline/dashratha arrives in mithila.png" alt="Dasharatha Arrives in Mithila" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/dashratha arrives in mithila.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/dashratha arrives in mithila.png', 'Dasharatha Arrives in Mithila', 'King Dasharatha arrives in Mithila to attend the wedding preparations for Rama and Sita, strengthening the alliance between Ayodhya and Mithila.')">
+              <div class="event-details">
+                King Dasharatha arrives in Mithila to attend the wedding preparations for Rama and Sita, strengthening the alliance between Ayodhya and Mithila.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">30 Dec 12224 BCE</div>
+              <div class="event-title">Janaka Completes Yajna</div>
+              <img src="ram_photos/timeline/Janaka Completes Yajna.jpg" alt="Janaka Completes Yajna" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Janaka Completes Yajna.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Janaka Completes Yajna.jpg', 'Janaka Completes Yajna', 'King Janaka performs a grand yajna to consecrate the upcoming marriage of Sita to Rama, fulfilling his duties as a father and ruler.')">
+              <div class="event-details">
+                King Janaka performs a grand yajna to consecrate the upcoming marriage of Sita to Rama, fulfilling his duties as a father and ruler.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">1–2 Jan 12223 BCE</div>
+              <div class="event-title">Rama-Sita Wedding Decided</div>
+              <img src="ram_photos/timeline/Rama-Sita Wedding Decided.png" alt="Rama-Sita Wedding Decided" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama-Sita Wedding Decided.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama-Sita Wedding Decided.png', 'Rama-Sita Wedding Decided', 'The date for Rama and Sita’s wedding is finalized, along with the marriages of Lakshmana, Bharata, and Shatrughna to Urmila, Mandavi, and Shrutakirti, respectively.')">
+              <div class="event-details">
+                The date for Rama and Sita’s wedding is finalized, along with the marriages of Lakshmana, Bharata, and Shatrughna to Urmila, Mandavi, and Shrutakirti, respectively.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">4–5 Jan 12223 BCE</div>
+              <div class="event-title">Rama-Sita Wedding</div>
+              <img src="ram_photos/timeline/Rama-Sita Wedding.jpg" alt="Rama-Sita Wedding" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama-Sita Wedding.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama-Sita Wedding.jpg', 'Rama-Sita Wedding', 'Rama marries Sita in a grand ceremony in Mithila, joined by the weddings of his brothers. This union binds the divine couple, setting the stage for their shared journey.')">
+              <div class="event-details">
+                Rama marries Sita in a grand ceremony in Mithila, joined by the weddings of his brothers. This union binds the divine couple, setting the stage for their shared journey.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">20–21 Dec 12223 BCE</div>
+              <div class="event-title">Rama’s Coronation Scheduled</div>
+              <img src="ram_photos/timeline/Rama’s Coronation Scheduled.png" alt="Rama’s Coronation Scheduled" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama’s Coronation Scheduled.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama’s Coronation Scheduled.png', 'Rama’s Coronation Scheduled', 'King Dasharatha announces Rama as his successor, scheduling his coronation as the crown prince of Ayodhya, sparking joy among the people but envy in Queen Kaikeyi’s heart.')">
+              <div class="event-details">
+                King Dasharatha announces Rama as his successor, scheduling his coronation as the crown prince of Ayodhya, sparking joy among the people but envy in Queen Kaikeyi’s heart.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">20–21 Dec 12223 BCE</div>
+              <div class="event-title">Rama’s Vanavas (Exile)</div>
+              <img src="ram_photos/timeline/Rama’s Vanavas.jpg" alt="Rama’s Vanavas" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama’s Vanavas.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama’s Vanavas.jpg', 'Rama’s Vanavas', 'Influenced by Manthara, Queen Kaikeyi demands Rama’s exile for 14 years and Bharata’s coronation. Rama, honoring his father’s word, leaves Ayodhya with Sita and Lakshmana.')">
+              <div class="event-details">
+                Influenced by Manthara, Queen Kaikeyi demands Rama’s exile for 14 years and Bharata’s coronation. Rama, honoring his father’s word, leaves Ayodhya with Sita and Lakshmana.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">25–26 Dec 12223 BCE</div>
+              <div class="event-title">Death of Dasharatha</div>
+              <img src="ram_photos/timeline/death of dashratha.png" alt="Death of Dasharatha" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/death of dashratha.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/death of dashratha.png', 'Death of Dasharatha', 'Heartbroken by Rama’s exile, King Dasharatha succumbs to grief and dies, leaving Ayodhya in mourning and without a king.')">
+              <div class="event-details">
+                Heartbroken by Rama’s exile, King Dasharatha succumbs to grief and dies, leaving Ayodhya in mourning and without a king.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">27–29 Dec 12223 BCE</div>
+              <div class="event-title">Messenger Travels to Kekaya</div>
+              <img src="ram_photos/timeline/messenger travells.jpg" alt="Messenger Travels to Kekaya" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/messenger travells.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/messenger travells.jpg', 'Messenger Travels to Kekaya', 'Messengers are dispatched to Kekaya to summon Bharata, who is unaware of his father’s death and Rama’s exile, to return to Ayodhya.')">
+              <div class="event-details">
+                Messengers are dispatched to Kekaya to summon Bharata, who is unaware of his father’s death and Rama’s exile, to return to Ayodhya.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">30 Dec 12223 – 5 Jan 12222 BCE</div>
+              <div class="event-title">Bharata’s Journey to Ayodhya</div>
+              <img src="ram_photos/timeline/Bharata’s Journey to Ayodhya.jpg" alt="Bharata’s Journey to Ayodhya" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Bharata’s Journey to Ayodhya.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Bharata’s Journey to Ayodhya.jpg', 'Bharata’s Journey to Ayodhya', 'Bharata, informed of his father’s death and Rama’s exile, journeys from Kekaya to Ayodhya, distressed by the events orchestrated by his mother, Kaikeyi.')">
+              <div class="event-details">
+                Bharata, informed of his father’s death and Rama’s exile, journeys from Kekaya to Ayodhya, distressed by the events orchestrated by his mother, Kaikeyi.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">6–7 Jan 12222 BCE</div>
+              <div class="event-title">Bharata Performs Dasharatha’s Rituals</div>
+              <img src="ram_photos/timeline/Bharata Performs Dasharatha’s Rituals.png" alt="Bharata Performs Dasharatha’s Rituals" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Bharata Performs Dasharatha’s Rituals.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Bharata Performs Dasharatha’s Rituals.png', 'Bharata Performs Dasharatha’s Rituals', 'Bharata performs the 11th and 12th day funeral rites for King Dasharatha, fulfilling his filial duties amidst the turmoil in Ayodhya.')">
+              <div class="event-details">
+                Bharata performs the 11th and 12th day funeral rites for King Dasharatha, fulfilling his filial duties amidst the turmoil in Ayodhya.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">9 Jan 12222 BCE</div>
+              <div class="event-title">Vasistha Requests Bharata to Accept Throne</div>
+              <img src="ram_photos/timeline/Vasistha Requests Bharata to Accept Throne.jpg" alt="Vasistha Requests Bharata to Accept Throne" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Vasistha Requests Bharata to Accept Throne.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Vasistha Requests Bharata to Accept Throne.jpg', 'Vasistha Requests Bharata to Accept Throne', 'Sage Vasistha urges Bharata to accept the throne of Ayodhya, but Bharata refuses, insisting that Rama is the rightful heir.')">
+              <div class="event-details">
+                Sage Vasistha urges Bharata to accept the throne of Ayodhya, but Bharata refuses, insisting that Rama is the rightful heir.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">26 Jan 12222 BCE</div>
+              <div class="event-title">Bharata Leaves Ayodhya to Meet Rama</div>
+              <img src="ram_photos/timeline/Bharata Leaves Ayodhya to Meet Rama.png" alt="Bharata Leaves Ayodhya to Meet Rama" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Bharata Leaves Ayodhya to Meet Rama.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Bharata Leaves Ayodhya to Meet Rama.png', 'Bharata Leaves Ayodhya to Meet Rama', 'Determined to bring Rama back, Bharata leaves Ayodhya to meet his exiled brother at Chitrakuta, hoping to persuade him to return as king.')">
+              <div class="event-details">
+                Determined to bring Rama back, Bharata leaves Ayodhya to meet his exiled brother at Chitrakuta, hoping to persuade him to return as king.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">10 Apr 12222 BCE</div>
+              <div class="event-title">Bharata Meets Rama at Chitrakuta</div>
+              <img src="ram_photos/timeline/Bharata Meets Rama at Chitrakuta.jpg" alt="Bharata Meets Rama at Chitrakuta" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Bharata Meets Rama at Chitrakuta.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Bharata Meets Rama at Chitrakuta.jpg', 'Bharata Meets Rama at Chitrakuta', 'Bharata meets Rama at Chitrakuta, pleading with him to return to Ayodhya. Rama refuses, upholding his father’s word, demonstrating his commitment to dharma.')">
+              <div class="event-details">
+                Bharata meets Rama at Chitrakuta, pleading with him to return to Ayodhya. Rama refuses, upholding his father’s word, demonstrating his commitment to dharma.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">11 Apr 12222 BCE</div>
+              <div class="event-title">Bharata Asks for Rama’s Sandals</div>
+              <img src="ram_photos/timeline/Bharata Asks for Rama’s Sandals.png" alt="Bharata Asks for Rama’s Sandals" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Bharata Asks for Rama’s Sandals.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Bharata Asks for Rama’s Sandals.png', 'Bharata Asks for Rama’s Sandals', 'Unable to persuade Rama, Bharata requests his sandals to place on the throne of Ayodhya, symbolizing Rama’s rule while Bharata governs as his regent.')">
+              <div class="event-details">
+                Unable to persuade Rama, Bharata requests his sandals to place on the throne of Ayodhya, symbolizing Rama’s rule while Bharata governs as his regent.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">28 Mar 12210 BCE</div>
+              <div class="event-title">Rama and Khara Fight</div>
+              <img src="ram_photos/timeline/Rama and Khara Fight.jpg" alt="Rama and Khara Fight" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama and Khara Fight.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama and Khara Fight.jpg', 'Rama and Khara Fight', 'In the Dandaka forest, Rama battles and defeats the demon Khara and his army, protecting the sages and escalating tensions with Ravana.')">
+              <div class="event-details">
+                In the Dandaka forest, Rama battles and defeats the demon Khara and his army, protecting the sages and escalating tensions with Ravana.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">May–Jul 12210 BCE</div>
+              <div class="event-title">Ravana Abducts Sita</div>
+              <img src="ram_photos/timeline/sita abduction.jpeg" alt="Ravana Abducts Sita" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/sita abduction.jpeg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/sita abduction.jpeg', 'Ravana Abducts Sita', 'Ravana, enraged by Rama’s actions, abducts Sita from Panchavati using a deception involving a golden deer, setting the stage for the epic conflict.')">
+              <div class="event-details">
+                Ravana, enraged by Rama’s actions, abducts Sita from Panchavati using a deception involving a golden deer, setting the stage for the epic conflict.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">Oct–Nov 12210 BCE</div>
+              <div class="event-title">Ravana Sets Deadline for Sita</div>
+              <img src="ram_photos/timeline/Ravana Sets Deadline for Sita.jpg" alt="Ravana Sets Deadline for Sita" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Ravana Sets Deadline for Sita.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Ravana Sets Deadline for Sita.jpg', 'Ravana Sets Deadline for Sita', 'Ravana gives Sita a deadline to yield to his desires, imprisoning her in the Ashoka grove in Lanka, where she remains steadfast in her devotion to Rama.')">
+              <div class="event-details">
+                Ravana gives Sita a deadline to yield to his desires, imprisoning her in the Ashoka grove in Lanka, where she remains steadfast in her devotion to Rama.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">21 Sep 12210 BCE</div>
+              <div class="event-title">Vali-Sugriva Fight (1st Round)</div>
+              <img src="ram_photos/timeline/vali sugriva 1st round.jpeg" alt="Vali-Sugriva Fight (1st Round)" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/vali sugriva 1st round.jpeg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/vali sugriva 1st round.jpeg', 'Vali-Sugriva Fight (1st Round)', 'Rama allies with Sugriva, who challenges his brother Vali to a fight. Rama observes but does not intervene in this first round, assessing the situation.')">
+              <div class="event-details">
+                Rama allies with Sugriva, who challenges his brother Vali to a fight. Rama observes but does not intervene in this first round, assessing the situation.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">22 Sep 12210 BCE</div>
+              <div class="event-title">Vali-Sugriva Fight (2nd Round)</div>
+              <img src="ram_photos/timeline/vali sugriva 2nd round.jpg" alt="Vali-Sugriva Fight (2nd Round)" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/vali sugriva 2nd round.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/vali sugriva 2nd round.jpg', 'Vali-Sugriva Fight (2nd Round)', 'In the second fight, Rama aids Sugriva by shooting Vali with an arrow, killing him and restoring Sugriva to the throne of Kishkindha.')">
+              <div class="event-details">
+                In the second fight, Rama aids Sugriva by shooting Vali with an arrow, killing him and restoring Sugriva to the throne of Kishkindha.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">22 Sep 12210 – 13 Jan 12209 BCE</div>
+              <div class="event-title">Rama-Lakshmana in Kishkindha</div>
+              <img src="ram_photos/timeline/Rama-Lakshmana in Kishkindha.jpg" alt="Rama-Lakshmana in Kishkindha" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama-Lakshmana in Kishkindha.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama-Lakshmana in Kishkindha.jpg', 'Rama-Lakshmana in Kishkindha', 'Rama and Lakshmana reside outside Kishkindha, waiting for Sugriva to organize the vanara army to search for Sita.')">
+              <div class="event-details">
+                Rama and Lakshmana reside outside Kishkindha, waiting for Sugriva to organize the vanara army to search for Sita.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">After 13 Jan 12209 BCE</div>
+              <div class="event-title">Vanara Search Parties Depart</div>
+              <img src="ram_photos/timeline/Vanara Search Parties Depart.png" alt="Vanara Search Parties Depart" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Vanara Search Parties Depart.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Vanara Search Parties Depart.png', 'Vanara Search Parties Depart', 'Sugriva dispatches vanara search parties across the world to locate Sita, with Hanuman leading the southern group towards Lanka.')">
+              <div class="event-details">
+                Sugriva dispatches vanara search parties across the world to locate Sita, with Hanuman leading the southern group towards Lanka.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">Mid-Jul 12209 BCE</div>
+              <div class="event-title">Angada’s Frustration</div>
+              <img src="ram_photos/timeline/Angada’s Frustration.webp" alt="Angada’s Frustration" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Angada’s Frustration.webp')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Angada’s Frustration.webp', 'Angada’s Frustration', 'Angada, leading a search party, grows frustrated with the lack of progress in finding Sita, facing challenges in the southern regions.')">
+              <div class="event-details">
+                Angada, leading a search party, grows frustrated with the lack of progress in finding Sita, facing challenges in the southern regions.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">27–30 Aug 12209 BCE</div>
+              <div class="event-title">Hanuman in Lanka</div>
+              <img src="ram_photos/timeline/hanuman in lanka.jpg" alt="Hanuman in Lanka" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/hanuman in lanka.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/hanuman in lanka.jpg', 'Hanuman in Lanka', 'Hanuman leaps across the ocean to Lanka, locates Sita in the Ashoka grove, and delivers Rama’s message, boosting her hope.')">
+              <div class="event-details">
+                Hanuman leaps across the ocean to Lanka, locates Sita in the Ashoka grove, and delivers Rama’s message, boosting her hope.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">30 Aug 12209 BCE</div>
+              <div class="event-title">Hanuman Returns from Lanka</div>
+              <img src="ram_photos/timeline/hanuman returns from lanka.png" alt="Hanuman Returns from Lanka" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/hanuman returns from lanka.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/hanuman returns from lanka.png', 'Hanuman Returns from Lanka', 'Hanuman flies back from Lanka, reporting Sita’s location to Rama and Sugriva, galvanizing the vanara army for the rescue mission.')">
+              <div class="event-details">
+                Hanuman flies back from Lanka, reporting Sita’s location to Rama and Sugriva, galvanizing the vanara army for the rescue mission.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">29 Sep 12209 BCE</div>
+              <div class="event-title">Rama and Vanara Army March to Lanka</div>
+              <img src="ram_photos/timeline/rama and vanara army.jpg" alt="Rama and Vanara Army March to Lanka" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/rama and vanara army.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/rama and vanara army.jpg', 'Rama and Vanara Army March to Lanka', 'Rama, Lakshmana, and the vanara army, led by Sugriva, begin their march from Kishkindha towards Lanka to confront Ravana.')">
+              <div class="event-details">
+                Rama, Lakshmana, and the vanara army, led by Sugriva, begin their march from Kishkindha towards Lanka to confront Ravana.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">8–18 Dec 12209 BCE</div>
+              <div class="event-title">Construction of Nala-Setu</div>
+              <img src="ram_photos/timeline/constructiion of setu.png" alt="Construction of Nala-Setu" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/constructiion of setu.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/constructiion of setu.png', 'Construction of Nala-Setu', 'Under Nala’s supervision, the vanara army constructs the Nala-Setu (Rama’s bridge) across the ocean to reach Lanka, a remarkable engineering feat.')">
+              <div class="event-details">
+                Under Nala’s supervision, the vanara army constructs the Nala-Setu (Rama’s bridge) across the ocean to reach Lanka, a remarkable engineering feat.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">22 Dec 12209 BCE</div>
+              <div class="event-title">Rama and Army on Suvela</div>
+              <img src="ram_photos/timeline/Rama and Army on Suvela.png" alt="Rama and Army on Suvela" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama and Army on Suvela.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama and Army on Suvela.png', 'Rama and Army on Suvela', 'Rama and the vanara army encamp on Mount Suvela, overlooking Lanka, preparing for the impending war against Ravana’s forces.')">
+              <div class="event-details">
+                Rama and the vanara army encamp on Mount Suvela, overlooking Lanka, preparing for the impending war against Ravana’s forces.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">24 Dec 12209 – 7 Jan 12208 BCE</div>
+              <div class="event-title">The Lanka War</div>
+              <img src="ram_photos/timeline/lanka war.jpg" alt="The Lanka War" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/lanka war.jpg')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/lanka war.jpg', 'The Lanka War', 'Rama leads the vanara army in a fierce war against Ravana’s forces. After intense battles, Rama slays Ravana, rescuing Sita and restoring dharma.')">
+              <div class="event-details">
+                Rama leads the vanara army in a fierce war against Ravana’s forces. After intense battles, Rama slays Ravana, rescuing Sita and restoring dharma.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">12 Jan 12208 BCE</div>
+              <div class="event-title">Rama at Bharadwaj’s Ashram</div>
+              <img src="ram_photos/timeline/rama at bharadwaja's ashram.png" alt="Rama at Bharadwaj’s Ashram" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/rama at bharadwaja\'s ashram.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/rama at bharadwaja\'s ashram.png', 'Rama at Bharadwaj’s Ashram', 'On his return to Ayodhya, Rama visits Sage Bharadwaj’s ashram, receiving blessings and preparing for his homecoming.')">
+              <div class="event-details">
+                On his return to Ayodhya, Rama visits Sage Bharadwaj’s ashram, receiving blessings and preparing for his homecoming.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">13 Jan 12208 BCE</div>
+              <div class="event-title">Rama Meets Bharata</div>
+              <img src="ram_photos/timeline/Rama Meets Bharata.png" alt="Rama Meets Bharata" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/Rama Meets Bharata.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/Rama Meets Bharata.png', 'Rama Meets Bharata', 'Rama reunites with Bharata in Ayodhya, who joyfully relinquishes the throne, having ruled as Rama’s regent during his exile.')">
+              <div class="event-details">
+                Rama reunites with Bharata in Ayodhya, who joyfully relinquishes the throne, having ruled as Rama’s regent during his exile.
+              </div>
+            </div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-dot"></div>
+            <div class="event-card">
+              <div class="event-date">13 Jan 12208 BCE</div>
+              <div class="event-title">Rama’s Coronation</div>
+              <img src="ram_photos/timeline/ramas coronation.png" alt="Rama's Coronation" class="event-image" loading="lazy" onerror="this.src='https://via.placeholder.com/250x160?text=Image+Not+Found'; console.error('Failed to load image: ram_photos/timeline/ramas coronation.png')" onload="this.classList.add('loaded')" onclick="openModal('ram_photos/timeline/ramas coronation.png', 'Rama Coronation', 'Rama crowned the rightful king of Ayodhya. The city joyously celebrates.')">
+              <div class="event-details">
+                Rama crowned the rightful king of Ayodhya. The city joyously celebrates.
+              </div>
+            </div>
+          </div>

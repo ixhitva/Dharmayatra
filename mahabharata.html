@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata - Dharmayatra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian%20epic/photos/mahabharat%20main%20page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(210, 180, 140, 0.7);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 40px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.8);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 48px;
+            color: #2F4F4F;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #3c2f2f;
+            text-align: center;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.8);
+            background-blend-mode: soft-light;
+            border: 2px solid #FFD700;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            min-height: 200px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?mandala,indian') 20 round;
+            z-index: -1;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(255, 215, 0, 0.2);
+            background-blend-mode: soft-light;
+        }
+
+        .card h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #3c2f2f;
+            font-style: normal;
+        }
+
+        .dropdown {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .dropdown-btn {
+            padding: 15px 30px;
+            background: #2F4F4F;
+            color: #FFD700;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .dropdown-btn::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?lotus,indian') 20 round;
+            z-index: -1;
+        }
+
+        .dropdown-btn:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            background: rgba(210, 180, 140, 0.8);
+            margin-top: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid #FF4500;
+            position: absolute;
+            width: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .dropdown-content.active {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            color: #2F4F4F;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+        }
+
+        .dropdown-content a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateX(5px);
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            font-size: 18px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        .footer p {
+            background: rgba(210, 180, 140, 0.8);
+            border-radius: 10px;
+            padding: 5px 10px;
+            display: inline-block;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 32px;
+            }
+
+            .content p {
+                font-size: 16px;
+            }
+
+            .dropdown-content {
+                width: 150px;
+            }
+
+            .card h3 {
+                font-size: 20px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h1>The Mahabharata</h1>
+        <div class="dropdown">
+            <button class="dropdown-btn">Explore Mahabharata</button>
+            <div class="dropdown-content" id="dropdown-menu">
+                <a href="maha_crossword.html">Play Crossword</a>
+                <a href="maha_story.html">Learn History</a>
+                <a href="maha_gita.html">Gita Verse Explorer</a>
+                <a href="maha_map.html">Interactive Map</a>
+                <a href="maha_quiz.html">Quiz</a>
+                <a href="maha_mythology.html">Mythology vs. History</a>
+                <a href="maha_timeline.html">Timeline</a>
+                <a href="maha_characters.html">Character Profiles</a>
+            </div>
+        </div>
+
+        <p class="text-xl text-center mb-8 italic">Journey through ancient tales, puzzles, and sacred verses.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="maha_crossword.html" class="card">
+                <h3>Play Crossword</h3>
+                <p>Test your knowledge with interactive puzzles.</p>
+            </a>
+            <a href="maha_story.html" class="card">
+                <h3>Learn History</h3>
+                <p>Discover epic stories and legends.</p>
+            </a>
+            <a href="maha_gita.html" class="card">
+                <h3>Gita Verse Explorer</h3>
+                <p>Explore sacred verses with audio and commentary.</p>
+            </a>
+            <a href="maha_map.html" class="card">
+                <h3>Interactive Map</h3>
+                <p>Explore key locations like Hastinapura and Kurukshetra.</p>
+            </a>
+            <a href="maha_quiz.html" class="card">
+                <h3>Quiz</h3>
+                <p>Test your Mahabharata knowledge with fun questions.</p>
+            </a>
+            <a href="maha_mythology.html" class="card">
+                <h3>Mythology vs. History</h3>
+                <p>Explore the epic’s historical and mythological aspects.</p>
+            </a>
+            <a href="maha_timeline.html" class="card">
+                <h3>Timeline</h3>
+                <p>Visualize the chronology of Mahabharata events.</p>
+            </a>
+            <a href="maha_characters.html" class="card">
+                <h3>Character Profiles</h3>
+                <p>Learn about key figures like Arjuna and Krishna.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        // Toggle dropdown on button click
+        const dropdownToggle = document.getElementById('dropdown-menu');
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        dropdownBtn.addEventListener('click', () => {
+            dropdownToggle.classList.toggle('active');
+            console.log('Dropdown toggled');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownBtn.contains(e.target) && !dropdownToggle.contains(e.target)) {
+                dropdownToggle.classList.remove('active');
+            }
+        });
+
+        // Debug card rendering
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            console.log(`Found ${cards.length} cards`);
+            cards.forEach((card, index) => {
+                console.log(`Card ${index + 1}:`, card.innerHTML);
+            });
+        });
+    </script>
+</body>
+</html>

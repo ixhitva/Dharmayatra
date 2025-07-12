@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata - Listen to Gita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian%20epic/photos/mahabharat%20main%20page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(210, 180, 140, 0.7);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        .content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #3c2f2f;
+            text-align: center;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .audio-card {
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border: 2px solid #FFD700;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .audio-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?mandala,indian') 20 round;
+            z-index: -1;
+        }
+
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.95);
+            background-blend-mode: soft-light;
+        }
+
+        .audio-card h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            background: #2F4F4F;
+            color: #FFD700;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 5px;
+        }
+
+        .lang-btn:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .chapter-select {
+            padding: 8px;
+            background: rgba(210, 180, 140, 0.9);
+            border: 2px solid #FF4500;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Merriweather', serif;
+            margin-top: 8px;
+            width: 100%;
+            max-width: 250px;
+            color: #2F4F4F;
+        }
+
+        .audio-player {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            margin-bottom: 8px;
+            background: #2F4F4F;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .audio-player audio::-webkit-media-controls-panel {
+            background: #2F4F4F;
+            color: #FFD700;
+        }
+
+        .audio-player audio::-webkit-media-controls-play-button,
+        .audio-player audio::-webkit-media-controls-volume-slider,
+        .audio-player audio::-webkit-media-controls-timeline {
+            background: #FFD700;
+            border-radius: 5px;
+        }
+
+        .custom-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            background: rgba(210, 180, 140, 0.9);
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #FF4500;
+        }
+
+        .custom-controls button {
+            padding: 8px 15px;
+            background: #2F4F4F;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Merriweather', serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .custom-controls button:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+        }
+
+        .custom-controls input[type="range"] {
+            width: 150px;
+            accent-color: #FF4500;
+            background: #2F4F4F;
+            border-radius: 5px;
+        }
+
+        .custom-controls span {
+            font-family: 'Merriweather', serif;
+            color: #3c2f2f;
+            font-size: 14px;
+        }
+
+        .subtitle-container {
+            margin-top: 8px;
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 5px;
+            padding: 8px;
+            max-height: 80px;
+            overflow-y: auto;
+            color: #3c2f2f;
+            font-size: 14px;
+            font-family: 'Merriweather', serif;
+            text-align: center;
+        }
+
+        .subtitle-container p {
+            margin: 0;
+        }
+
+        .gita-image {
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto 10px auto;
+            display: block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .shloka-text {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 16px;
+            color: #2F4F4F;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: 20px auto;
+                padding: 15px;
+            }
+
+            .content h1 {
+                font-size: 28px;
+            }
+
+            .content p {
+                font-size: 14px;
+            }
+
+            .audio-card h3 {
+                font-size: 18px;
+            }
+
+            .lang-btn {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            .chapter-select {
+                font-size: 12px;
+                max-width: 200px;
+            }
+
+            .custom-controls input[type="range"] {
+                width: 120px;
+            }
+
+            .custom-controls span {
+                font-size: 12px;
+            }
+
+            .subtitle-container {
+                font-size: 12px;
+                max-height: 60px;
+            }
+
+            .gita-image {
+                max-width: 75%;
+            }
+
+            .shloka-text {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="mahabharata.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h1>Listen to the Bhagavad Gita</h1>
+        <p class="text-lg text-center mb-6 italic">Select a language and chapter to hear sacred verses, narrated like a podcast.</p>
+        <div class="audio-card">
+            <img src="file:///C:/Users/iasis/Desktop/indian%20epic/photos/gita%20image.jpg" alt="Bhagavad Gita" class="gita-image">
+            <p class="shloka-text">"यदा यदा हि धर्मस्य ग्लानिर्भवति भारत ।<br>अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम् ॥<br>परित्राणाय साधूनां विनाशाय च दुष्कृताम् ।<br>धर्मासंस्थापनार्थाय संभवामि युगे युगे ॥"</p>
+            <h3>Select Language</h3>
+            <div class="flex flex-wrap gap-4 mb-6 justify-center">
+                <button onclick="loadAudio('english')" class="lang-btn">English</button>
+                <button onclick="loadAudio('hindi')" class="lang-btn">Hindi</button>
+                <button onclick="loadAudio('kannada')" class="lang-btn">Kannada</button>
+            </div>
+            <div id="audio-player" class="audio-player">
+                <p>Select a language to load audio.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        const audioFiles = {
+            english: [
+                { 
+                    title: "Introduction", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_00_-_Introduction_yEc4V6q.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_00_Introduction.vtt"
+                },
+                { 
+                    title: "Chapter 1: Observing the Armies on the Battlefield", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_01_-_Observing_the_Armies_on_the.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_01_Observing.vtt"
+                },
+                { 
+                    title: "Chapter 2: Contents of the Gita Summarized", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_02_-_Contents_of_the_Gita_Summarized.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_02_Contents.vtt"
+                },
+                { 
+                    title: "Chapter 3: Karma Yoga", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_03_-_Karma_Yoga.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_03_Karma.vtt"
+                },
+                { 
+                    title: "Chapter 4: Transcendental Knowledge", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_04_-_Transcendental_Knowledge.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_04_Transcendental.vtt"
+                },
+                { 
+                    title: "Chapter 5: Karma-Yoga - Action in Krishna Consciousness", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_05_-_Karma-yoga--Action_in_Krsna.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_05_KarmaYoga.vtt"
+                },
+                { 
+                    title: "Chapter 6: Dhyana-Yoga", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_06_-_Dhyana-yoga.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_06_Dhyana.vtt"
+                },
+                { 
+                    title: "Chapter 7: Knowledge of the Absolute", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_07_-_Knowledge_of_the_Absolute.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_07_Knowledge.vtt"
+                },
+                { 
+                    title: "Chapter 8: Attaining the Supreme", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_08_-_Attaining_the_Supreme.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_08_Attaining.vtt"
+                },
+                { 
+                    title: "Chapter 9: The Most Confidential Knowledge", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_09_-_The_Most_Confidential_Knowledge.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_09_Confidential.vtt"
+                },
+                { 
+                    title: "Chapter 10: The Opulence of the Absolute", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_10_-_The_Opulence_of_the_Absolute.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_10_Opulence.vtt"
+                },
+                { 
+                    title: "Chapter 11: The Universal Form", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_11_-_The_Universal_Form.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_11_Universal.vtt"
+                },
+                { 
+                    title: "Chapter 12: Devotional Service", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_12_-_Devotional_Service.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_12_Devotional.vtt"
+                },
+                { 
+                    title: "Chapter 13: Nature, the Enjoyer, and Consciousness", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_13_-_Nature_the_Enjoyer_and.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_13_Nature.vtt"
+                },
+                { 
+                    title: "Chapter 14: The Three Modes of Material Nature", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_14_-_The_Three_Modes_of_Material_Nature.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_14_ThreeModes.vtt"
+                },
+                { 
+                    title: "Chapter 15: The Yoga of the Supreme Person", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_15_-_The_Yoga_of_the_Supreme_Person.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_15_Supreme.vtt"
+                },
+                { 
+                    title: "Chapter 16: The Divine and Demoniac Natures", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_16_-_The_Divine_and_Demoniac_Natures.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_16_DivineDemoniac.vtt"
+                },
+                { 
+                    title: "Chapter 17: The Divisions of Faith", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_17_-_The_Divisions_of_Faith.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_17_Faith.vtt"
+                },
+                { 
+                    title: "Chapter 18: Conclusion - The Perfection of Renunciation", 
+                    src: "./mahabharata audios/english/BG_-_Translations_-_18_-_Conclusion--The_Perfection_of.mp3",
+                    subtitles: "./mahabharata audios/english/subtitles/BG_18_Conclusion.vtt"
+                }
+            ],
+            hindi: [
+                { 
+                    title: "Chapter 1: Observing the Armies on the Battlefield", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 01.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 01.vtt"
+                },
+                { 
+                    title: "Chapter 2: Contents of the Gita Summarized", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 02.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 02.vtt"
+                },
+                { 
+                    title: "Chapter 3: Karma Yoga", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 03.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 03.vtt"
+                },
+                { 
+                    title: "Chapter 4: Transcendental Knowledge", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 04.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 04.vtt"
+                },
+                { 
+                    title: "Chapter 5: Karma-Yoga - Action in Krishna Consciousness", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 05.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 05.vtt"
+                },
+                { 
+                    title: "Chapter 6: Dhyana-Yoga", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 06.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 06.vtt"
+                },
+                { 
+                    title: "Chapter 7: Knowledge of the Absolute", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 07.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 07.vtt"
+                },
+                { 
+                    title: "Chapter 8: Attaining the Supreme", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 08.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 08.vtt"
+                },
+                { 
+                    title: "Chapter 9: The Most Confidential Knowledge", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 09.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 09.vtt"
+                },
+                { 
+                    title: "Chapter 10: The Opulence of the Absolute", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 10.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 10.vtt"
+                },
+                { 
+                    title: "Chapter 11: The Universal Form", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 11.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 11.vtt"
+                },
+                { 
+                    title: "Chapter 12: Devotional Service", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 12.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 12.vtt"
+                },
+                { 
+                    title: "Chapter 13: Nature, the Enjoyer, and Consciousness", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 13.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 13.vtt"
+                },
+                { 
+                    title: "Chapter 14: The Three Modes of Material Nature", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 14.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 14.vtt"
+                },
+                { 
+                    title: "Chapter 15: The Yoga of the Supreme Person", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 15.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 15.vtt"
+                },
+                { 
+                    title: "Chapter 16: The Divine and Demoniac Natures", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 16.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 16.vtt"
+                },
+                { 
+                    title: "Chapter 17: The Divisions of Faith", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 17.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 17.vtt"
+                },
+                { 
+                    title: "Chapter 18: Conclusion - The Perfection of Renunciation", 
+                    src: "C:/Users/iasis/Desktop/indian epic/mahabharata audios/hindi/Chapter 18.mp3",
+                    subtitles: "./mahabharata audios/hindi/subtitles/Chapter 18.vtt"
+                }
+            ],
+            kannada: [
+                { 
+                    title: "Chapter 1: Observing the Armies on the Battlefield", 
+                    src: "./mahabharata audios/kannada/01 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/01 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 2: Contents of the Gita Summarized", 
+                    src: "./mahabharata audios/kannada/02 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/02 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 3: Karma Yoga", 
+                    src: "./mahabharata audios/kannada/03 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/03 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 4: Transcendental Knowledge", 
+                    src: "./mahabharata audios/kannada/04 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/04 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 5: Karma-Yoga - Action in Krishna Consciousness", 
+                    src: "./mahabharata audios/kannada/05 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/05 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 6: Dhyana-Yoga", 
+                    src: "./mahabharata audios/kannada/06 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/06 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 7: Knowledge of the Absolute", 
+                    src: "./mahabharata audios/kannada/07 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/07 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 8: Attaining the Supreme", 
+                    src: "./mahabharata audios/kannada/08 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/08 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 9: The Most Confidential Knowledge", 
+                    src: "./mahabharata audios/kannada/09 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/09 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 10: The Opulence of the Absolute", 
+                    src: "./mahabharata audios/kannada/10 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/10 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 11: The Universal Form", 
+                    src: "./mahabharata audios/kannada/11 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/11 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 12: Devotional Service", 
+                    src: "./mahabharata audios/kannada/12 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/12 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 13: Nature, the Enjoyer, and Consciousness", 
+                    src: "./mahabharata audios/kannada/13 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/13 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 14: The Three Modes of Material Nature", 
+                    src: "./mahabharata audios/kannada/14 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/14 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 15: The Yoga of the Supreme Person", 
+                    src: "./mahabharata audios/kannada/15 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/15 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 16: The Divine and Demoniac Natures", 
+                    src: "./mahabharata audios/kannada/16 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/16 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 17: The Divisions of Faith", 
+                    src: "./mahabharata audios/kannada/17 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/17 Chapter .mp3"
+                },
+                { 
+                    title: "Chapter 18: Conclusion - The Perfection of Renunciation", 
+                    src: "./mahabharata audios/kannada/18 Chapter .mp3",
+                    subtitles: "./mahabharata audios/kannada/subtitles/18 Chapter .mp3"
+                }
+            ],
+        };
+
+        let audioElements = [];
+        let currentAudioIndex = null;
+        let currentTrack = null;
+
+        function loadAudio(language) {
+            const playerDiv = document.getElementById('audio-player');
+            if (language in audioFiles && audioFiles[language].length > 0) {
+                playerDiv.innerHTML = `
+                    <h3 class="text-xl font-semibold text-[#2F4F4F] mb-2 font-['Tiro_Devanagari_Sanskrit']">${language.charAt(0).toUpperCase() + language.slice(1)} Audio</h3>
+                    <select id="chapter-select" class="chapter-select" onchange="playChapter(this.value)">
+                        <option value="">Select a Chapter</option>
+                        ${audioFiles[language].map((file, index) => `<option value="${index}">${file.title}</option>`).join('')}
+                    </select>
+                    <div id="audio-container" class="mt-4">
+                        <div class="custom-controls">
+                            <button onclick="togglePlay()">Play/Pause</button>
+                            <input type="range" id="seek-slider" min="0" max="100" value="0">
+                            <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                        </div>
+                        <p id="playing-title" class="mt-2 text-[#3c2f2f]">Select a chapter to play audio.</p>
+                        <div id="subtitle-container" class="subtitle-container"></div>
+                        ${audioFiles[language].map((file, index) => `
+                            <p style="display: none;">${file.title}</p>
+                            <audio id="audio-${index}" style="display: none;">
+                                <source src="${file.src}" type="audio/mpeg">
+                                ${file.subtitles ? `<track kind="subtitles" src="${file.subtitles}" srclang="en" label="English" default>` : ''}
+                                Your browser does not support the audio element.
+                            </audio>
+                        `).join('')}
+                    </div>
+                `;
+                audioElements = Array.from(document.querySelectorAll('audio'));
+                const seekSlider = document.getElementById('seek-slider');
+                const currentTime = document.getElementById('current-time');
+                const duration = document.getElementById('duration');
+                const subtitleContainer = document.getElementById('subtitle-container');
+
+                audioElements.forEach(audio => {
+                    audio.addEventListener('loadedmetadata', () => {
+                        if (audio === audioElements[currentAudioIndex]) {
+                            seekSlider.max = audio.duration;
+                            duration.textContent = formatTime(audio.duration);
+                        }
+                    });
+
+                    audio.addEventListener('timeupdate', () => {
+                        if (audio === audioElements[currentAudioIndex]) {
+                            seekSlider.value = audio.currentTime;
+                            currentTime.textContent = formatTime(audio.currentTime);
+                            updateSubtitles(audio);
+                        }
+                    });
+
+                    audio.addEventListener('loadeddata', () => {
+                        if (audio.textTracks && audio.textTracks[0]) {
+                            audio.textTracks[0].mode = 'showing';
+                        }
+                    });
+                });
+
+                seekSlider.addEventListener('input', () => {
+                    if (audioElements[currentAudioIndex]) {
+                        audioElements[currentAudioIndex].currentTime = seekSlider.value;
+                    }
+                });
+            } else {
+                playerDiv.innerHTML = `
+                    <h3 class="text-xl font-semibold text-[#2F4F4F] mb-2 font-['Tiro_Devanagari_Sanskrit']">${language.charAt(0).toUpperCase() + language.slice(1)} Audio</h3>
+                    <p class="text-[#3c2f2f]">Audio files for ${language} are not yet available.</p>
+                `;
+                audioElements = [];
+            }
+        }
+
+        function playChapter(index) {
+            if (index === "") {
+                document.getElementById('playing-title').textContent = "Select a chapter to play audio.";
+                document.getElementById('subtitle-container').innerHTML = '';
+                if (currentAudioIndex !== null) {
+                    audioElements[currentAudioIndex].pause();
+                    currentAudioIndex = null;
+                }
+                return;
+            }
+            if (currentAudioIndex !== null) {
+                audioElements[currentAudioIndex].pause();
+                audioElements[currentAudioIndex].currentTime = 0;
+            }
+            currentAudioIndex = parseInt(index);
+            const audio = audioElements[currentAudioIndex];
+            audio.load();
+            audio.play().catch(error => {
+                console.error('Playback failed:', error);
+                document.getElementById('playing-title').textContent = "Error playing audio. Serve files via a web server.";
+            });
+            document.getElementById('playing-title').textContent = `Playing: ${audioFiles[language][currentAudioIndex].title}`;
+            currentTrack = audio.textTracks[0];
+            if (currentTrack) {
+                currentTrack.mode = 'showing';
+            }
+        }
+
+        function togglePlay() {
+            if (currentAudioIndex === null) return;
+            const audio = audioElements[currentAudioIndex];
+            if (audio.paused) {
+                audio.play().catch(error => {
+                    console.error('Playback failed:', error);
+                    document.getElementById('playing-title').textContent = "Error playing audio. Serve files via a web server.";
+                });
+            } else {
+                audio.pause();
+            }
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            seconds = Math.floor(seconds % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function updateSubtitles(audio) {
+            const subtitleContainer = document.getElementById('subtitle-container');
+            if (!currentTrack) {
+                subtitleContainer.innerHTML = '';
+                return;
+            }
+            const cues = currentTrack.activeCues;
+            if (cues && cues.length > 0) {
+                subtitleContainer.innerHTML = `<p>${cues[0].text}</p>`;
+            } else {
+                subtitleContainer.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>

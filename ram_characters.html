@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramayana Characters - Dharmayatra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian epic/ram_photos/unnamed.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+    body::before {
+      content: 'ॐ';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 300px;
+      color: rgba(255, 153, 51, 0.3);
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+      opacity: 0.05;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #FF9933;
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: fall 10s linear infinite;
+    }
+
+    .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+    .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+    }
+
+    .navbar {
+      background: linear-gradient(to bottom, #8B4513, #A0522D);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      border-bottom: 3px solid #FFD700;
+    }
+
+    .navbar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .navbar .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      color: #FFD700;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: rgba(210, 180, 140, 0.7);
+      transition: all 0.3s ease;
+      font-family: 'Merriweather', serif;
+      border: 1px solid #FF4500;
+    }
+
+    .nav-links a:hover {
+      background: #FFD700;
+      color: #3c2f2f;
+      transform: translateY(-3px);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 40px;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.8);
+      background-blend-mode: soft-light;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      border: 2px solid #FFD700;
+      position: relative;
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 5px solid transparent;
+      border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+      z-index: -1;
+    }
+
+    h1 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 48px;
+      color: #2F4F4F;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid #FF4500;
+      padding-bottom: 10px;
+      position: relative;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: url('https://source.unsplash.com/200x200/?paisley,indian') center/cover, rgba(210, 180, 140, 0.8);
+      background-blend-mode: soft-light;
+      border: 2px solid #FFD700;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 10;
+    }
+
+    .character-grid::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 5px solid transparent;
+      border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+      z-index: -1;
+    }
+
+    .flip-card {
+      perspective: 2000px;
+      min-height: 520px;
+      height: auto;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 1s ease-in-out;
+      transform-style: preserve-3d;
+      transform-origin: center;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.8);
+      background-blend-mode: soft-light;
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
+      will-change: transform;
+    }
+
+    .flip-card-front {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      padding: 80px 20px 20px 20px;
+      text-align: justify;
+      overflow-y: auto;
+      opacity: 1;
+      scrollbar-width: thin;
+      scrollbar-color: #FFD700 rgba(210, 180, 140, 0.8);
+      scroll-padding-top: 80px;
+    }
+
+    .flip-card:hover .flip-card-back {
+      z-index: 1;
+    }
+
+    .flip-card-back::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .flip-card-back::-webkit-scrollbar-track {
+      background: rgba(210, 180, 140, 0.8);
+    }
+
+    .flip-card-back::-webkit-scrollbar-thumb {
+      background: #FFD700;
+      border-radius: 4px;
+    }
+
+    .flip-card-front::before, .flip-card-back::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 3px solid transparent;
+      border-image: url('https://source.unsplash.com/50x50/?mandala,indian') 20 round;
+      z-index: -1;
+    }
+
+    .flip-card-front h2 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 24px;
+      color: #2F4F4F;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-front img {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      border: 2px solid #FFD700;
+    }
+
+    .flip-card-back h3 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 20px;
+      color: #2F4F4F;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-back h3:first-child {
+      margin-top: 45px;
+    }
+
+    .flip-card-back p {
+      font-family: 'Merriweather', serif;
+      font-size: 14px;
+      color: #3c2f2f;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .flip-card-back ul {
+      font-family: 'Merriweather', serif;
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 14px;
+      color: #3c2f2f;
+      margin-bottom: 10px;
+    }
+
+    .flip-card-back ul li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: linear-gradient(to top, #8B4513, #A0522D);
+      color: #FFD700;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      font-size: 18px;
+      border-top: 3px solid #FFD700;
+      position: relative;
+    }
+
+    footer p {
+      background: rgba(210, 180, 140, 0.8);
+      border-radius: 10px;
+      padding: 5px 10px;
+      display: inline-block;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .character-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 20px;
+      }
+
+      .flip-card {
+        min-height: 460px;
+        height: auto;
+      }
+
+      .flip-card-front h2 {
+        font-size: 20px;
+      }
+
+      .flip-card-front img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .flip-card-back {
+        padding: 70px 15px 15px 15px;
+        scroll-padding-top: 70px;
+      }
+
+      .flip-card-back h3 {
+        font-size: 18px;
+      }
+
+      .flip-card-back h3:first-child {
+        margin-top: 40px;
+      }
+
+      .flip-card-back p, .flip-card-back ul {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Dharmayatra</a>
+      <ul class="nav-links">
+        <li><a href="ramayana.html">Ramayana</a></li>
+        <li><a href="mahabharata.html">Mahabharata</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="content">
+    <h1>Ramayana Characters</h1>
+    <div class="character-grid">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Rama</h2>
+            <img src="ram_photos/portraits/ram.jpg" width="150" height="150" alt="Rama Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Prince of Ayodhya; Seventh Avatar of Vishnu</p>
+            <h3>Family</h3>
+            <p>Son of Dasharatha and Kausalya; husband of Sita</p>
+            <h3>Notable Deeds</h3>
+            <p>Defeated Ravana; upheld dharma; ruled Ayodhya justly.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Born to Dasharatha and Kausalya.</li>
+              <li>Circa 7075 BCE: Exiled for 14 years.</li>
+              <li>Circa 7061 BCE: Killed Ravana and rescued Sita.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Sita</h2>
+            <img src="ram_photos/portraits/sita.jpg" width="150" height="150" alt="Sita Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Wife of Rama; Incarnation of Goddess Lakshmi</p>
+            <h3>Family</h3>
+            <p>Daughter of Janaka; wife of Rama</p>
+            <h3>Notable Deeds</h3>
+            <p>Endured captivity by Ravana; proved purity through fire ordeal.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Found by Janaka in a furrow.</li>
+              <li>Circa 7075 BCE: Exiled with Rama.</li>
+              <li>Circa 7061 BCE: Rescued by Rama from Ravana.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Lakshmana</h2>
+            <img src="ram_photos/portraits/lakshmana.jpg" width="150" height="150" alt="Lakshmana Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Rama’s Loyal Brother; Incarnation of Shesha</p>
+            <h3>Family</h3>
+            <p>Son of Dasharatha and Sumitra; husband of Urmila</p>
+            <h3>Notable Deeds</h3>
+            <p>Accompanied Rama in exile; fought in Lanka war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Born to Dasharatha and Sumitra.</li>
+              <li>Circa 7075 BCE: Followed Rama into exile.</li>
+              <li>Circa 7061 BCE: Fought alongside Rama against Ravana.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Hanuman</h2>
+            <img src="ram_photos/portraits/hanuman.png" width="150" height="150" alt="Hanuman Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Devotee of Rama; Monkey God; Son of Vayu</p>
+            <h3>Family</h3>
+            <p>Son of Vayu and Anjana</p>
+            <h3>Notable Deeds</h3>
+            <p>Found Sita in Lanka; burned Lanka; carried mountain for herbs.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Met Rama and became his devotee.</li>
+              <li>Circa 7061 BCE: Discovered Sita in Ashoka Vatika.</li>
+              <li>Circa 7061 BCE: Burned Lanka with his tail.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Ravana</h2>
+            <img src="ram_photos/portraits/ravana.jpg" width="150" height="150" alt="Ravana Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Demon King of Lanka; Main Antagonist</p>
+            <h3>Family</h3>
+            <p>Son of Vishrava and Kaikasi; brother of Kumbhakarna</p>
+            <h3>Notable Deeds</h3>
+            <p>Abducted Sita; defeated by Rama.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Became king of Lanka.</li>
+              <li>Circa 7062 BCE: Abducted Sita to Lanka.</li>
+              <li>Circa 7061 BCE: Killed by Rama in battle.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Dasharatha</h2>
+            <img src="ram_photos/portraits/dashratha.jpg" width="150" height="150" alt="Dasharatha Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>King of Ayodhya; Rama’s Father</p>
+            <h3>Family</h3>
+            <p>Father of Rama, Lakshmana, Bharata, Shatrughna</p>
+            <h3>Notable Deeds</h3>
+            <p>Exiled Rama due to Kaikeyi’s boons; died of grief.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Fathered four sons through yagna.</li>
+              <li>Circa 7075 BCE: Granted Kaikeyi’s boons, exiling Rama.</li>
+              <li>Circa 7075 BCE: Died after Rama’s departure.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Kaikeyi</h2>
+            <img src="ram_photos/portraits/kaikeyi.jpg" width="150" height="150" alt="Kaikeyi Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Queen of Ayodhya; Bharata’s Mother</p>
+            <h3>Family</h3>
+            <p>Wife of Dasharatha; mother of Bharata</p>
+            <h3>Notable Deeds</h3>
+            <p>Demanded Rama’s exile and Bharata’s coronation.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Married Dasharatha.</li>
+              <li>Circa 7075 BCE: Used boons to exile Rama.</li>
+              <li>Post-7075 BCE: Regretted her actions after Dasharatha’s death.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Bharata</h2>
+            <img src="ram_photos/portraits/bharata.jpg" width="150" height="150" alt="Bharata Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Rama’s Brother; Regent of Ayodhya</p>
+            <h3>Family</h3>
+            <p>Son of Dasharatha and Kaikeyi</p>
+            <h3>Notable Deeds</h3>
+            <p>Refused to take throne; ruled as regent for Rama.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Born to Dasharatha and Kaikeyi.</li>
+              <li>Circa 7075 BCE: Returned to find Rama exiled.</li>
+              <li>Circa 7061 BCE: Welcomed Rama back to Ayodhya.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Shatrughna</h2>
+            <img src="ram_photos/portraits/shatrughna.jpg" width="150" height="150" alt="Shatrughna Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Rama’s Brother; Lakshmana’s Twin</p>
+            <h3>Family</h3>
+            <p>Son of Dasharatha and Sumitra</p>
+            <h3>Notable Deeds</h3>
+            <p>Supported Bharata; killed Lavanasura.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Born to Dasharatha and Sumitra.</li>
+              <li>Circa 7075 BCE: Stayed with Bharata in Ayodhya.</li>
+              <li>Post-7061 BCE: Defeated Lavanasura.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Vishwamitra</h2>
+            <img src="ram_photos/portraits/vishwamitra.jpg" width="150" height="150" alt="Vishwamitra Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Sage; Mentor of Rama</p>
+            <h3>Family</h3>
+            <p>Former king turned Brahmarishi</p>
+            <h3>Notable Deeds</h3>
+            <p>Took Rama to slay demons; taught divine weapons.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7076 BCE: Took Rama and Lakshmana to protect his yagna.</li>
+              <li>Circa 7076 BCE: Guided Rama to slay Tataka.</li>
+              <li>Circa 7075 BCE: Led Rama to Sita’s swayamvara.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Valmiki</h2>
+            <img src="ram_photos/portraits/valmiki.jpg" width="150" height="150" alt="Valmiki Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Sage; Author of the Ramayana</p>
+            <h3>Family</h3>
+            <p>Former bandit turned sage</p>
+            <h3>Notable Deeds</h3>
+            <p>Composed the Ramayana; sheltered Sita during exile.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Transformed into a sage by Narada.</li>
+              <li>Circa 7061 BCE: Sheltered Sita in his ashram.</li>
+              <li>Post-7061 BCE: Taught Ramayana to Lava and Kusha.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Sugriva</h2>
+            <img src="ram_photos/portraits/sugriva.jpg" width="150" height="150" alt="Sugriva Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Exiled King of Kishkindha; Ally of Rama</p>
+            <h3>Family</h3>
+            <p>Brother of Vali</p>
+            <h3>Notable Deeds</h3>
+            <p>Formed alliance with Rama; led Vanara army in Lanka war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Exiled by Vali.</li>
+              <li>Circa 7062 BCE: Allied with Rama; regained Kishkindha.</li>
+              <li>Circa 7061 BCE: Led Vanaras in Lanka war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Vali</h2>
+            <img src="ram_photos/portraits/bali.jpg" width="150" height="150" alt="Vali Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Vanara King of Kishkindha</p>
+            <h3>Family</h3>
+            <p>Brother of Sugriva; father of Angada</p>
+            <h3>Notable Deeds</h3>
+            <p>Exiled Sugriva; killed by Rama.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Exiled Sugriva after misunderstanding.</li>
+              <li>Circa 7062 BCE: Fought Sugriva in a duel.</li>
+              <li>Circa 7062 BCE: Killed by Rama’s arrow.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Angada</h2>
+            <img src="ram_photos/portraits/angada.jpg" width="150" height="150" alt="Angada Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Son of Vali; Prince of Kishkindha</p>
+            <h3>Family</h3>
+            <p>Son of Vali</p>
+            <h3>Notable Deeds</h3>
+            <p>Led search for Sita; fought in Lanka war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Born to Vali.</li>
+              <li>Circa 7061 BCE: Sent as envoy to Ravana.</li>
+              <li>Circa 7061 BCE: Fought in Lanka war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Jambavan</h2>
+            <img src="ram_photos/portraits/jambavan.jpeg" width="150" height="150" alt="Jambavan Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Wise Bear King; Ally of Rama</p>
+            <h3>Family</h3>
+            <p>Created by Brahma</p>
+            <h3>Notable Deeds</h3>
+            <p>Advised Sugriva; fought in Lanka war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Allied with Rama and Sugriva.</li>
+              <li>Circa 7061 BCE: Guided Vanaras in search for Sita.</li>
+              <li>Circa 7061 BCE: Fought in Lanka war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Nala</h2>
+            <img src="ram_photos/portraits/nala.jpeg" width="150" height="150" alt="Nala Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Vanara; Bridge Builder</p>
+            <h3>Family</h3>
+            <p>Vanara engineer</p>
+            <h3>Notable Deeds</h3>
+            <p>Built the Rama Setu bridge to Lanka.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7061 BCE: Constructed Rama Setu.</li>
+              <li>Circa 7061 BCE: Aided Vanara army in crossing to Lanka.</li>
+              <li>Circa 7061 BCE: Fought in Lanka war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Neela</h2>
+            <img src="ram_photos/portraits/neel.jpeg" width="150" height="150" alt="Neela Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Chief of Vanaras</p>
+            <h3>Family</h3>
+            <p>Vanara warrior</p>
+            <h3>Notable Deeds</h3>
+            <p>Led Vanara forces in Lanka expedition.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7061 BCE: Led search for Sita.</li>
+              <li>Circa 7061 BCE: Commanded Vanara troops in Lanka.</li>
+              <li>Circa 7061 BCE: Fought alongside Rama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Kumbhakarna</h2>
+            <img src="ram_photos/portraits/kumbhakarana.jpeg" width="150" height="150" alt="Kumbhakarna Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Ravana’s Giant Brother</p>
+            <h3>Family</h3>
+            <p>Son of Vishrava and Kaikasi</p>
+            <h3>Notable Deeds</h3>
+            <p>Slept for six months; fought for Ravana; killed in battle.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Cursed to sleep for six months.</li>
+              <li>Circa 7061 BCE: Awakened to fight in Lanka war.</li>
+              <li>Circa 7061 BCE: Killed by Rama and Lakshmana.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Indrajit</h2>
+            <img src="ram_photos/portraits/indrajit.jpg" width="150" height="150" alt="Indrajit Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Ravana’s Son; Powerful Warrior</p>
+            <h3>Family</h3>
+            <p>Son of Ravana and Mandodari</p>
+            <h3>Notable Deeds</h3>
+            <p>Used magical weapons; defeated by Lakshmana.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7080 BCE: Born to Ravana and Mandodari.</li>
+              <li>Circa 7061 BCE: Captured Rama and Lakshmana with Nagastra.</li>
+              <li>Circa 7061 BCE: Killed by Lakshmana in battle.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Vibhishana</h2>
+            <img src="ram_photos/portraits/vibhishana.jpeg" width="150" height="150" alt="Vibhishana Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Ravana’s Righteous Brother; Ally of Rama</p>
+            <h3>Family</h3>
+            <p>Son of Vishrava and Kaikasi</p>
+            <h3>Notable Deeds</h3>
+            <p>Joined Rama; crowned king of Lanka after Ravana’s death.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7061 BCE: Defected to Rama’s side.</li>
+              <li>Circa 7061 BCE: Provided strategic advice against Ravana.</li>
+              <li>Post-7061 BCE: Became king of Lanka.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Surpanakha</h2>
+            <img src="ram_photos/portraits/surpanakha.jpg" width="150" height="150" alt="Surpanakha Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Ravana’s Sister; Demoness</p>
+            <h3>Family</h3>
+            <p>Sister of Ravana, Kumbhakarna, Vibhishana</p>
+            <h3>Notable Deeds</h3>
+            <p>Her insult by Lakshmana led to Sita’s abduction.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7062 BCE: Attempted to seduce Rama and Lakshmana.</li>
+              <li>Circa 7062 BCE: Mutilated by Lakshmana.</li>
+              <li>Circa 7062 BCE: Instigated Ravana to abduct Sita.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Maricha</h2>
+            <img src="ram_photos/portraits/maricha.jpg" width="150" height="150" alt="Maricha Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Demon; Ally of Ravana</p>
+            <h3>Family</h3>
+            <p>Son of Tataka</p>
+            <h3>Notable Deeds</h3>
+            <p>Disguised as a golden deer to lure Rama; killed by Rama.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7076 BCE: Attacked Vishwamitra’s yagna with Subahu.</li>
+              <li>Circa 7062 BCE: Transformed into a golden deer.</li>
+              <li>Circa 7062 BCE: Killed by Rama’s arrow.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Ahalya</h2>
+            <img src="ram_photos/portraits/ahalya.jpeg" width="150" height="150" alt="Ahalya Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Sage Gautama’s Wife</p>
+            <h3>Family</h3>
+            <p>Wife of Gautama Rishi</p>
+            <h3>Notable Deeds</h3>
+            <p>Turned to stone; liberated by Rama.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Cursed by Gautama for infidelity.</li>
+              <li>Circa 7075 BCE: Liberated by Rama’s touch.</li>
+              <li>Post-7075 BCE: Reunited with Gautama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Shabari</h2>
+            <img src="ram_photos/portraits/shabri.jpg" width="150" height="150" alt="Shabari Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Devoted Old Woman</p>
+            <h3>Family</h3>
+            <p>Disciple of Sage Matanga</p>
+            <h3>Notable Deeds</h3>
+            <p>Offered Rama tasted berries; attained salvation.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Awaited Rama at Matanga’s ashram.</li>
+              <li>Circa 7075 BCE: Met Rama and offered berries.</li>
+              <li>Circa 7075 BCE: Attained moksha after meeting Rama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Jatayu</h2>
+            <img src="ram_photos/portraits/jatayu.png" width="150" height="150" alt="Jatayu Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Vulture King</p>
+            <h3>Family</h3>
+            <p>Brother of Sampati</p>
+            <h3>Notable Deeds</h3>
+            <p>Tried to rescue Sita from Ravana; mortally wounded.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7062 BCE: Attempted to stop Ravana’s abduction of Sita.</li>
+              <li>Circa 7062 BCE: Wounded by Ravana; informed Rama.</li>
+              <li>Circa 7062 BCE: Died after meeting Rama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Sampati</h2>
+            <img src="ram_photos/portraits/sampati.jpeg" width="150" height="150" alt="Sampati Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Vulture; Jatayu’s Brother</p>
+            <h3>Family</h3>
+            <p>Brother of Jatayu</p>
+            <h3>Notable Deeds</h3>
+            <p>Helped Vanaras locate Sita in Lanka.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7061 BCE: Lost wings saving Jatayu.</li>
+              <li>Circa 7061 BCE: Informed Vanaras of Sita’s location.</li>
+              <li>Circa 7061 BCE: Regained wings after aiding Rama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Mandodari</h2>
+            <img src="ram_photos/portraits/mandodari.jpg" width="150" height="150" alt="Mandodari Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Ravana’s Wife</p>
+            <h3>Family</h3>
+            <p>Wife of Ravana; mother of Indrajit</p>
+            <h3>Notable Deeds</h3>
+            <p>Advised Ravana to return Sita; known for wisdom.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Married Ravana.</li>
+              <li>Circa 7062 BCE: Urged Ravana to release Sita.</li>
+              <li>Post-7061 BCE: Mourned Ravana’s death.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Trijata</h2>
+            <img src="ram_photos/portraits/trijata.png" width="150" height="150" alt="Trijata Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Demoness; Sita’s Guardian</p>
+            <h3>Family</h3>
+            <p>Rakshasi under Ravana</p>
+            <h3>Notable Deeds</h3>
+            <p>Protected and comforted Sita in Ashoka Vatika.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7062 BCE: Assigned to guard Sita.</li>
+              <li>Circa 7061 BCE: Had a dream foretelling Ravana’s defeat.</li>
+              <li>Circa 7061 BCE: Supported Sita during captivity.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Kaushalya</h2>
+            <img src="ram_photos/portraits/kaushalya.jpeg" width="150" height="150" alt="Kaushalya Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Rama’s Mother; Senior Queen of Ayodhya</p>
+            <h3>Family</h3>
+            <p>Wife of Dasharatha; mother of Rama</p>
+            <h3>Notable Deeds</h3>
+            <p>Supported Rama during his exile.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Gave birth to Rama.</li>
+              <li>Circa 7075 BCE: Endured Rama’s exile.</li>
+              <li>Circa 7061 BCE: Welcomed Rama back to Ayodhya.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Sumitra</h2>
+            <img src="ram_photos/portraits/sumitra.jpg" width="150" height="150" alt="Sumitra Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Mother of Lakshmana and Shatrughna</p>
+            <h3>Family</h3>
+            <p>Wife of Dasharatha</p>
+            <h3>Notable Deeds</h3>
+            <p>Supported her sons’ loyalty to Rama.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Gave birth to Lakshmana and Shatrughna.</li>
+              <li>Circa 7075 BCE: Supported Lakshmana’s decision to follow Rama.</li>
+              <li>Circa 7061 BCE: Welcomed Rama and her sons back.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Janaka</h2>
+            <img src="ram_photos/portraits/janaka.jpg" width="150" height="150" alt="Janaka Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>King of Mithila; Sita’s Father</p>
+            <h3>Family</h3>
+            <p>Father of Sita and Urmila</p>
+            <h3>Notable Deeds</h3>
+            <p>Hosted Sita’s swayamvara; wise and just ruler.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7100 BCE: Found Sita in a furrow.</li>
+              <li>Circa 7075 BCE: Organized Sita’s swayamvara.</li>
+              <li>Circa 7075 BCE: Gave Sita in marriage to Rama.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Urmila</h2>
+            <img src="ram_photos/portraits/urmila.jpg" width="150" height="150" alt="Urmila Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Wife of Lakshmana; Sita’s Sister</p>
+            <h3>Family</h3>
+            <p>Daughter of Janaka; wife of Lakshmana</p>
+            <h3>Notable Deeds</h3>
+            <p>Remained in Ayodhya during Lakshmana’s exile.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 7075 BCE: Married Lakshmana.</li>
+              <li>Circa 7075 BCE: Stayed in Ayodhya during Rama’s exile.</li>
+              <li>Circa 7061 BCE: Reunited with Lakshmana after exile.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <footer>
+        <p>© 2025 Dharmayatra. <br> यतो धर्मस्ततो जयः। </p>
+    </footer>
+</body>
+</html>

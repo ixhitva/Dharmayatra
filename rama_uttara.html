@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramayana: Uttara Kanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian epic/ram_photos/unnamed.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #E6B800;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar-brand {
+            color: #E6B800;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(255, 245, 224, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            top: 100%;
+            right: 0;
+        }
+
+        .dropdown-content a {
+            color: #3c2f2f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin: 40px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 245, 224, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            text-align: center;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #3c2f2f;
+            margin-bottom: 20px;
+        }
+
+        .accordion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            position: relative;
+        }
+
+        .accordion-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            background: rgba(255, 245, 224, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #E6B800, #FFA500);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 16px;
+            color: #3c2f2f;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background: rgba(255, 245, 224, 0.95);
+        }
+
+        .accordion-content.active {
+            padding: 15px;
+        }
+
+        .accordion-content p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #FF4500;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .accordion-content .image-caption {
+            font-size: 14px;
+            color: #3c2f2f;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .accordion-content h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            margin: 20px 0 10px;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #E6B800;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #E6B800;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            border: 2px solid #E6B800;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            color: #E6B800;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(255, 69, 0, 0.7);
+            border-radius: 50%;
+            padding: 5px 10px;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container,
+            .hero-section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .accordion-header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .accordion-content p {
+                font-size: 14px;
+            }
+
+            .accordion-content img {
+                height: 150px;
+            }
+
+            .accordion-content .image-caption {
+                font-size: 12px;
+            }
+
+            .nav-button, .dropdown-button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .dropdown-content {
+                min-width: 160px;
+            }
+
+            .dropdown-content a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            .modal-close {
+                top: -30px;
+                right: -30px;
+                font-size: 24px;
+                padding: 3px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Debugging Tip: Ensure this HTML file is saved in 'C:\Users\iasis\Desktop\indian epic\' and images are in 'C:\Users\iasis\Desktop\indian epic\ram_photos\stories img\'. 
+        Verify file names and extensions match exactly as listed in the image folder (case-sensitive, including spaces, e.g., 'rama coronation.png', 'sita exile.png'). 
+        Run a local server (e.g., 'python -m http.server' in 'indian epic' folder) and access via 'http://localhost:8000/rama_uttara.html' to avoid file:// protocol issues.
+        If images are not displaying, check the browser console (F12, Console tab) for errors like '404 Not Found' (indicating missing files) or 'Blocked loading mixed active content'. 
+        Confirm the images exist in 'ram_photos/stories img/' with exact names: 'rama coronation.png', 'sita exile.png', 'lava kusha birth.png', 'lava kusha singing.png', 'sita departure.png', 'rama departure.png', 'ayodhaya celebration.png'. 
+        Check for .png vs .jpg mismatches and ensure the folder name is 'stories img' (not 'Stories Img'). Clear browser cache if issues persist.
+    -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <div class="nav-buttons">
+                <div class="dropdown">
+                    <div class="dropdown-button">Kandas ▼</div>
+                    <div class="dropdown-content">
+                        <a href="rama_bala.html">Bala Kanda</a>
+                        <a href="rama_ayodhya.html">Ayodhya Kanda</a>
+                        <a href="rama_aranya.html">Aranya Kanda</a>
+                        <a href="rama_kishkindha.html">Kishkindha Kanda</a>
+                        <a href="rama_sundara.html">Sundara Kanda</a>
+                        <a href="rama_yuddha.html">Yuddha Kanda</a>
+                        <a href="rama_uttara.html">Uttara Kanda</a>
+                    </div>
+                </div>
+                <a href="ramayana.html" class="nav-button">Ramayana</a>
+                <a href="mahabharata.html" class="nav-button">Mahabharata</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Ramayana: Uttara Kanda</h1>
+        <p>The Uttara Kanda, the seventh and final book of Valmiki’s Ramayana, concludes the epic with Rama’s triumphant return to Ayodhya and his reign as a just king. This Kanda delves into the complexities of dharma, exploring the challenges of kingship, societal expectations, and personal sacrifice. It recounts the poignant events surrounding Sita’s exile, the birth of Lava and Kusha, and the epic’s bittersweet closure. Open the accordion below to explore these profound narratives, set against the backdrop of Ayodhya’s golden age, where duty and love intertwine.</p>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img id="modalImage" src="" alt="Full-size image">
+        </div>
+    </div>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">Rama’s Return and Reign</div>
+            <div class="accordion-content">
+                <p>After Ravana’s defeat, Rama, Sita, Lakshmana, and the vanara allies returned to Ayodhya in the Pushpaka Vimana, a celestial chariot. The city, radiant with joy, welcomed its rightful king after fourteen years of exile. Rama’s coronation was a grand affair, with sages, citizens, and celestial beings in attendance. Crowned alongside Sita, Rama ushered in an era of prosperity, known as Rama Rajya, where justice, dharma, and compassion governed the land. The vanaras, including Hanuman and Sugriva, were honored, and Vibhishana returned to rule Lanka justly.</p>
+                <p>Rama’s reign was marked by wisdom and fairness, as he resolved disputes and protected his people. However, whispers among the citizens questioned Sita’s purity after her captivity in Lanka, despite her Agni Pariksha. Bound by his duty as king to uphold societal trust, Rama faced a heart-wrenching decision. To preserve the kingdom’s harmony, he reluctantly sent Sita into exile, a choice that tore at his soul. Pregnant and alone, Sita found refuge in the hermitage of Sage Valmiki, where she gave birth to twin sons, Lava and Kusha, raised in the ways of dharma and valor.</p>
+                <p>Rama, unaware of his sons, continued to govern Ayodhya, his heart heavy with Sita’s absence. The Uttara Kanda reveals the complexities of kingship, where personal love is sacrificed for public duty, setting the stage for the poignant reunion to come.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/rama coronation.png">
+                    <img src="ram_photos/stories img/rama coronation.png" alt="Rama’s Coronation">
+                </a>
+                <p class="image-caption">Rama’s grand coronation in Ayodhya, marking the start of Rama Rajya.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/sita exile.png">
+                    <img src="ram_photos/stories img/sita exile.png" alt="Sita’s Exile">
+                </a>
+                <p class="image-caption">Sita, exiled by Rama, finding solace in Valmiki’s hermitage.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/lava kusha birth.png">
+                    <img src="ram_photos/stories img/lava kusha birth.png" alt="Birth of Lava and Kusha">
+                </a>
+                <p class="image-caption">Sita giving birth to Lava and Kusha in the forest hermitage.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">The Reunion and Conclusion</div>
+            <div class="accordion-content">
+                <p>Years later, Lava and Kusha, trained by Valmiki, became skilled warriors and poets, reciting the Ramayana as composed by the sage. During a grand Ashvamedha Yagna performed by Rama, the twins arrived in Ayodhya, unaware of their lineage, and sang the epic before the court. Their voices, echoing Rama’s own valor and sorrow, moved the king to tears. Recognizing their resemblance to Sita, Rama inquired about their origins. Valmiki revealed that Lava and Kusha were his sons, and Sita, summoned from exile, stood before Ayodhya once more.</p>
+                <p>To quell lingering doubts, Sita invoked Mother Earth to attest to her purity. The earth parted, and Sita, with serene dignity, descended into its embrace, reuniting with her divine mother. Rama, devastated yet bound by dharma, accepted her departure as a testament to her unblemished virtue. Lava and Kusha were embraced as Ayodhya’s heirs, their legacy continuing Rama’s lineage. The Kanda concludes with Rama’s later years, where, after a long and just reign, he ascended to his divine form as Vishnu, returning to Vaikuntha with Lakshmana and his devoted followers.</p>
+                <p>The Uttara Kanda, with its themes of sacrifice, duty, and divine fulfillment, offers a bittersweet closure to the Ramayana, reflecting on the eternal balance of dharma and the human heart.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/lava kusha singing.png">
+                    <img src="ram_photos/stories img/lava kusha singing.png" alt="Lava and Kusha Singing">
+                </a>
+                <p class="image-caption">Lava and Kusha reciting the Ramayana before Rama’s court.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/sita departure.png">
+                    <img src="ram_photos/stories img/sita departure.png" alt="Sita’s Departure">
+                </a>
+                <p class="image-caption">Sita returning to Mother Earth, affirming her purity.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/rama departure.png">
+                    <img src="ram_photos/stories img/rama departure.png" alt="Rama’s Ascension">
+                </a>
+                <p class="image-caption">Rama ascending to Vaikuntha, concluding his earthly journey.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> यतो धर्मस्ततो जयः। </p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (!isActive) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.image-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+                modalImg.src = link.getAttribute('data-img');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

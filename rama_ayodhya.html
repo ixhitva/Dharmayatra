@@ -1,0 +1,683 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramayana: Ayodhya Kanda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('file:///C:/Users/iasis/Desktop/indian epic/ram_photos/unnamed.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #E6B800;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #E6B800;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(255, 245, 224, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            top: 100%;
+            right: 0;
+        }
+
+        .dropdown-content a {
+            color: #3c2f2f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin: 40px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 245, 224, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            text-align: center;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #3c2f2f;
+            margin-bottom: 20px;
+        }
+
+        .accordion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            position: relative;
+        }
+
+        .accordion-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            background: rgba(255, 245, 224, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #E6B800, #FFA500);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 16px;
+            color: #3c2f2f;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background: rgba(255, 245, 224, 0.95);
+        }
+
+        .accordion-content.active {
+            padding: 15px;
+        }
+
+        .accordion-content p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #FF4500;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .accordion-content .image-caption {
+            font-size: 14px;
+            color: #3c2f2f;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .accordion-content h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 20px;
+            color: #2F4F4F;
+            margin: 20px 0 10px;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #E6B800;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #E6B800;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            border: 2px solid #E6B800;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            color: #E6B800;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(255, 69, 0, 0.7);
+            border-radius: 50%;
+            padding: 5px 10px;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container,
+            .hero-section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .accordion-header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .accordion-content p {
+                font-size: 14px;
+            }
+
+            .accordion-content img {
+                height: 150px;
+            }
+
+            .accordion-content .image-caption {
+                font-size: 12px;
+            }
+
+            .nav-button, .dropdown-button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .dropdown-content {
+                min-width: 160px;
+            }
+
+            .dropdown-content a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            .modal-close {
+                top: -30px;
+                right: -30px;
+                font-size: 24px;
+                padding: 3px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Debugging Tip: Ensure this HTML file is saved in 'C:\Users\iasis\Desktop\indian epic\' and images are in 'C:\Users\iasis\Desktop\indian epic\ram_photos\stories img\'. 
+        Verify file names and extensions (e.g., .jpg or .png) match exactly as listed. 
+        Run a local server (e.g., 'python -m http.server' in 'indian epic' folder) and access via 'http://localhost:8000/rama_ayodhya.html' to avoid file:// protocol issues.
+        If the accordion, image modal, dropdown, or images are not displaying correctly, check the browser console (F12, Console tab) for JavaScript or file path errors.
+    -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <div class="nav-buttons">
+                <div class="dropdown">
+                    <div class="dropdown-button">Kandas ▼</div>
+                    <div class="dropdown-content">
+                        <a href="rama_bala.html">Bala Kanda</a>
+                        <a href="rama_ayodhya.html">Ayodhya Kanda</a>
+                        <a href="rama_aranya.html">Aranya Kanda</a>
+                        <a href="rama_kishkindha.html">Kishkindha Kanda</a>
+                        <a href="rama_sundara.html">Sundara Kanda</a>
+                        <a href="rama_yuddha.html">Yuddha Kanda</a>
+                        <a href="rama_uttara.html">Uttara Kanda</a>
+                    </div>
+                </div>
+                <a href="ramayana.html" class="nav-button">Ramayana</a>
+                <a href="mahabharata.html" class="nav-button">Mahabharata</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Ramayana: Ayodhya Kanda</h1>
+        <p>The Ayodhya Kanda, the second book of Valmiki’s Ramayana, unfolds in the resplendent city of Ayodhya, where the seeds of sacrifice and duty are sown. This Kanda narrates the heart-wrenching events leading to Rama’s exile, a testament to his unwavering commitment to dharma. As King Dasharatha prepares to crown Rama as his successor, a web of promises and palace intrigue alters the course of destiny, leading to a fourteen-year exile that tests the bonds of family and honor. Through tales of loyalty, betrayal, and sacrifice, the Ayodhya Kanda sets the stage for Rama’s epic journey. Open the accordion below to explore these poignant stories, rich with emotional depth and moral resolve.</p>
+    </div>
+
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img id="modalImage" src="" alt="Full-size image">
+        </div>
+    </div>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">Rama’s Preparation for the Coronation</div>
+            <div class="accordion-content">
+                <p>Ayodhya, the jewel of Kosala, buzzed with anticipation as King Dasharatha, now aged and weary, declared his intention to crown Rama, his eldest son, as the heir to the Ikshvaku throne. The city, with its golden domes and bustling markets, prepared for a grand coronation, its streets adorned with vibrant banners and fragrant garlands. The citizens, from merchants to priests, rejoiced at the prospect of Rama’s rule, for his wisdom, compassion, and valor were already legendary. Dasharatha, guided by his council and the sage Vasishta, summoned Rama to the royal court, where the air was thick with the scent of sandalwood and the chants of Vedic hymns. The king, his eyes brimming with pride, announced that Rama would ascend the throne, ensuring the continuity of dharma in Kosala.</p>
+                <p>Rama, ever humble, accepted the honor with grace, his heart aligned with his father’s will. The palace became a hive of activity as preparations began: golden urns were filled with sacred water from the Sarayu, and priests chanted mantras to invoke divine blessings. Sita, radiant and devoted, supported Rama, her presence a quiet strength as the city prepared to celebrate their beloved prince. The royal astrologers chose an auspicious day, and invitations were sent to neighboring kingdoms, their rulers eager to witness the crowning of Vishnu’s incarnation. The streets of Ayodhya echoed with music and dance, as the people envisioned a golden era under Rama’s reign.</p>
+                <p>Yet, beneath the surface of this joyous anticipation, shadows of discord began to stir. The citizens, unaware of the impending storm, continued their preparations, their hearts filled with hope. Rama, sensing the weight of his future responsibilities, spent hours in meditation, seeking strength from the divine. The coronation, a symbol of dharma’s triumph, was poised to unite Ayodhya in celebration, but fate had other plans, woven in the intricate threads of promises made long ago.</p>
+                <p>The Ayodhya Kanda, with its depiction of hope and impending tragedy, captures the essence of Rama’s character—his unwavering commitment to duty, even in the face of unforeseen challenges. The preparations for the coronation set the stage for a narrative that would test the limits of sacrifice and loyalty.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/coronation preparations.png">
+                    <img src="ram_photos/stories img/coronation preparations.png" alt="Coronation Preparations">
+                </a>
+                <p class="image-caption">Ayodhya adorned for Rama’s coronation, with vibrant banners and sacred rituals.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/rama in court.png">
+                    <img src="ram_photos/stories img/rama in court.png" alt="Rama in Court">
+                </a>
+                <p class="image-caption">Rama receiving Dasharatha’s decree to ascend the throne in Ayodhya’s royal court.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/sita support.png">
+                    <img src="ram_photos/stories img/sita support.png" alt="Sita’s Support">
+                </a>
+                <p class="image-caption">Sita standing by Rama, her devotion a pillar of strength during the preparations.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/ayodhaya celebration.png">
+                    <img src="ram_photos/stories img/ayodhaya celebration.png" alt="Ayodhya’s Celebration">
+                </a>
+                <p class="image-caption">The citizens of Ayodhya celebrating, envisioning a golden era under Rama’s rule.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">The Conspiracy Against Rama</div>
+            <div class="accordion-content">
+                <p>As Ayodhya prepared for Rama’s coronation, a shadow fell over the palace in the form of Manthara, a hunchbacked maidservant to Queen Kaikeyi. Driven by envy and misguided loyalty, Manthara poisoned Kaikeyi’s mind, reminding her of two boons Dasharatha had granted her years ago for her valor in battle. Manthara, with cunning words, convinced Kaikeyi that Rama’s ascension would diminish her son Bharata’s status, relegating him to obscurity. Kaikeyi, initially filled with love for Rama, succumbed to Manthara’s manipulation, her heart torn between maternal ambition and her affection for her stepson.</p>
+                <p>In a moment of fateful resolve, Kaikeyi entered the chamber of wrath, a secluded room where she lay disheveled, her royal attire cast aside to signal her distress. When Dasharatha, alarmed by her state, sought to comfort her, Kaikeyi invoked the two boons. Her demands were staggering: first, that Bharata be crowned king, and second, that Rama be exiled for fourteen years to live as an ascetic in the forest. Dasharatha, bound by his word and the sacred code of honor, was struck with grief, his heart shattered by the betrayal of his beloved queen. The palace, once vibrant with celebration, grew silent, its joy replaced by an ominous tension.</p>
+                <p>Rama, summoned to his father’s chambers, learned of the decree with a calm that belied the storm within. Upholding dharma, he accepted the exile without hesitation, vowing to honor his father’s promise. Sita, her heart resolute, insisted on accompanying him, declaring that her place was by his side, no matter the hardship. Lakshmana, ever loyal, refused to be parted from his brother, his bow ready to protect them in the wilds. The news of Rama’s exile spread through Ayodhya, plunging the city into mourning. The citizens, their hearts heavy, gathered at the palace gates, pleading for Rama to stay, but his resolve was unshaken, a testament to his commitment to truth and duty.</p>
+                <p>The conspiracy, born of manipulation and misplaced ambition, set in motion a chain of events that would test the strength of love and loyalty. The Ayodhya Kanda, with its portrayal of sacrifice and betrayal, underscores the complexity of human emotions and the power of dharma in guiding one’s path through adversity.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/manthara manipulation.png">
+                    <img src="ram_photos/stories img/manthara manipulation.png" alt="Manthara’s Manipulation">
+                </a>
+                <p class="image-caption">Manthara whispering poison into Kaikeyi’s ear, igniting the conspiracy.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/kaikeyi boons.png">
+                    <img src="ram_photos/stories img/kaikeyi boons.png" alt="Kaikeyi’s Boons">
+                </a>
+                <p class="image-caption">Kaikeyi demanding her boons from Dasharatha, sealing Rama’s fate.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/rama acceptance.png">
+                    <img src="ram_photos/stories img/rama acceptance.png" alt="Rama’s Acceptance">
+                </a>
+                <p class="image-caption">Rama accepting exile with grace, upholding his father’s honor.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/ayodhaya mourning.png">
+                    <img src="ram_photos/stories img/ayodhaya mourning.png" alt="Ayodhya’s Mourning">
+                </a>
+                <p class="image-caption">The citizens of Ayodhya in grief, pleading for Rama to remain.</p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Rama’s Exile for Fourteen Years</div>
+            <div class="accordion-content">
+                <p>With his fate sealed by Kaikeyi’s demands, Rama prepared to depart Ayodhya, his heart steady despite the sorrow that engulfed the city. Clad in simple bark garments, he bid farewell to his parents, his calm demeanor a beacon of strength. Sita, adorned in ascetic robes, stood by his side, her resolve unshaken, while Lakshmana, his bow slung over his shoulder, vowed to protect them both. The trio left the palace under the cover of dawn, their departure witnessed by tearful citizens who lined the streets, their prayers rising like incense into the sky. Dasharatha, overcome with grief, collapsed, his heart unable to bear the loss of his beloved son.</p>
+                <p>The journey into exile led them to the banks of the Sarayu, where they crossed into the wilderness beyond. The forests, dense and untamed, welcomed them with the songs of birds and the rustle of leaves. At the hermitage of Sage Bharadwaja, they received blessings and guidance, their path leading to the Chitrakoot hills, a serene haven where they built a modest hut. Life in exile was austere, yet Rama, Sita, and Lakshmana found solace in their bond, their days filled with meditation, foraging, and the study of sacred texts. The beauty of Chitrakoot, with its cascading waterfalls and vibrant flora, mirrored the purity of their hearts, even as they faced the uncertainties of the wild.</p>
+                <p>Meanwhile, in Ayodhya, Bharata, summoned from his maternal grandfather’s kingdom, learned of the conspiracy and his mother’s role in Rama’s exile. Horrified, he renounced the throne, declaring Rama the rightful king. Accompanied by Shatrughna, Bharata journeyed to Chitrakoot, where he pleaded with Rama to return. Rama, bound by dharma and his father’s word, refused, urging Bharata to rule as regent. In a poignant gesture, Bharata took Rama’s sandals, vowing to place them on the throne and govern in his name until his return. The sandals, a symbol of Rama’s presence, became a beacon of hope for Ayodhya, a reminder of the king who would one day return.</p>
+                <p>The exile, though born of tragedy, revealed the depth of Rama’s character and the strength of his companions. The Ayodhya Kanda, with its narrative of sacrifice and loyalty, sets the stage for the trials that await, as Rama’s journey into the forest becomes a crucible for dharma’s triumph.</p>
+                <h3>Visual Insights</h3>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/rama departure.png">
+                    <img src="ram_photos/stories img/rama departure.png" alt="Rama’s Departure">
+                </a>
+                <p class="image-caption">Rama, Sita, and Lakshmana leaving Ayodhya, clad in ascetic robes.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/chitrakoot hut.png">
+                    <img src="ram_photos/stories img/chitrakoot hut.png" alt="Chitrakoot Hut">
+                </a>
+                <p class="image-caption">Rama, Sita, and Lakshmana in their humble hut in Chitrakoot.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/bharata pleading.png">
+                    <img src="ram_photos/stories img/bharata pleading.png" alt="Bharata’s Plea">
+                </a>
+                <p class="image-caption">Bharata pleading with Rama to return to Ayodhya, honoring dharma.</p>
+                <a href="#" class="image-link" data-img="ram_photos/stories img/bharata with rama sandals.png">
+                    <img src="ram_photos/stories img/bharata with rama sandals.png" alt="Bharata with Rama’s Sandals">
+                </a>
+                <p class="image-caption">Bharata carrying Rama’s sandals, a symbol of his rightful rule.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (!isActive) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.modal-close');
+
+        document.querySelectorAll('.image-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+                modalImg.src = link.getAttribute('data-img');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

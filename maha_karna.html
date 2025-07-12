@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata: Karna in the Mahabharata: A Learning Story of a Hero's Fall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('photos/mahabharat main page.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.3);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #E6B800;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #E6B800;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            color: #E6B800;
+            font-size: 18px;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(210, 180, 140, 0.7);
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-button:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: fixed;
+            background: rgba(255, 245, 224, 0.95);
+            min-width: 250px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            z-index: 2000;
+            border-radius: 8px;
+            border: 1px solid #FF4500;
+        }
+
+        .dropdown-content a {
+            color: #3c2f2f;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #E6B800;
+            color: #3c2f2f;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .dropdown-content {
+                right: 10px;
+                left: auto;
+                top: 60px;
+                min-width: 200px;
+            }
+        }
+
+        h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 36px;
+            color: #2F4F4F;
+            margin: 40px 0 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 245, 224, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            text-align: center;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: #3c2f2f;
+            margin-bottom: 20px;
+        }
+
+        .accordion-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.9);
+            background-blend-mode: soft-light;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #E6B800;
+            position: relative;
+        }
+
+        .accordion-container::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+            border: 1px solid #FF4500;
+            border-radius: 8px;
+            background: rgba(255, 245, 224, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 15px;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 24px;
+            color: #2F4F4F;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #E6B800, #FFA500);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(to right, #FFA500, #FF4500);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 16px;
+            color: #3c2f2f;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header::after {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 15px;
+            background: rgba(255, 245, 224, 0.95);
+        }
+
+        .accordion-content.active {
+            padding: 15px;
+        }
+
+        .accordion-content p {
+            font-size: 16px;
+            color: #3c2f2f;
+            margin-bottom: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .accordion-content img {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 2px solid #FF4500;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .accordion-content .image-caption {
+            font-size: 14px;
+            color: #3c2f2f;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #E6B800;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            font-size: 16px;
+            border-top: 3px solid #E6B800;
+            position: relative;
+        }
+
+        footer p {
+            background: rgba(210, 180, 140, 0.9);
+            border-radius: 8px;
+            padding: 5px 10px;
+            display: inline-block;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container,
+            .hero-section {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .accordion-header {
+                font-size: 20px;
+                padding: 10px;
+            }
+
+            .accordion-content p {
+                font-size: 14px;
+            }
+
+            .accordion-content img {
+                height: 150px;
+            }
+
+            .accordion-content .image-caption {
+                font-size: 12px;
+            }
+
+            .nav-button, .dropdown-button {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .dropdown-content a {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Debugging Tip: Ensure this HTML file is saved in 'C:\Users\iasis\Desktop\indian epic\' and images are in 'C:\Users\iasis\Desktop\indian epic\photos\story\'. 
+        Verify file names and extensions (e.g., .jpg) match exactly as listed. 
+        Run a local server (e.g., 'python -m http.server' in the 'indian epic' folder) and access via 'http://localhost:8000/maha_karna.html' to avoid file:// protocol issues.
+        If the accordion or images are not displaying correctly, check the browser console (F12, Console tab) for JavaScript or file path errors.
+    -->
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <div class="nav-buttons">
+                <div class="dropdown">
+                    <div class="dropdown-button">Stories ▼</div>
+                    <div class="dropdown-content">
+                        <a href="maha_karna.html">Karna in the Mahabharata</a>
+                        <a href="maha_duryodhana_mistake.html">Duryodhana's Big Mistake</a>
+                        <a href="maha_no_black_white.html">No Black and White in Life</a>
+                        <a href="maha_treachery.html">Treachery at Kurukshetra</a>
+                        <a href="maha_five_arrows.html">Five Golden Arrows of Bhishma</a>
+                        <a href="maha_krishna_service.html">Krishna Serves His Devotees</a>
+                        <a href="maha_arjuna_chariot.html">Krishna's Divine Protection</a>
+                        <a href="maha_golden_mountains.html">Arjuna, Karna and the Mountains</a>
+                        <a href="maha_aurva.html">The Story of Aurva</a>
+                        <a href="maha_shvetaki.html">Shvetaki and Agni</a>
+                        <a href="maha_tapati.html">Tapatyopakhyana</a>
+                        <a href="maha_good_deeds.html">Fruits of Good Deeds</a>
+                        <a href="maha_bhangaswana.html">Story of Bhangaswana</a>
+                        <a href="maha_vishwamitra.html">Vishwamitra: Kshatriya to Bhramana</a>
+                    </div>
+                </div>
+                <a href="ramayana.html" class="nav-button">Ramayana</a>
+                <a href="mahabharata.html" class="nav-button">Mahabharata</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Mahabharata: Karna in the Mahabharata: A Learning Story of a Hero's Fall</h1>
+        <p>The Mahabharata, Vyasa’s timeless epic, weaves tales of valor, sacrifice, and the intricate dance of dharma. From the tragic heroism of Karna to the divine interventions of Krishna, each story offers profound insights into human nature and moral dilemmas. Explore the accordion below to uncover the gripping narrative of Karna’s life, a tale of a hero undone by his own choices, revealing the eternal struggle between righteousness and human flaws.</p>
+    </div>
+
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <div class="accordion-header">Karna in the Mahabharata: A Learning Story of a Hero's Fall</div>
+            <div class="accordion-content">
+                <p>Karna, one of the most complex characters in the Mahabharata, is often viewed not as a villain but as a tragic anti-hero—a “sweet mango gone bad.” He was a warrior of unmatched skill, known for his extraordinary generosity, unyielding integrity, and indomitable courage. Yet, his life was marred by inner turmoil, a relentless identity crisis, and a series of choices that led him down a path of self-destruction. Karna’s story is a poignant reminder of how potential can be squandered when one allows pain and societal labels to dictate their destiny.</p>
+                <p>Karna’s pain began with a haunting question that echoed through his early life: “Whose child am I?” Born to Kunti and the sun god Surya, Karna was abandoned at birth, set adrift in a wooden box on a river, a helpless infant cast away due to his mother’s fear of societal shame. Found and adopted by Athiratha, a humble charioteer, and his wife Radha, Karna grew up enveloped in their unconditional love. He often spoke of Radha with deep affection, describing her as the only person who loved him without judgment, her warmth a solace against the world’s harshness. Yet, the label of “suta-putra”—a child of a low-born caste—clung to him like a shadow, branding him inferior in a society obsessed with lineage.</p>
+                <p>Despite this stigma, Karna’s talent and determination propelled him to extraordinary heights. His archery skills, honed through relentless practice, rivaled those of the greatest warriors. At a martial exhibition in Hastinapura, he stunned the Kuru court by matching Arjuna’s feats, only to be humiliated by the taunts of the Pandavas and others who scorned his supposed low birth. It was Duryodhana, the eldest Kaurava, who saw Karna’s potential and crowned him king of Anga, granting him a throne and royal favor. This act forged an unbreakable bond of loyalty between them, with Karna pledging his life to Duryodhana’s cause. Yet, even as a king, Karna could never escape the inner turmoil of his origins. He allowed society’s labels to define his truth, unable to fully embrace his remarkable journey from a river-foundling to a monarch. Instead, he clung to the bitterness of rejection, letting it fester within him, poisoning his peace.</p>
+                <p>This bitterness became a corrosive force, eroding Karna’s noble character. His life was marked by moments of greatness—his generosity was legendary, as seen when he gave alms to anyone who asked, regardless of his own needs. Yet, his internal struggle twisted his actions, turning his virtues into tools of self-destruction. As Duryodhana’s staunchest ally and chief advisor, Karna’s loyalty stemmed not from blind agreement but from profound gratitude for the man who had given him dignity when others offered only scorn. Duryodhana valued Karna’s counsel above even Shakuni’s cunning, often turning to him in critical moments, asking, “What shall we do, Karna?”</p>
+                <p>Karna’s intelligence and moral compass could have steered Duryodhana toward peace, potentially altering the Mahabharata’s tragic course. But his obsession with proving his worth—to himself, to society, and to those who had rejected him—overrode his better judgment. He knew Duryodhana’s actions, driven by envy and ambition, were often unrighteous. Yet, Karna actively encouraged the path to war, goading Duryodhana into vengeance against the Pandavas. His need for validation, rooted in the pain of being called a suta-putra, bound him to choices that clashed with his own wisdom. In moments of reflection, he might have glimpsed the folly of his path, but his loyalty, forged in the fires of gratitude, blinded him to alternatives, trapping him in a cycle of resentment.</p>
+                <p>Karna’s life was a tapestry of tragedy woven with threads of sacrifice. One of the most poignant examples was his encounter with Indra, disguised as a brahmin, who sought Karna’s divine armor (Kavacha) and earrings (Kundala), gifts from Surya that made him invincible. Knowing Indra’s intent and the consequences for his survival in the looming war, Karna nonetheless tore the armor from his body and handed it over, his generosity shining even at the cost of his own life. Such acts defined him—noble, selfless, yet often futile, as they stemmed from a heart conflicted by pain rather than guided by clarity.</p>
+                <p>Before the Kurukshetra War, Krishna, in his divine omniscience, approached Karna to sue for peace, revealing the shattering truth of his lineage: Kunti was his mother, and the Pandavas, whom he had opposed all his life, were his brothers. The revelation shook Karna to his core. For years, he had longed to know who had set him adrift in that wooden box, and now the answer brought both clarity and torment. He realized he had spent decades forcing himself to hate the Pandavas, suppressing the absence of true enmity in his heart to justify his loyalty to Duryodhana. Krishna offered him a chance to join the Pandavas, promising him a place of honor, even the throne of Hastinapura. But Karna, torn between truth and duty, refused.</p>
+                <p>He confessed to Krishna that Duryodhana had given him everything—status, respect, a kingdom—when the world had shunned him. “How can I abandon the one man who stood by me?” he asked, his voice heavy with emotion. Despite knowing his choice was unrighteous, Karna remained steadfast, believing he owed his life to Duryodhana. This decision, rooted in gratitude but divorced from dharma, sealed his tragic fate, binding him to a path that would lead to his downfall.</p>
+                <a href="#" class="image-link" data-img="photos/story/maha_karna.jpg">
+                    <img src="photos/story/maha_karna.jpg" alt="Karna’s Tragic Duel">
+                </a>
+                <p class="image-caption">Karna facing Arjuna in their fateful duel, a clash of brothers bound by destiny.</p>
+                <p>Karna’s story is a chain of wrong turns, each a misstep driven not by a lack of values but by the weight of inner pain, societal stigma, and blind gratitude. As Sadhguru poignantly observes, a single wrong choice in life can take a decade to recover from, and Karna made too many to find redemption. From his early defiance at the Kuru exhibition, where he challenged Arjuna despite knowing the social barriers, to his unwavering support for Duryodhana’s vengeful schemes, Karna’s choices were shaped by a need to prove his worth. Even his acts of sacrifice, like giving away his armor, were tinged with a fatalistic acceptance of his doomed path, as if he knew he was hurtling toward destruction but could not turn back.</p>
+                <p>In the Kurukshetra War, Karna’s fate reached its climax. As commander of the Kaurava army after Bhishma and Drona’s fall, he fought with unmatched valor, his arrows raining down like a tempest. Yet, his curses—a brahmin’s for accidentally killing a cow, and a teacher’s for a perceived lie—converged at his darkest hour. Facing Arjuna, his younger brother and lifelong rival, Karna’s chariot wheel sank into the earth, a manifestation of his curse. As he struggled to free it, pleading for a fair fight, Krishna urged Arjuna to strike, citing Karna’s past transgressions, including his role in Abhimanyu’s unfair death. Arjuna, with a heavy heart, loosed the Anjalika arrow, piercing Karna’s chest. As he fell, the battlefield mourned, for even the Pandavas, unaware of his true lineage, felt the weight of his loss. Karna’s death was not just physical—it was the culmination of a life spent fighting the wrong battles, a hero undone by his own choices.</p>
+                <p>Sadhguru emphasizes that existence does not judge anyone as good or bad—such labels are human constructs. Existence operates on simple principles: right actions yield right results, and wrong actions bring suffering. Karna’s life, in this light, was not unfair but a consequence of his choices. He was immensely gifted—a warrior whose skill rivaled Arjuna’s, a soul whose generosity inspired awe, and a man whose integrity shone in moments of truth. Yet, he allowed resentment to overpower his gratitude, letting the pain of rejection eclipse the love he received from Radha and Duryodhana. His loyalty, though admirable, blinded him to his own intelligence, leading him to support a cause he knew was flawed.</p>
+                <p>People may argue that fate dealt Karna a harsh hand—abandoned at birth, scorned by society, burdened by curses. But in the eyes of existence, as Sadhguru explains, life was perfectly fair. Karna’s suffering stemmed not from inherent evil but from his failure to align his actions with his wisdom. His story is a timeless lesson: no matter one’s gifts or hardships, it is the choices we make that shape our destiny. Karna, the sweet mango gone bad, remains a tragic figure whose life warns us against letting pain and pride steer us away from dharma.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const content = header.nextElementSibling;
+                const isActive = item.classList.contains('active');
+
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                    }
+                });
+
+                item.classList.toggle('active');
+                if (!isActive) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

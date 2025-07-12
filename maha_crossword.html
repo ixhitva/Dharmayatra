@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahabharata Crossword - Dharmayatra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: url('https://source.unsplash.com/1600x900/?indian-textile,parchment') no-repeat center center fixed;
+            background-size: cover;
+            color: #3c2f2f;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: 'ॐ';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            color: rgba(255, 153, 51, 0.1);
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            opacity: 0.05;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #FF9933;
+            opacity: 0.4;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.4; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0.1; }
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, #8B4513, #A0522D);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .navbar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            color: #FFD700;
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-family: 'Merriweather', serif;
+            border: 1px solid #FF4500;
+        }
+
+        .nav-links a:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(245, 222, 179, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+            background-blend-mode: soft-light;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 5px solid transparent;
+            border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+            z-index: -1;
+        }
+
+        .content h1 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 48px;
+            color: #2F4F4F;
+            margin-bottom: 20px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid #FF4500;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .content h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.2;
+        }
+
+        .timer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.2rem;
+            color: #3c2f2f;
+            background: rgba(245, 222, 179, 0.9);
+            padding: 10px 20px;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            font-family: 'Merriweather', serif;
+        }
+
+        #crossword-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(15, 30px);
+            grid-template-rows: repeat(15, 30px);
+            border: 2px solid #FFD700;
+            padding: 5px;
+            background: rgba(245, 222, 179, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            background: url('https://source.unsplash.com/100x100/?mandala,indian') center/cover;
+            background-blend-mode: soft-light;
+        }
+
+        .grid::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?lotus,indian') 20 round;
+            z-index: -1;
+        }
+
+        .cell {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #FF4500;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 18px;
+            background: #f5deb3;
+            transition: background 0.3s ease;
+            font-family: 'Merriweather', serif;
+        }
+
+        .cell:disabled {
+            background-color: rgba(255, 245, 238, 0.9);
+            color: #3c2f2f;
+        }
+
+        .clues {
+            margin-top: 30px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(245, 222, 179, 0.9);
+            padding: 20px;
+            border: 2px solid #FFD700;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover;
+            background-blend-mode: soft-light;
+            position: relative;
+        }
+
+        .clues::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 3px solid transparent;
+            border-image: url('https://source.unsplash.com/50x50/?mandala,indian') 20 round;
+            z-index: -1;
+        }
+
+        .clues h3 {
+            font-family: 'Tiro Devanagari Sanskrit', serif;
+            font-size: 1.5rem;
+            color: #2F4F4F;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .clues div {
+            margin: 5px 0;
+            color: #3c2f2f;
+            font-family: 'Merriweather', serif;
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            background: #2F4F4F;
+            color: #FFD700;
+            border: 2px solid #FF4500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls button:hover {
+            background: #FFD700;
+            color: #3c2f2f;
+            transform: translateY(-3px);
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #3c2f2f;
+            text-align: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        footer {
+            background: linear-gradient(to top, #8B4513, #A0522D);
+            color: #FFD700;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            font-size: 18px;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 32px;
+            }
+
+            .content p {
+                font-size: 16px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(15, 25px);
+                grid-template-rows: repeat(15, 25px);
+            }
+
+            .cell {
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
+            }
+
+            .clues {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Dharmayatra</a>
+            <ul class="nav-links">
+                <li><a href="ramayana.html">Ramayana</a></li>
+                <li><a href="mahabharata.html">Mahabharata</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h1>Mahabharata Crossword</h1>
+        <div id="crossword-container">
+            <div id="grid" class="grid"></div>
+        </div>
+        <div class="clues">
+            <h3>Across</h3>
+            <div id="across"></div>
+            <h3>Down</h3>
+            <div id="down"></div>
+        </div>
+        <div class="controls">
+            <button onclick="submitAnswers()">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.2l-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                </svg>
+                Submit
+            </button>
+            <button onclick="getHint()">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.5-1.29.11-2.68 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.12 2.52.35 1.91-1.29 2.75-1.02 2.75-1.02.61 1.39.21 2.43.11 2.68.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.56.82.56 1.65v2.45c0 .27.16.59.67.5A10.01 10.01 0 0 0 22 12 10 10 0 0 0 12 2z"/>
+                </svg>
+                Hint
+            </button>
+            <button onclick="showAnswers()">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                </svg>
+                Give Answers
+            </button>
+            <button onclick="newPuzzle()">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 0 0-10 10 10 10 0 0 0 10 10 10 10 0 0 0 10-10 10 10 0 0 0-10-10zm0 18a8 8 0 0 1-8-8 8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-8 8zm-1-14v4h-4v2h4v4h2v-4h4v-2h-4V6h-2z"/>
+                </svg>
+                New Puzzle
+            </button>
+        </div>
+        <p id="feedback"></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br>मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+    </footer>
+
+    <div class="timer" id="timer">Time: 00:00</div>
+
+    <script>
+        const crosswords = [
+            {
+                title: "Characters, Weapons, and Philosophy",
+                grid: Array(15).fill().map(() => Array(15).fill('')),
+                across: [
+                    { number: 1, clue: "Kingdom where Pandavas hid in exile (6 letters, row 0, col 0)", answer: "VIRATA", row: 0, col: 0 },
+                    { number: 2, clue: "Kaurava commander-in-chief (7 letters, row 2, col 0)", answer: "BHISHMA", row: 2, col: 0 },
+                    { number: 3, clue: "Guru who taught archery to Karna (10 letters, row 4, col 2)", answer: "PARASHURAMA", row: 4, col: 2 },
+                    { number: 4, clue: "Incarnation of Lord Vishnu (7 letters, row 6, col 4)", answer: "KRISHNA", row: 6, col: 4 },
+                    { number: 5, clue: "Illegitimate son of Kunti (5 letters, row 8, col 6)", answer: "KARNA", row: 8, col: 6 },
+                    { number: 6, clue: "Youngest Pandava (8 letters, row 10, col 0)", answer: "SAHADEVA", row: 10, col: 0 },
+                    { number: 7, clue: "Capital of the Kauravas (10 letters, row 12, col 2)", answer: "HASTINAPUR", row: 12, col: 2 },
+                    { number: 8, clue: "Kingdom of the Pandavas (12 letters, row 14, col 0)", answer: "INDRAPRASTHA", row: 14, col: 0 }
+                ],
+                down: [
+                    { number: 9, clue: "Bhima's weapon of choice (4 letters, row 0, col 1)", answer: "GADA", row: 0, col: 1 },
+                    { number: 10, clue: "Righteousness in duty (6 letters, row 0, col 3)", answer: "DHARMA", row: 0, col: 3 },
+                    { number: 11, clue: "Son of Arjuna and Subhadra (9 letters, row 0, col 5)", answer: "ABHIMANYU", row: 0, col: 5 },
+                    { number: 12, clue: "Krishna’s elder brother, wielder of the plough (8 letters, row 2, col 2)", answer: "BALARAMA", row: 2, col: 2 },
+                    { number: 13, clue: "Song of the Lord (4 letters, row 4, col 7)", answer: "GITA", row: 4, col: 7 },
+                    { number: 14, clue: "State of liberation (6 letters, row 6, col 9)", answer: "MOKSHA", row: 6, col: 9 },
+                    { number: 15, clue: "Divine weapon of Brahma used by Arjuna (11 letters, row 8, col 11)", answer: "BRAHMASTRA", row: 8, col: 11 },
+                    { number: 16, clue: "Eternal soul in Sanskrit (5 letters, row 10, col 4)", answer: "ATMAN", row: 10, col: 4 },
+                    { number: 17, clue: "Wife of all five Pandavas (8 letters, row 12, col 6)", answer: "DRAUPADI", row: 12, col: 6 },
+                    { number: 18, clue: "The Pandava known for his strength (5 letters, row 14, col 8)", answer: "BHIMA", row: 14, col: 8 },
+                    { number: 19, clue: "Krishna’s coastal kingdom in the Mahabharata (7 letters, row 6, col 12)", answer: "DWARAKA", row: 6, col: 12 },
+                    { number: 20, clue: "Teacher of Pandavas and Kauravas (5 letters, row 10, col 14)", answer: "DRONA", row: 10, col: 14 }
+                ]
+            },
+            {
+                title: "War, Cities, and Legacy",
+                grid: Array(15).fill().map(() => Array(15).fill('')),
+                across: [
+                    { number: 1, clue: "Where the great battle was fought (11 letters, row 0, col 2)", answer: "KURUKSHETRA", row: 0, col: 2 },
+                    { number: 2, clue: "Site of the wax palace plot (10 letters, row 2, col 0)", answer: "LAKSHAGRAHA", row: 2, col: 0 },
+                    { number: 3, clue: "Warrior with a divine bow named Gandiva (6 letters, row 4, col 5)", answer: "ARJUNA", row: 4, col: 5 },
+                    { number: 4, clue: "Krishna’s full name (8 letters, row 6, col 2)", answer: "VASUDEVA", row: 6, col: 2 },
+                    { number: 5, clue: "The blind king of Hastinapur (12 letters, row 8, col 0)", answer: "DHIRITARASHTRA", row: 8, col: 0 },
+                    { number: 6, clue: "Eldest Pandava (12 letters, row 10, col 2)", answer: "YUDHISHTHIRA", row: 10, col: 2 },
+                    { number: 7, clue: "Kaurava prince who fought Bhima (10 letters, row 12, col 0)", answer: "DURYODHANA", row: 12, col: 0 }
+                ],
+                down: [
+                    { number: 8, clue: "Selfless action (5 letters, row 0, col 4)", answer: "KARMA", row: 0, col: 4 },
+                    { number: 9, clue: "Mother of Karna (5 letters, row 2, col 6)", answer: "KUNTI", row: 2, col: 6 },
+                    { number: 10, clue: "Krishna’s divine discus weapon (10 letters, row 4, col 8)", answer: "SUDARSHANA", row: 4, col: 8 },
+                    { number: 11, clue: "Kingdom ruled by Drupada, Draupadi’s father (8 letters, row 6, col 10)", answer: "PANCHALA", row: 6, col: 10 }
+                ]
+            },
+            {
+                title: "Warriors and Royalty",
+                grid: Array(15).fill().map(() => Array(15).fill('')),
+                across: [
+                    { number: 1, clue: "One of the twin Pandava brothers (6 letters, row 0, col 0)", answer: "NAKULA", row: 0, col: 0 },
+                    { number: 2, clue: "Reincarnation of Amba (9 letters, row 2, col 2)", answer: "SHIKHANDI", row: 2, col: 2 },
+                    { number: 3, clue: "Brother of Draupadi, born to kill Drona (12 letters, row 4, col 0)", answer: "DHRISTADYUMNA", row: 4, col: 0 },
+                    { number: 4, clue: "Son of Drona (11 letters, row 6, col 2)", answer: "ASHWATTHAMA", row: 6, col: 2 },
+                    { number: 5, clue: "Prince of Virata; Abhimanyu’s brother-in-law (6 letters, row 8, col 5)", answer: "UTTARA", row: 8, col: 5 },
+                    { number: 6, clue: "Yadava warrior fighting for Pandavas (7 letters, row 10, col 0)", answer: "SATYAKI", row: 10, col: 0 },
+                    { number: 7, clue: "Arjuna’s celestial bow (8 letters, row 12, col 2)", answer: "GAANDIVA", row: 12, col: 2 }
+                ],
+                down: [
+                    { number: 8, clue: "Krishna’s sister, Arjuna’s wife (8 letters, row 0, col 3)", answer: "SUBHADRA", row: 0, col: 3 },
+                    { number: 9, clue: "Mother of Nakula and Sahadeva (5 letters, row 2, col 6)", answer: "MADRI", row: 2, col: 6 },
+                    { number: 10, clue: "Archer who offered his thumb to Drona (8 letters, row 4, col 8)", answer: "EKALAVYA", row: 4, col: 8 }
+                ]
+            },
+            {
+                title: "Divine Connections",
+                grid: Array(15).fill().map(() => Array(15).fill('')),
+                across: [
+                    { number: 1, clue: "Author of the Mahabharata (5 letters, row 0, col 0)", answer: "VYASA", row: 0, col: 0 },
+                    { number: 2, clue: "Celestial sage known for his wisdom (6 letters, row 2, col 2)", answer: "NARADA", row: 2, col: 2 },
+                    { number: 3, clue: "King of the gods; Arjuna’s father (5 letters, row 4, col 4)", answer: "INDRA", row: 4, col: 4 },
+                    { number: 4, clue: "God of fire; received Khandava forest (4 letters, row 6, col 6)", answer: "AGNI", row: 6, col: 6 },
+                    { number: 5, clue: "God of water (6 letters, row 8, col 0)", answer: "VARUNA", row: 8, col: 0 },
+                    { number: 6, clue: "Gave Arjuna the Pashupatastra (5 letters, row 10, col 2)", answer: "SHIVA", row: 10, col: 2 },
+                    { number: 7, clue: "God incarnated as Krishna (6 letters, row 12, col 4)", answer: "VISHNU", row: 12, col: 4 }
+                ],
+                down: [
+                    { number: 8, clue: "God of death; Yudhishthira’s father (4 letters, row 0, col 3)", answer: "YAMA", row: 0, col: 3 },
+                    { number: 9, clue: "Sun god; Karna’s father (5 letters, row 2, col 5)", answer: "SURYA", row: 2, col: 5 },
+                    { number: 10, clue: "Monkey god on Arjuna’s chariot banner (7 letters, row 4, col 7)", answer: "HANUMAN", row: 4, col: 7 }
+                ]
+            },
+            {
+                title: "Symbols, Kingdoms, and Lessons",
+                grid: Array(15).fill().map(() => Array(15).fill('')),
+                across: [
+                    { number: 1, clue: "Military formation Abhimanyu entered (10 letters, row 0, col 0)", answer: "CHAKRAVYUH", row: 0, col: 0 },
+                    { number: 2, clue: "The Pandavas’ magical palace (9 letters, row 2, col 2)", answer: "MAYASABHA", row: 2, col: 2 },
+                    { number: 3, clue: "Sanskrit word for celestial weapon (5 letters, row 4, col 4)", answer: "ASTRA", row: 4, col: 4 },
+                    { number: 4, clue: "Peace proposal or treaty (6 letters, row 6, col 6)", answer: "SANDHI", row: 6, col: 6 },
+                    { number: 5, clue: "Book of peace in the Mahabharata (10 letters, row 8, col 0)", answer: "SHANTIPARVA", row: 8, col: 0 },
+                    { number: 6, clue: "Royal consecration performed by Pandavas (8 letters, row 10, col 2)", answer: "RAJASUYA", row: 10, col: 2 },
+                    { number: 7, clue: "Ceremony for choosing a husband (10 letters, row 12, col 0)", answer: "SWAYAMVARA", row: 12, col: 0 }
+                ],
+                down: [
+                    { number: 8, clue: "Pandavas’ forest exile in the Mahabharata (8 letters, row 0, col 3)", answer: "VANAVASA", row: 0, col: 3 },
+                    { number: 9, clue: "Opposite of righteousness (7 letters, row 2, col 5)", answer: "ADHARMA", row: 2, col: 5 },
+                    { number: 10, clue: "Duty of a king (10 letters, row 4, col 7)", answer: "RAJADHARMA", row: 4, col: 7 }
+                ]
+            }
+        ];
+
+        let currentIndex;
+        let current;
+        let hintCount = 0;
+        let startTime;
+        let timerInterval;
+        let isTimerStopped = false;
+
+        function selectCrossword() {
+            let lastIndex = localStorage.getItem('lastCrosswordIndex');
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * crosswords.length);
+            } while (newIndex == lastIndex && crosswords.length > 1);
+            localStorage.setItem('lastCrosswordIndex', newIndex);
+            return newIndex;
+        }
+
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                if (!isTimerStopped) {
+                    const elapsed = Date.now() - startTime;
+                    const seconds = Math.floor(elapsed / 1000);
+                    const minutes = Math.floor(seconds / 60);
+                    const displaySeconds = seconds % 60;
+                    document.getElementById('timer').textContent = `Time: ${String(minutes).padStart(2, '0')}:${String(displaySeconds).padStart(2, '0')}`;
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            isTimerStopped = true;
+            clearInterval(timerInterval);
+        }
+
+        function populateGrid() {
+            const grid = current.grid;
+            current.across.forEach(clue => {
+                let row = clue.row;
+                let col = clue.col;
+                for (let i = 0; i < clue.answer.length; i++) {
+                    grid[row][col + i] = clue.answer[i];
+                }
+            });
+            current.down.forEach(clue => {
+                let row = clue.row;
+                let col = clue.col;
+                for (let i = 0; i < clue.answer.length; i++) {
+                    if (grid[row + i][col] === '' || grid[row + i][col] === clue.answer[i]) {
+                        grid[row + i][col] = clue.answer[i];
+                    }
+                }
+            });
+        }
+
+        function renderCrossword() {
+            populateGrid();
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < 15; i++) {
+                for (let j = 0; j < 15; j++) {
+                    const cell = document.createElement('input');
+                    cell.classList.add('cell');
+                    cell.setAttribute('data-row', i);
+                    cell.setAttribute('data-col', j);
+                    cell.maxLength = 1;
+                    if (current.grid[i][j] === '') {
+                        cell.disabled = true;
+                        cell.classList.add('disabled');
+                    }
+                    grid.appendChild(cell);
+                }
+            }
+
+            document.getElementById('across').innerHTML = current.across.map(c => `<div><strong>${c.number}.</strong> ${c.clue}</div>`).join('');
+            document.getElementById('down').innerHTML = current.down.map(c => `<div><strong>${c.number}.</strong> ${c.clue}</div>`).join('');
+        }
+
+        function submitAnswers() {
+            let correct = true;
+            const grid = document.getElementById('grid').children;
+            for (let i = 0; i < 15; i++) {
+                for (let j = 0; j < 15; j++) {
+                    const cell = grid[i * 15 + j];
+                    if (!cell.disabled) {
+                        const userInput = cell.value.toUpperCase();
+                        const correctAnswer = current.grid[i][j];
+                        if (userInput !== correctAnswer) {
+                            correct = false;
+                            break;
+                        }
+                    }
+                }
+                if (!correct) break;
+            }
+            if (correct) {
+                stopTimer();
+                document.getElementById('feedback').textContent = 'Congratulations! All answers are correct!';
+            } else {
+                document.getElementById('feedback').textContent = 'Some answers are incorrect. Try again or use a hint.';
+            }
+        }
+
+        function getHint() {
+            if (hintCount >= 10) {
+                alert('All hints used!');
+                return;
+            }
+            const randomClue = [...current.across, ...current.down][Math.floor(Math.random() * (current.across.length + current.down.length))];
+            alert(`Hint: Answer to clue ${randomClue.number} (${randomClue.clue.split('(')[0].trim()}) is ${randomClue.answer}`);
+            hintCount++;
+            document.getElementById('feedback').textContent = `Hint used! ${10 - hintCount} hints remaining.`;
+        }
+
+        function showAnswers() {
+            const grid = document.getElementById('grid').children;
+            for (let i = 0; i < 15; i++) {
+                for (let j = 0; j < 15; j++) {
+                    const cell = grid[i * 15 + j];
+                    if (!cell.disabled) {
+                        cell.value = current.grid[i][j];
+                        cell.disabled = true;
+                    }
+                }
+            }
+            stopTimer();
+            document.getElementById('feedback').textContent = 'Answers revealed! Try a new puzzle.';
+        }
+
+        function newPuzzle() {
+            currentIndex = selectCrossword();
+            current = crosswords[currentIndex];
+            hintCount = 0;
+            isTimerStopped = false;
+            startTime = Date.now();
+            startTimer();
+            document.getElementById('feedback').textContent = '';
+            renderCrossword();
+        }
+
+        currentIndex = selectCrossword();
+        current = crosswords[currentIndex];
+        renderCrossword();
+        startTimer();
+    </script>
+</body>
+</html>

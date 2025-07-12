@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahabharata Characters - Dharmayatra</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Merriweather', serif;
+      background: url('photos/mahabharat main page.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #3c2f2f;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: 'ॐ';
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 300px;
+      color: rgba(255, 153, 51, 0.3);
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover;
+      opacity: 0.05;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .petal {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #FF9933;
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: fall 10s linear infinite;
+    }
+
+    .petals div:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .petals div:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .petals div:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .petals div:nth-child(4) { left: 70%; animation-delay: 6s; }
+    .petals div:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+    }
+
+    .navbar {
+      background: linear-gradient(to bottom, #8B4513, #A0522D);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      border-bottom: 3px solid #FFD700;
+    }
+
+    .navbar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .navbar .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      color: #FFD700;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: rgba(210, 180, 140, 0.7);
+      transition: all 0.3s ease;
+      font-family: 'Merriweather', serif;
+      border: 1px solid #FF4500;
+    }
+
+    .nav-links a:hover {
+      background: #FFD700;
+      color: #3c2f2f;
+      transform: translateY(-3px);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 40px;
+      background: url('https://source.unsplash.com/200x200/?mandala,indian') center/cover, rgba(210, 180, 140, 0.8);
+      background-blend-mode: soft-light;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      border: 2px solid #FFD700;
+      position: relative;
+    }
+
+    .content::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 5px solid transparent;
+      border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+      z-index: -1;
+    }
+
+    h1 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 48px;
+      color: #2F4F4F;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      border-bottom: 2px solid #FF4500;
+      padding-bottom: 10px;
+      position: relative;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: url('https://source.unsplash.com/200x200/?paisley,indian') center/cover, rgba(210, 180, 140, 0.8);
+      background-blend-mode: soft-light;
+      border: 2px solid #FFD700;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+      position: relative;
+      z-index: 10;
+    }
+
+    .character-grid::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border: 5px solid transparent;
+      border-image: url('https://source.unsplash.com/100x100/?lotus,indian') 30 round;
+      z-index: -1;
+    }
+
+    .flip-card {
+      perspective: 2000px;
+      min-height: 520px;
+      height: auto;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 1s ease-in-out;
+      transform-style: preserve-3d;
+      transform-origin: center;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      background: url('https://source.unsplash.com/100x100/?paisley,indian') center/cover, rgba(210, 180, 140, 0.8);
+      background-blend-mode: soft-light;
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      box-sizing: border-box;
+      will-change: transform;
+    }
+
+    .flip-card-front {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+      padding: 80px 20px 20px 20px;
+      text-align: justify;
+      overflow-y: auto;
+      opacity: 1;
+      scrollbar-width: thin;
+      scrollbar-color: #FFD700 rgba(210, 180, 140, 0.8);
+      scroll-padding-top: 80px;
+    }
+
+    .flip-card:hover .flip-card-back {
+      z-index: 1;
+    }
+
+    .flip-card-back::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .flip-card-back::-webkit-scrollbar-track {
+      background: rgba(210, 180, 140, 0.8);
+    }
+
+    .flip-card-back::-webkit-scrollbar-thumb {
+      background: #FFD700;
+      border-radius: 4px;
+    }
+
+    .flip-card-front::before, .flip-card-back::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border: 3px solid transparent;
+      border-image: url('https://source.unsplash.com/50x50/?mandala,indian') 20 round;
+      z-index: -1;
+    }
+
+    .flip-card-front h2 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 24px;
+      color: #2F4F4F;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-front img {
+      width: 150px;
+      height: 150px;
+      border-radius: 8px;
+      border: 2px solid #FFD700;
+    }
+
+    .flip-card-back h3 {
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+      font-size: 20px;
+      color: #2F4F4F;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-back h3:first-child {
+      margin-top: 45px;
+    }
+
+    .flip-card-back p {
+      font-family: 'Merriweather', serif;
+      font-size: 14px;
+      color: #3c2f2f;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .flip-card-back ul {
+      font-family: 'Merriweather', serif;
+      list-style-type: disc;
+      padding-left: 20px;
+      font-size: 14px;
+      color: #3c2f2f;
+      margin-bottom: 10px;
+    }
+
+    .flip-card-back ul li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      background: linear-gradient(to top, #8B4513, #A0522D);
+      color: #FFD700;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      font-size: 18px;
+      border-top: 3px solid #FFD700;
+      position: relative;
+    }
+
+    footer p {
+      background: rgba(210, 180, 140, 0.8);
+      border-radius: 10px;
+      padding: 5px 10px;
+      display: inline-block;
+      font-family: 'Tiro Devanagari Sanskrit', serif;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/100x100/?lotus,indian') center/cover;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .character-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 20px;
+      }
+
+      .flip-card {
+        min-height: 460px;
+        height: auto;
+      }
+
+      .flip-card-front h2 {
+        font-size: 20px;
+      }
+
+      .flip-card-front img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .flip-card-back {
+        padding: 70px 15px 15px 15px;
+        scroll-padding-top: 70px;
+      }
+
+      .flip-card-back h3 {
+        font-size: 18px;
+      }
+
+      .flip-card-back h3:first-child {
+        margin-top: 40px;
+      }
+
+      .flip-card-back p, .flip-card-back ul {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="petals">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Dharmayatra</a>
+      <ul class="nav-links">
+        <li><a href="ramayana.html">Ramayana</a></li>
+        <li><a href="mahabharata.html">Mahabharata</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="content">
+    <h1>Mahabharata Characters</h1>
+    <div class="character-grid">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Yudhishthira</h2>
+            <img src="photos/char/Yudhishthira.png" width="150" height="150" alt="Yudhishthira Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Eldest Pandava; King of Indraprastha and Hastinapura</p>
+            <h3>Family</h3>
+            <p>Son of Kunti and Dharma (Yama)</p>
+            <h3>Notable Deeds</h3>
+            <p>Embodiment of dharma; lost in the dice game, accepted exile; led the Pandavas to victory and ascended the throne.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5580 BCE: Born to Kunti via Yama.</li>
+              <li>Circa 5562 BCE: Lost kingdom in the dice game.</li>
+              <li>Circa 5561 BCE: Crowned king of Hastinapura after the war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Bhima</h2>
+            <img src="photos/char/bhima.png" width="150" height="150" alt="Bhima Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Second Pandava; Mace-Warrior</p>
+            <h3>Family</h3>
+            <p>Son of Kunti and Vayu (Wind God)</p>
+            <h3>Notable Deeds</h3>
+            <p>Physical powerhouse; avenged Draupadi by killing Dushasana; defeated Duryodhana.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5580 BCE: Born to Kunti via Vayu.</li>
+              <li>Circa 5562 BCE: Exiled with Pandavas after the dice game.</li>
+              <li>2 Nov 5561 BCE: Defeated Duryodhana in a mace fight.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Arjuna</h2>
+            <img src="photos/char/Arjun.png" width="150" height="150" alt="Arjuna Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Third Pandava; Greatest Archer</p>
+            <h3>Family</h3>
+ dialing: (800) 555-1234
+            <p>Son of Kunti and Indra</p>
+            <h3>Notable Deeds</h3>
+            <p>Master archer; key figure in Kurukshetra; recipient of the Bhagavad Gita; slew Bhishma, Karna, Jayadratha.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5563 BCE: Won Draupadi at her swayamvara.</li>
+              <li>16 Oct 5561 BCE: Received the Bhagavad Gita from Krishna.</li>
+              <li>1 Nov 5561 BCE: Killed Karna in battle.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Nakula & Sahadeva</h2>
+            <img src="photos/char/Nakula.png" width="150" height="150" alt="Nakula & Sahadeva Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Fourth and Fifth Pandavas</p>
+            <h3>Family</h3>
+            <p>Sons of Madri and the Ashvins</p>
+            <h3>Notable Deeds</h3>
+            <p>Nakula – horse-keeper and swordsman; Sahadeva – wisdom, astrologer; Sahadeva killed Shakuni.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5580 BCE: Born to Madri via the Ashvins.</li>
+              <li>Circa 5562–5549 BCE: Exiled with Pandavas.</li>
+              <li>2 Nov 5561 BCE: Sahadeva killed Shakuni during the war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Draupadi</h2>
+            <img src="photos/char/draupati.png" width="150" height="150" alt="Draupadi Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Queen of the Pandavas</p>
+            <h3>Family</h3>
+            <p>Daughter of King Drupada</p>
+            <h3>Notable Deeds</h3>
+            <p>Central to all key events; first to enter Pandavas in exile; humiliated in dice game; her insult spurred Bhima’s vow.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5563 BCE: Married to the Pandavas after Arjuna’s victory.</li>
+              <li>Circa 5562 BCE: Humiliated in the Kaurava court.</li>
+              <li>Circa 5562–5549 BCE: Exiled with the Pandavas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Krishna</h2>
+            <img src="photos/char/krishna.png" width="150" height="150" alt="Krishna Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Incarnation of Vishnu; Strategist and Charioteer</p>
+            <h3>Family</h3>
+            <p>Son of Vasudeva and Devaki</p>
+            <h3>Notable Deeds</h3>
+            <p>Diplomat, guide; delivered Bhagavad Gita; pivotal in ensuring Pandava victory.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>16 Oct 5561 BCE: Delivered the Bhagavad Gita to Arjuna.</li>
+              <li>29 Oct 5561 BCE: Helped Arjuna kill Jayadratha with an illusion.</li>
+              <li>Post-5561 BCE: Advised Yudhishthira on governance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Karna</h2>
+            <img src="photos/char/karna.png" width="150" height="150" alt="Karna Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Greatest Rival to Arjuna; Ally of Duryodhana</p>
+            <h3>Family</h3>
+            <p>Son of Kunti and Surya; raised by Adhiratha</p>
+            <h3>Notable Deeds</h3>
+            <p>Master archer, rival to Arjuna; defeated Jarasandha; killed by Arjuna on Day 17.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5580 BCE: Born to Kunti via Surya, abandoned at birth.</li>
+              <li>29 Oct 5561 BCE: Killed Ghatotkacha with the Shakti weapon.</li>
+              <li>1 Nov 5561 BCE: Killed by Arjuna during the war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Bhishma</h2>
+            <img src="photos/char/bhisma.png" width="150" height="150" alt="Bhishma Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Elder Statesman; Commander of the Kauravas</p>
+            <h3>Family</h3>
+            <p>Son of Shantanu and Ganga</p>
+            <h3>Notable Deeds</h3>
+            <p>Led Kaurava forces for 10 days; fell to Arjuna via Shikhandi; lay on arrow-bed until Uttarayana.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5600 BCE: Raised Pandu and Dhritarashtra.</li>
+              <li>16 Oct 5561 BCE: Led Kauravas at the war’s start.</li>
+              <li>25 Oct 5561 BCE: Fell to Arjuna and Shikhandi.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Drona</h2>
+            <img src="photos/char/Dronacharya.png" width="150" height="150" alt="Drona Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Royal Guru; Kaurava General after Bhishma</p>
+            <h3>Family</h3>
+            <p>Son of Bharadwaja; father of Ashwatthama</p>
+            <h3>Notable Deeds</h3>
+            <p>Formed Chakravyuha; killed Dhrishtadyumna; fell after son’s death.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5565 BCE: Trained Pandavas and Kauravas.</li>
+              <li>28 Oct 5561 BCE: Formed Chakravyuha, leading to Abhimanyu’s death.</li>
+              <li>30 Oct 5561 BCE: Killed by Dhrishtadyumna.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Duryodhana</h2>
+            <img src="photos/char/duryodhana.png" width="150" height="150" alt="Duryodhana Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Leader of Kauravas; Main Antagonist</p>
+            <h3>Family</h3>
+            <p>Son of Dhritarashtra and Gandhari</p>
+            <h3>Notable Deeds</h3>
+            <p>Orchestrated dice game; led Kauravas into war; died fighting Bhima.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5580 BCE: Born to Gandhari.</li>
+              <li>Circa 5562 BCE: Orchestrated the rigged dice game.</li>
+              <li>2 Nov 5561 BCE: Defeated by Bhima, ending the war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Shakuni</h2>
+            <img src="photos/char/sakunii.png" width="150" height="150" alt="Shakuni Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Kaurava Kingmaker; Gambler-in-Chief</p>
+            <h3>Family</h3>
+            <p>Son of Subala; brother of Gandhari</p>
+            <h3>Notable Deeds</h3>
+            <p>Ruined the dice game; mastermind behind Kaurava misdeeds; slain by Sahadeva.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5562 BCE: Rigged the dice game against Yudhishthira.</li>
+              <li>Throughout War: Advised Duryodhana on strategies.</li>
+              <li>2 Nov 5561 BCE: Killed by Sahadeva.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Vidura</h2>
+            <img src="photos/char/vidura.png" width="150" height="150" alt="Vidura Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Wise Counselor of Hastinapura</p>
+            <h3>Family</h3>
+            <p>Son of Vyasa and maid Parishrami</p>
+            <h3>Notable Deeds</h3>
+            <p>Forewarned Pandavas; epitome of integrity.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5600 BCE: Born to Vyasa and Parishrami.</li>
+              <li>Circa 5562 BCE: Warned Pandavas of the lac house plot.</li>
+              <li>Post-5561 BCE: Continued as a wise counselor.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Drupada</h2>
+            <img src="photos/char/drupuda.png" width="150" height="150" alt="Drupada Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>King of Panchala; Draupadi’s Father</p>
+            <h3>Family</h3>
+            <p>Father of Draupadi, Dhrishtadyumna, Shikhandi</p>
+            <h3>Notable Deeds</h3>
+            <p>Rival to Drona; fathered warriors; died in battle.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5563 BCE: Hosted Draupadi’s swayamvara.</li>
+              <li>During War: Allied with Pandavas.</li>
+              <li>5561 BCE: Killed in the Kurukshetra War.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Dhritarashtra</h2>
+            <img src="photos/char/dhritarashtra.png" width="150" height="150" alt="Dhritarashtra Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Blind King; Father of the Kauravas</p>
+            <h3>Family</h3>
+            <p>Son of Vyasa and Ambika; married to Gandhari</p>
+            <h3>Notable Deeds</h3>
+            <p>Ruled Hastinapura; fathered the Kauravas; struggled with partiality toward Duryodhana.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5600 BCE: Born blind to Ambika.</li>
+              <li>Circa 5580 BCE: Fathered the Kauravas with Gandhari.</li>
+              <li>Post-5561 BCE: Retired to the forest after the war.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Dushasana</h2>
+            <img src="photos/char/dushashana.png" width="150" height="150" alt="Dushasana Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Second Kaurava; Duryodhana’s Brother</p>
+            <h3>Family</h3>
+            <p>Son of Dhritarashtra and Gandhari</p>
+            <h3>Notable Deeds</h3>
+            <p>Infamous for dishonoring Draupadi; slain by Bhima.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5580 BCE: Born to Gandhari.</li>
+              <li>Circa 5562 BCE: Attempted to disrobe Draupadi in court.</li>
+              <li>During War: Killed by Bhima, fulfilling Bhima’s vow.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Abhimanyu</h2>
+            <img src="photos/char/abhimanyu.png" width="150" height="150" alt="Abhimanyu Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Arjuna’s Brave Son</p>
+            <h3>Family</h3>
+            <p>Son of Arjuna and Subhadra</p>
+            <h3>Notable Deeds</h3>
+            <p>Died entering Chakravyuha during the war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5544 BCE: Born to Arjuna and Subhadra.</li>
+              <li>28 Oct 5561 BCE: Entered Chakravyuha but was killed.</li>
+              <li>Post-Death: His death spurred Arjuna’s revenge.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Ashwatthama</h2>
+            <img src="photos/char/ashwhathama.png" width="150" height="150" alt="Ashwatthama Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Son of Drona; Powerful Warrior</p>
+            <h3>Family</h3>
+            <p>Son of Drona and Kripi</p>
+            <h3>Notable Deeds</h3>
+            <p>Survivor of war; attacked Pandava camp at night.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5565 BCE: Trained under Drona.</li>
+              <li>30 Oct 5561 BCE: His “death” led to Drona’s demise.</li>
+              <li>2 Nov 5561 BCE: Attacked Pandava camp, killing Draupadi’s sons.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Eklavya</h2>
+            <img src="photos/char/eklavya.png" width="150" height="150" alt="Eklavya Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Tribal Prince and Self-Taught Archer</p>
+            <h3>Family</h3>
+            <p>Nishada prince</p>
+            <h3>Notable Deeds</h3>
+            <p>Sacrificed his thumb to Drona to honor him as guru.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5565 BCE: Self-taught archery using Drona’s statue.</li>
+              <li>Circa 5565 BCE: Gave his thumb as guru-dakshina.</li>
+              <li>During War: Fought for the Kauravas and was killed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Gandhari</h2>
+            <img src="photos/char/ghandhari.png" width="150" height="150" alt="Gandhari Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Dhritarashtra’s Wife; Mother of Kauravas</p>
+            <h3>Family</h3>
+            <p>Daughter of Subala; sister of Shakuni</p>
+            <h3>Notable Deeds</h3>
+            <p>Blindfolded in solidarity; mourned Karna.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5600 BCE: Married Dhritarashtra and blindfolded herself.</li>
+              <li>Circa 5580 BCE: Gave birth to 100 sons.</li>
+              <li>Post-War: Retired to the forest with Dhritarashtra.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Ghatotkacha</h2>
+            <img src="photos/char/Ghatotkacha.png" width="150" height="150" alt="Ghatotkacha Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Bhima’s Son with Demoness</p>
+            <h3>Family</h3>
+            <p>Son of Bhima and Hidimbi</p>
+            <h3>Notable Deeds</h3>
+            <p>Killed by Karna’s Shakti weapon during the war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Circa 5570 BCE: Born to Bhima and Hidimbi.</li>
+              <li>During War: Fought fiercely for the Pandavas.</li>
+              <li>29 Oct 5561 BCE: Killed by Karna’s Shakti weapon.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Shikhandi</h2>
+            <img src="photos/char/Shikhandi.png" width="150" height="150" alt="Shikhandi Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Reborn Amba; Warrior</p>
+            <h3>Family</h3>
+            <p>Son of Drupada; sibling of Draupadi</p>
+            <h3>Notable Deeds</h3>
+            <p>Instrumental in Bhishma’s death.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Reborn as Amba to seek revenge on Bhishma.</li>
+              <li>25 Oct 5561 BCE: Faced Bhishma, leading to his fall.</li>
+              <li>During War: Fought for the Pandavas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <h2>Dhrishtadyumna</h2>
+            <img src="photos/char/Dhrishtadyumna.png" width="150" height="150" alt="Dhrishtadyumna Portrait">
+          </div>
+          <div class="flip-card-back">
+            <h3>Role</h3>
+            <p>Draupadi’s Brother; Pandava General</p>
+            <h3>Family</h3>
+            <p>Son of Drupada</p>
+            <h3>Notable Deeds</h3>
+            <p>Born to kill Drona; killed Drona during the war.</p>
+            <h3>Key Events</h3>
+            <ul>
+              <li>Born from a fire sacrifice.</li>
+              <li>During War: Led Pandava forces.</li>
+              <li>30 Oct 5561 BCE: Killed Drona.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Dharmayatra. <br> कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। <br> मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
+  </footer>
+</body>
+</html>
